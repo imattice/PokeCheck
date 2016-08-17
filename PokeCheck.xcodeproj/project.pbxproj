@@ -7,21 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E42E7BAC83FECF6B5DB84A7 /* Pods_PokeCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF67B2531832DCB2C31FB28B /* Pods_PokeCheck.framework */; };
 		5912D6721D642388003D8986 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912D6711D642388003D8986 /* AppDelegate.swift */; };
-		5912D6741D642388003D8986 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912D6731D642388003D8986 /* ViewController.swift */; };
+		5912D6741D642388003D8986 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912D6731D642388003D8986 /* ChecklistViewController.swift */; };
 		5912D6771D642388003D8986 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5912D6751D642388003D8986 /* Main.storyboard */; };
 		5912D6791D642388003D8986 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5912D6781D642388003D8986 /* Assets.xcassets */; };
 		5912D67C1D642388003D8986 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5912D67A1D642388003D8986 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31A510B5EAF8BC1B936616B5 /* Pods-PokeCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeCheck.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeCheck/Pods-PokeCheck.release.xcconfig"; sourceTree = "<group>"; };
 		5912D66E1D642388003D8986 /* PokeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5912D6711D642388003D8986 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5912D6731D642388003D8986 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5912D6731D642388003D8986 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		5912D6761D642388003D8986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5912D6781D642388003D8986 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5912D67B1D642388003D8986 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5912D67D1D642388003D8986 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF67B2531832DCB2C31FB28B /* Pods_PokeCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87A5E5914D2110E28D16186 /* Pods-PokeCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeCheck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeCheck/Pods-PokeCheck.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E42E7BAC83FECF6B5DB84A7 /* Pods_PokeCheck.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B5C3635BAD5F5213CC46E14 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E87A5E5914D2110E28D16186 /* Pods-PokeCheck.debug.xcconfig */,
+				31A510B5EAF8BC1B936616B5 /* Pods-PokeCheck.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		5912D6651D642388003D8986 = {
 			isa = PBXGroup;
 			children = (
 				5912D6701D642388003D8986 /* PokeCheck */,
 				5912D66F1D642388003D8986 /* Products */,
+				2B5C3635BAD5F5213CC46E14 /* Pods */,
+				CA1B6E253A3399393C31C26A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +70,46 @@
 		5912D6701D642388003D8986 /* PokeCheck */ = {
 			isa = PBXGroup;
 			children = (
+				5912D6841D6426D4003D8986 /* Controllers */,
 				5912D6711D642388003D8986 /* AppDelegate.swift */,
-				5912D6731D642388003D8986 /* ViewController.swift */,
+				5912D6831D6426CA003D8986 /* Nibs */,
 				5912D6751D642388003D8986 /* Main.storyboard */,
 				5912D6781D642388003D8986 /* Assets.xcassets */,
 				5912D67A1D642388003D8986 /* LaunchScreen.storyboard */,
 				5912D67D1D642388003D8986 /* Info.plist */,
 			);
 			path = PokeCheck;
+			sourceTree = "<group>";
+		};
+		5912D6831D6426CA003D8986 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
+		5912D6841D6426D4003D8986 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5912D6851D6426E2003D8986 /* View */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5912D6851D6426E2003D8986 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5912D6731D642388003D8986 /* ChecklistViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		CA1B6E253A3399393C31C26A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF67B2531832DCB2C31FB28B /* Pods_PokeCheck.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +119,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5912D6801D642388003D8986 /* Build configuration list for PBXNativeTarget "PokeCheck" */;
 			buildPhases = (
+				FEF709C4AD47AF0515941385 /* [CP] Check Pods Manifest.lock */,
 				5912D66A1D642388003D8986 /* Sources */,
 				5912D66B1D642388003D8986 /* Frameworks */,
 				5912D66C1D642388003D8986 /* Resources */,
+				97F80AF0FF0C30CFC0CFDE51 /* [CP] Embed Pods Frameworks */,
+				E1824D5162F06612CA204D36 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,12 +182,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		97F80AF0FF0C30CFC0CFDE51 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PokeCheck/Pods-PokeCheck-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1824D5162F06612CA204D36 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PokeCheck/Pods-PokeCheck-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEF709C4AD47AF0515941385 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5912D66A1D642388003D8986 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5912D6741D642388003D8986 /* ViewController.swift in Sources */,
+				5912D6741D642388003D8986 /* ChecklistViewController.swift in Sources */,
 				5912D6721D642388003D8986 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,6 +347,7 @@
 		};
 		5912D6811D642388003D8986 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E87A5E5914D2110E28D16186 /* Pods-PokeCheck.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PokeCheck/Info.plist;
@@ -259,6 +359,7 @@
 		};
 		5912D6821D642388003D8986 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31A510B5EAF8BC1B936616B5 /* Pods-PokeCheck.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PokeCheck/Info.plist;
@@ -287,6 +388,7 @@
 				5912D6821D642388003D8986 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import PokemonKit
 
-class ViewController: UIViewController {
+class ChecklistViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        PokemonKit.fetchBerry("1").then { berryInfo in
+                print(berryInfo.name)
+            }
+        }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        print("recieved Memory warning!!!")
     }
-
-
 }
 

@@ -13,8 +13,9 @@ class ChecklistViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        PokemonKit.fetchBerry("1").then { berryInfo in
-                print(berryInfo.name)
+        PokemonKit.fetchPokemonForm("2").then {
+            berryInfo in
+                print(berryInfo.sprites?.frontDefault)
             }
         }
     

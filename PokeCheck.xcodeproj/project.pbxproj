@@ -74,8 +74,8 @@
 		5912D6701D642388003D8986 /* PokeCheck */ = {
 			isa = PBXGroup;
 			children = (
-				5912D6841D6426D4003D8986 /* Controllers */,
 				5912D6711D642388003D8986 /* AppDelegate.swift */,
+				5912D6841D6426D4003D8986 /* Controllers */,
 				5912D6831D6426CA003D8986 /* Nibs */,
 				5912D6751D642388003D8986 /* Main.storyboard */,
 				5912D6781D642388003D8986 /* Assets.xcassets */,

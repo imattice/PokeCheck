@@ -10,17 +10,16 @@ import UIKit
 import PokemonKit
 
 class ChecklistViewController: UICollectionViewController {
-    var allPokemon: [PokemonKit.PKMNamedAPIResource]?
-
+    var allPokemonSprites: [PokemonKit.PKMNamedAPIResource]?
+    var allPokemonIDs: [Int?] = []
+    var pokemonDict: [Pokemon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        PokemonKit.fetchPokemonForm("2").then {
-//            berryInfo in
-//                print(berryInfo.sprites?.frontDefault)
-//            }
         
-        getAllPokemon()
+//        getAllPokemonSprites()
+        
+        getPokemonID()
         
         //Register nib
         collectionView?.registerNib(UINib(nibName: "PokemonCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
@@ -38,11 +37,11 @@ class ChecklistViewController: UICollectionViewController {
 extension ChecklistViewController {
     override func collectionView(collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        if allPokemon == nil {
+        if allPokemonSprites == nil {
             return 1
         }
         
-        return (allPokemon?.count)!
+        return (allPokemonSprites?.count)!
     }
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -51,6 +50,7 @@ extension ChecklistViewController {
     }
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print(allPokemonSprites)
     }
 }
 
@@ -58,12 +58,37 @@ extension ChecklistViewController {
 //POKEMON Stuff
 extension ChecklistViewController {
     
-    func getAllPokemon() {
-        fetchPokemons().then{
-            allPokemons in
-            self.allPokemon = allPokemons.results
-            print("Done!")
-            self.collectionView?.reloadData()
+    func getPokemonID() {
+        for i in 1...5 {
+            fetchPokemon(String(i)).then{
+                pokemon in
+                let newPokemon = Pokemon()
+                newPokemon.number = pokemon.id
+                newPokemon.name = pokemon.name
+                newPokemon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: (pokemon.sprites?.frontDefault)!)!)!)
+//                self.pokemonDict["Forms"] = pokemon.forms
+                self.pokemonDict.append(newPokemon)
+                print(self.pokemonDict)
+            }
+        }
+
+    }
+    
+//    func getAllPokemon() {
+//        fetchPokemons().then{
+//            allPokemons in
+//            self.allPokemon = allPokemons.results
+//            print("Done!")
+//            self.collectionView?.reloadData()
+//        }
+//    }
+    func getAllPokemonSprites() {
+        fetchPokedex("1").then{
+            allSprites in
+            print(allSprites.id)
+//                self.allPokemonSprites = allSprites.results
+                print("Done!")
+                self.collectionView?.reloadData()
         }
     }
 }

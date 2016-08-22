@@ -10,8 +10,11 @@ import Foundation
 import PokemonKit
 
 class Pokemon {
-    var image: String?
     var number: Int?
+    var name: String?
+    var image: UIImage?
+    var isCaught = false
+    
     
 
 }

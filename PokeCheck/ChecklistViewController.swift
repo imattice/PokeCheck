@@ -40,30 +40,35 @@ class ChecklistViewController: UICollectionViewController {
 extension ChecklistViewController {
     override func collectionView(collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        if allPokemonSprites.isEmpty {
+        if allPokemon.isEmpty {
             return 1
         }
         
-        return (allPokemonSprites.count)
+        return (allPokemon.count)
     }
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-            if allPokemonSprites.isEmpty{
+        
+        
+        if allPokemon.isEmpty{
                 let dexNumber = indexPath.row + 1
                 cell.cellLabel.text = String(dexNumber)
                 cell.cellImage.image = UIImage(named: "0")
             } else {
-//                _ = allPokemonSprites[indexPath.row]
+                let pokemon = allPokemon[indexPath.row]
 //                            cell.cellImage.image = pokemon.image
-                let dexNumber = indexPath.row + 1
-                cell.cellLabel.text = String(dexNumber)
+                if let pokemonID = pokemon.number {
+                    cell.cellLabel.text = String(pokemonID)
+                }
+            print(pokemon.number)
+//                cell.cellImage.image = pokemon.sprite
             }
         return cell
     }
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print(allPokemonSprites)
+        print("Hello")
     }
 }
 
@@ -84,39 +89,33 @@ extension ChecklistViewController {
                     do{
                         let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
                         if  let spriteURL = json["sprites"]!!["front_default"] as? String,
-                            let name = json["pokemon"]!!["name"] as? String,
+                        let name = json["pokemon"]!!["name"] as? String,
                             let id = json["id"] as? Int {
                             
                                 newPokemon.number = id
+                                print("number: " + String(id))
+
                                 newPokemon.name = name
+                                print("json Name: " + name)
                                 if let spriteURL = NSURL(string: spriteURL), let data = NSData(contentsOfURL: spriteURL) {
                                     newPokemon.sprite = UIImage(data: data)
                                 }
-                            
-//                            print("Json: \(json)")
-//                            print(spriteURL)
-//                            print(name)
-//                            print(id)
-                            
-//                            print("number: " + newPokemon.number as? String)
+                            print("number: " + String(newPokemon.number!))
                             print("name: " + newPokemon.name!)
 //                            print("sprite: " + newPokemon.sprite)
                             print( " ")
                         }
                         } catch {
-                            print("nope")
+                            print("error fetching data from PokemonAPI")
                         }
+                    self.allPokemon.append(newPokemon)
+                    print("new Pokemon Added")
                 }
-//                    
-//                    let pokemonMap = Map(mappingType: .FromJSON, JSONDictionary: self.pokemonDict)
-//                    parseJSON(fromAPIResults: spriteURL)
-//                    print(spriteURL)
-//                    self.allPokemonSprites.append(sprite.url!)
-            print(self.allPokemon)
 
-//            print(self.allPokemonSprites)
+            print(self.allPokemon)
+            
             self.collectionView?.reloadData()
-//            print("view did reload")
+            print("view did reload")
         }
     }
     

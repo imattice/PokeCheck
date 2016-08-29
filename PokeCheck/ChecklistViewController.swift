@@ -22,8 +22,6 @@ class ChecklistViewController: UICollectionViewController {
         
         getAllPokemonSprites()
         
-//        getPokemonID()
-        
         //Register nib
         collectionView?.registerNib(UINib(nibName: "PokemonCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
         
@@ -61,8 +59,11 @@ extension ChecklistViewController {
                 if let pokemonID = pokemon.number {
                     cell.cellLabel.text = String(pokemonID)
                 }
-            print(pokemon.number)
-//                cell.cellImage.image = pokemon.sprite
+                if let pokemonImage = pokemon.sprite {
+                    cell.cellImage.image = pokemonImage
+                } else {
+                    cell.cellImage.image = UIImage(named: "0")
+                }
             }
         return cell
     }
@@ -87,50 +88,30 @@ extension ChecklistViewController {
                     let spriteURL = NSURL(string: sprite.url!)
                     let spriteData = NSData(contentsOfURL: spriteURL!)
                     do{
+//                        transform json data into a Swift object
                         let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
+//                        go through the json object and set local variables to the important information
                         if  let spriteURL = json["sprites"]!!["front_default"] as? String,
-                        let name = json["pokemon"]!!["name"] as? String,
+                            let name = json["pokemon"]!!["name"] as? String,
                             let id = json["id"] as? Int {
                             
+//                                set the properties of the new pokemon object
                                 newPokemon.number = id
-                                print("number: " + String(id))
-
                                 newPokemon.name = name
-                                print("json Name: " + name)
                                 if let spriteURL = NSURL(string: spriteURL), let data = NSData(contentsOfURL: spriteURL) {
                                     newPokemon.sprite = UIImage(data: data)
                                 }
-                            print("number: " + String(newPokemon.number!))
-                            print("name: " + newPokemon.name!)
-//                            print("sprite: " + newPokemon.sprite)
-                            print( " ")
                         }
                         } catch {
                             print("error fetching data from PokemonAPI")
                         }
+//                    add newly created pokemon to the master array
                     self.allPokemon.append(newPokemon)
-                    print("new Pokemon Added")
                 }
 
-            print(self.allPokemon)
-            
+//            once all data has been pulled, reload the collection view
             self.collectionView?.reloadData()
-            print("view did reload")
         }
-    }
-    
-    func parseJSON(fromAPIResults url: String){
-        let objectFromURL = NSData(contentsOfURL: NSURL(string: url)!)
-        do {
-         let json = try NSJSONSerialization.JSONObjectWithData(objectFromURL!, options: NSJSONReadingOptions())
-            print(json)
-//            print("Front Default: " + json.sprites)
-        } catch {
-            print(error)
-        }
-    }
-    func getPokemonSprite(fromPokemonURL url: String) {
-        
     }
 }
 

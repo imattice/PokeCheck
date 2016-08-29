@@ -12,7 +12,7 @@ import PokemonKit
 class Pokemon {
     var number: Int?
     var name: String?
-    var image: UIImage?
+    var sprite: UIImage?
     var isCaught = false
     
     

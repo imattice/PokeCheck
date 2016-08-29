@@ -14,7 +14,8 @@ class ChecklistViewController: UICollectionViewController {
     var allPokemonSprites: [String] = []
     var allPokemonIDs: [Int?] = []
     var pokemonDict: [String : AnyObject] = [:]
-    var allPokemon: [PKMNamedAPIResource] = []
+//    var allPokemon: [PKMNamedAPIResource] = []
+    var allPokemon: [Pokemon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,55 +70,49 @@ extension ChecklistViewController {
 
 //POKEMON Stuff
 extension ChecklistViewController {
-//    
-//    func loopThroughPokemon(pokemon: PKMPokemon, closure: () -> ()) {
-//        for _ in 1...5 {
-//            let newPokemon = Pokemon()
-//            newPokemon.number = pokemon.id
-//            newPokemon.name = pokemon.name
-//            newPokemon.image = UIImage(data: NSData(contentsOfURL: NSURL(string: (pokemon.sprites?.frontDefault)!)!)!)
-//            //                self.pokemonDict["Forms"] = pokemon.forms
-//            self.pokemonDict.append(newPokemon)
-//            print(self.pokemonDict)
-//        }
-//        closure()
-//    }
-    
-//    func getPokemonID() {
-//        for i in 1...5 {
-//            fetchPokemon(String(i)).then{
-//                pokemon in
-//                print(pokemon)
-//            }
-//        }
-//    }
-    
-//    PKMPagedObject -> [PKMNamedAPIResource]
-//    func getAllPokemon() {
-//        fetchPokemons().then{
-//            allPokemons in
-//            for pokemon in allPokemons.results! {
-//                print(pokemon.name)
-//                self.allPokemon.append(pokemon)
-//            }
-//            print(self.allPokemon)
-//            self.collectionView?.reloadData()
-//        }
-//    }
-//    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
+///    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
     func getAllPokemonSprites() {
         fetchPokemonForms().then{
+//            allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
             allSprites in
+//                allSprites => [PKMNamedAPIResource]?
+//                sprite => PKMNamedAPIResource(name, url, init(), mapping()
                 for sprite in allSprites.results! {
+                    let newPokemon = Pokemon()
                     let spriteURL = NSURL(string: sprite.url!)
-                    
-                    let pokemonMap = Map(mappingType: .FromJSON, JSONDictionary: self.pokemonDict)
-//                    spriteURL.mapping(pokemonMap)
-//                    self.parseJSON(fromAPIResults: sprite.url!)
-                    print(spriteURL)
-                    self.allPokemonSprites.append(sprite.url!)
+                    let spriteData = NSData(contentsOfURL: spriteURL!)
+                    do{
+                        let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
+                        if  let spriteURL = json["sprites"]!!["front_default"] as? String,
+                            let name = json["pokemon"]!!["name"] as? String,
+                            let id = json["id"] as? Int {
+                            
+                                newPokemon.number = id
+                                newPokemon.name = name
+                                if let spriteURL = NSURL(string: spriteURL), let data = NSData(contentsOfURL: spriteURL) {
+                                    newPokemon.sprite = UIImage(data: data)
+                                }
+                            
+//                            print("Json: \(json)")
+//                            print(spriteURL)
+//                            print(name)
+//                            print(id)
+                            
+//                            print("number: " + newPokemon.number as? String)
+                            print("name: " + newPokemon.name!)
+//                            print("sprite: " + newPokemon.sprite)
+                            print( " ")
+                        }
+                        } catch {
+                            print("nope")
+                        }
                 }
-            print(self.pokemonDict)
+//                    
+//                    let pokemonMap = Map(mappingType: .FromJSON, JSONDictionary: self.pokemonDict)
+//                    parseJSON(fromAPIResults: spriteURL)
+//                    print(spriteURL)
+//                    self.allPokemonSprites.append(sprite.url!)
+            print(self.allPokemon)
 
 //            print(self.allPokemonSprites)
             self.collectionView?.reloadData()

@@ -78,9 +78,11 @@ extension ChecklistViewController {
 extension ChecklistViewController {
 ///    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
     func getAllPokemonSprites() {
-        fetchPokemonForms().then{
+        fetchPokemonForms().then {
 //            allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
-            allSprites in
+            
+            allSprites -> Void in
+            
 //                allSprites => [PKMNamedAPIResource]?
 //                sprite => PKMNamedAPIResource(name, url, init(), mapping()
                 for sprite in allSprites.results! {

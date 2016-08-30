@@ -72,17 +72,12 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
-//        dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-        print(cell.pokemon)
         if let cellPokemon = cell.pokemon {
-            if cellPokemon.isCaught {
-                cellPokemon.isCaught = false
-                print("not caught")
-            } else {
+            if !cellPokemon.isCaught {
                 cellPokemon.isCaught = true
-                print("caught!")
+            } else {
+                cellPokemon.isCaught = false
             }
-            print(cellPokemon.isCaught)
         }
         
     }
@@ -116,8 +111,7 @@ extension ChecklistViewController {
 //                sprite => PKMNamedAPIResource(name, url, init(), mapping()
                 for sprite in allSprites.results! {
                     let newPokemon = Pokemon()
-                    let spriteURL = NSURL(string: sprite.url!)
-                    let spriteData = NSData(contentsOfURL: spriteURL!)
+                    let spriteData = NSData(contentsOfURL: NSURL(string: sprite.url!)!)
                     do{
 //                        transform json data into a Swift object
                         let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)

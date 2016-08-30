@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Checklist View Controller-->
+        <!--PokeCheck-->
         <scene sceneID="Slq-MY-Bca">
             <objects>
                 <collectionViewController id="Zpb-Nb-Oes" customClass="ChecklistViewController" customModule="PokeCheck" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,7 +24,10 @@
                             <outlet property="delegate" destination="Zpb-Nb-Oes" id="W3Y-dK-YMK"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="dj8-nJ-x1n"/>
+                    <navigationItem key="navigationItem" title="PokeCheck" id="dj8-nJ-x1n">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="WLJ-Ef-eWf"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="Tuq-Ph-E7o"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37s-Lk-jBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

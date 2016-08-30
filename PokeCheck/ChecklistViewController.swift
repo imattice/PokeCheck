@@ -54,12 +54,14 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
                 cell.cellLabel.text = String(dexNumber)
                 cell.cellImage.image = UIImage(named: "0")
             } else {
-                let pokemon = allPokemon[indexPath.row]
-//                            cell.cellImage.image = pokemon.image
-                if let pokemonID = pokemon.number {
+                let cellPokemon = allPokemon[indexPath.row]
+            //ties the cell to the pokemon at the index of the allPokemon array
+                    cell.pokemon = cellPokemon
+                    print("pokemon name: " + cell.pokemon!.name!)
+                if let cellPokemon = cell.pokemon, let pokemonID = cellPokemon.number {
                     cell.cellLabel.text = String(pokemonID)
                 }
-                if let pokemonImage = pokemon.sprite {
+                if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
                     cell.cellImage.image = pokemonImage
                 } else {
                     cell.cellImage.image = UIImage(named: "0")
@@ -69,7 +71,20 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     }
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("Hello")
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
+//        dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
+        print(cell.pokemon)
+        if let cellPokemon = cell.pokemon {
+            if cellPokemon.isCaught {
+                cellPokemon.isCaught = false
+                print("not caught")
+            } else {
+                cellPokemon.isCaught = true
+                print("caught!")
+            }
+            print(cellPokemon.isCaught)
+        }
+        
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

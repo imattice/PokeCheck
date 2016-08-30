@@ -35,7 +35,7 @@ class ChecklistViewController: UICollectionViewController {
 }
 
 //COLLECTION VIEW CONTOLLER FUNCTIONS
-extension ChecklistViewController {
+extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         if allPokemon.isEmpty {
@@ -71,6 +71,20 @@ extension ChecklistViewController {
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("Hello")
     }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
+                        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 75.0, height: 75.0)
+    }
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
+                        insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+//        <#code#>
+//    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+//        <#code#>
+//    }
 }
 
 
@@ -109,6 +123,7 @@ extension ChecklistViewController {
                         }
 //                    add newly created pokemon to the master array
                     self.allPokemon.append(newPokemon)
+                    print("\(newPokemon.name) added to allPokemon[]")
                 }
 
 //            once all data has been pulled, reload the collection view

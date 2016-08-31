@@ -26,7 +26,11 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="PokeCheck" id="dj8-nJ-x1n">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="WLJ-Ef-eWf"/>
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="Tuq-Ph-E7o"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="Tuq-Ph-E7o">
+                            <connections>
+                                <action selector="filter" destination="Zpb-Nb-Oes" id="zLp-6Y-Mtn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37s-Lk-jBT" userLabel="First Responder" sceneMemberID="firstResponder"/>

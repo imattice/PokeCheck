@@ -22,10 +22,9 @@ class ChecklistViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        savePokemon(1, name: "bulbasword", image: "Hello")
 //        fectchAllPokemon()
 //        if allPokemon.isEmpty {
-//            getAllPokemonSprites()
+            getAllPokemonSprites()
 //        } else {
 //            collectionView?.reloadData()
 //        }
@@ -111,7 +110,7 @@ class ChecklistViewController: UICollectionViewController {
 
 //Core Data and POKEMON Stuff
 extension ChecklistViewController {
-    func savePokemon(dexNumber: Int, name: String, image: String) {
+    func savePokemon(dexNumber: Int, name: String, image: NSData) {
         let entity = NSEntityDescription.insertNewObjectForEntityForName("Pokemon", inManagedObjectContext: moc) as! Pokemon
         
         entity.setValue(dexNumber, forKey: "dexNumber")
@@ -130,49 +129,50 @@ extension ChecklistViewController {
     }
     
 ///    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
-//    func getAllPokemonSprites() {
-//        print("will request forms")
-//        fetchPokemonForms().then {
-////            allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
-//            
-//            allSprites -> Void in
-//            
-//            print("recieved sprites.  Will begin looping")
-////                allSprites => [PKMNamedAPIResource]?
-////                sprite => PKMNamedAPIResource(name, url, init(), mapping()
-//                for sprite in allSprites.results! {
-//                    print("no sprite data")
-//                    let newPokemon = Pokemon()
-//                    let spriteData = NSData(contentsOfURL: NSURL(string: sprite.url!)!)
+    func getAllPokemonSprites() {
+        print("will request forms")
+        fetchPokemonForms().then {
+//            allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
+            
+            allSprites -> Void in
+            
+            print("recieved sprites.  Will begin looping")
+//                allSprites => [PKMNamedAPIResource]?
+//                sprite => PKMNamedAPIResource(name, url, init(), mapping()
+                for sprite in allSprites.results! {
+                    print("no sprite data")
+                    let spriteData = NSData(contentsOfURL: NSURL(string: sprite.url!)!)
 //                    print("sprite data: \(spriteData)")
-//                    do{
-////                        transform json data into a Swift object
-//                        let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
-//                        print("did the json")
-////                        go through the json object and set local variables to the important information
-//                        if  let spriteURL = json["sprites"]!!["front_default"] as? String,
-//                            let name = json["pokemon"]!!["name"] as? String,
-//                            let id = json["id"] as? Int {
-//                                print("will set properties")
-////                                set the properties of the new pokemon object
-//                                newPokemon.number = id
+                    do{
+//                        transform json data into a Swift object
+                        let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
+                        print("did the json")
+//                        go through the json object and set local variables to the important information
+                        if  let spriteURL = json["sprites"]!!["front_default"] as? String, let data = NSData(contentsOfURL: NSURL(string: spriteURL)!),
+                            let name = json["pokemon"]!!["name"] as? String,
+                            let id = json["id"] as? Int {
+                                print("will set properties")
+//                                set the properties of the new pokemon object
+                                self.savePokemon(id, name: name, image: data)
+//                            newPokemon.number = id
 //                                newPokemon.name = name
 //                                if let spriteURL = NSURL(string: spriteURL), let data = NSData(contentsOfURL: spriteURL) {
 //                                    newPokemon.sprite = UIImage(data: data)
 //                                }
-//                            print("did set properties")
-//                            }
-//                        } catch {
-//                            print("error fetching data from PokemonAPI")
-//                        }
-////                    add newly created pokemon to the master array
+                            print("did set properties")
+                            }
+                        } catch {
+                            print("error fetching data from PokemonAPI")
+                        }
+//                    add newly created pokemon to the master array
 //                    self.allPokemon.append(newPokemon)
 //                    print("\(newPokemon.name) added to allPokemon[]")
-//                }
-//
-////            once all data has been pulled, reload the collection view
-//            self.collectionView?.reloadData()
-//        }
-//    }
+                }
+
+//            once all data has been pulled, reload the collection view
+            print("collectionView will reload")
+            self.collectionView?.reloadData()
+        }
+    }
 }
 

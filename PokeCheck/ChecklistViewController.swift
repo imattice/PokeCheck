@@ -20,8 +20,11 @@ class ChecklistViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAllPokemonSprites()
-        
+        if allPokemon.isEmpty {
+            getAllPokemonSprites()
+        } else {
+            collectionView?.reloadData()
+        }
         //Register nib
         collectionView?.registerNib(UINib(nibName: "PokemonCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
         
@@ -102,31 +105,36 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 extension ChecklistViewController {
 ///    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
     func getAllPokemonSprites() {
+        print("will request forms")
         fetchPokemonForms().then {
 //            allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
             
             allSprites -> Void in
-            
+            print("recieved sprites.  Will begin looping")
 //                allSprites => [PKMNamedAPIResource]?
 //                sprite => PKMNamedAPIResource(name, url, init(), mapping()
                 for sprite in allSprites.results! {
+                    print("no sprite data")
                     let newPokemon = Pokemon()
                     let spriteData = NSData(contentsOfURL: NSURL(string: sprite.url!)!)
+                    print("sprite data: \(spriteData)")
                     do{
 //                        transform json data into a Swift object
                         let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
+                        print("did the json")
 //                        go through the json object and set local variables to the important information
                         if  let spriteURL = json["sprites"]!!["front_default"] as? String,
                             let name = json["pokemon"]!!["name"] as? String,
                             let id = json["id"] as? Int {
-                            
+                                print("will set properties")
 //                                set the properties of the new pokemon object
                                 newPokemon.number = id
                                 newPokemon.name = name
                                 if let spriteURL = NSURL(string: spriteURL), let data = NSData(contentsOfURL: spriteURL) {
                                     newPokemon.sprite = UIImage(data: data)
                                 }
-                        }
+                            print("did set properties")
+                            }
                         } catch {
                             print("error fetching data from PokemonAPI")
                         }

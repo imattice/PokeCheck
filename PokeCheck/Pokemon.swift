@@ -15,6 +15,11 @@ class Pokemon {
     var sprite: UIImage?
     var isCaught = false
     
+//    init(number: Int, name: String, sprite: UIImage, isCaught: Bool = false) {
+//        self.number = number
+//        self.name = name
+//        self.sprite = sprite
+//    }
     
 
 }

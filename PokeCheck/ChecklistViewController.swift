@@ -11,11 +11,7 @@ import PokemonKit
 import CoreData
 
 class ChecklistViewController: UICollectionViewController {
-    var allPokemonSprites: [String] = []
-    var allPokemonIDs: [Int?] = []
-    var pokemonDict: [String : AnyObject] = [:]
-//    var allPokemon: [PKMNamedAPIResource] = []
-//    var allPokemon: [Pokemon] = []
+    var allPokemon: [Pokemon] = []
     
     let moc = DataController().managedObjectContext
     
@@ -40,45 +36,45 @@ class ChecklistViewController: UICollectionViewController {
     }
     
     @IBAction func filter() {
-        fectchAllPokemon()
+        fetchAllPokemon()
     }
 }
 
 //COLLECTION VIEW CONTOLLER FUNCTIONS
-//extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
-//    override func collectionView(collectionView: UICollectionView,
-//                                 numberOfItemsInSection section: Int) -> Int {
-//        if allPokemon.isEmpty {
-//            return 1
-//        }
-//        
-//        return (allPokemon.count)
-//    }
-//    override func collectionView(collectionView: UICollectionView,
-//                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-//        
-//        
-//        if allPokemon.isEmpty{
-//                let dexNumber = indexPath.row + 1
-//                cell.cellLabel.text = String(dexNumber)
-//                cell.cellImage.image = UIImage(named: "0")
-//            } else {
-//                let cellPokemon = allPokemon[indexPath.row]
-//            //ties the cell to the pokemon at the index of the allPokemon array
-//                    cell.pokemon = cellPokemon
-//                    print("pokemon name: " + cell.pokemon!.name!)
-//                if let cellPokemon = cell.pokemon, let pokemonID = cellPokemon.number {
-//                    cell.cellLabel.text = String(pokemonID)
-//                }
-//                if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
-//                    cell.cellImage.image = pokemonImage
-//                } else {
-//                    cell.cellImage.image = UIImage(named: "0")
-//                }
-//            }
-//        return cell
-//    }
+extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
+    override func collectionView(collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
+        if allPokemon.isEmpty {
+            return 1
+        }
+        
+        return (allPokemon.count)
+    }
+    override func collectionView(collectionView: UICollectionView,
+                                 cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
+        
+        
+        if allPokemon.isEmpty{
+                let dexNumber = indexPath.row + 1
+                cell.cellLabel.text = String(dexNumber)
+                cell.cellImage.image = UIImage(named: "0")
+            } else {
+                let cellPokemon = allPokemon[indexPath.row]
+            //ties the cell to the pokemon at the index of the allPokemon array
+                    cell.pokemon = cellPokemon
+                    print("pokemon name: " + cell.pokemon!.name!)
+                if let cellPokemon = cell.pokemon, let pokemonID = cellPokemon.dexNumber {
+                    cell.cellLabel.text = String(pokemonID)
+                }
+                if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
+                    cell.cellImage.image = UIImage(data: pokemonImage)
+                } else {
+                    cell.cellImage.image = UIImage(named: "0")
+                }
+            }
+        return cell
+    }
 //    override func collectionView(collectionView: UICollectionView,
 //                                 didSelectItemAtIndexPath indexPath: NSIndexPath) {
 //        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
@@ -105,7 +101,7 @@ class ChecklistViewController: UICollectionViewController {
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
 //        <#code#>
 //    }
-//}
+}
 
 
 //Core Data and POKEMON Stuff
@@ -118,11 +114,13 @@ extension ChecklistViewController {
         entity.setValue(image, forKey: "sprite")
     }
     
-    func fectchAllPokemon() {
+    func fetchAllPokemon(){
         let pokemonFetch = NSFetchRequest(entityName: "Pokemon")
+
         do {
-            let fetchedPokemon = try moc.executeFetchRequest(pokemonFetch) as! [Pokemon]
-            print(fetchedPokemon)
+            let requestedPokemon = try moc.executeFetchRequest(pokemonFetch) as! [Pokemon]
+            allPokemon = requestedPokemon
+            collectionView?.reloadData()
         } catch {
             print("bad things happened \(error)")
         }
@@ -152,21 +150,13 @@ extension ChecklistViewController {
                             let name = json["pokemon"]!!["name"] as? String,
                             let id = json["id"] as? Int {
                                 print("will set properties")
-//                                set the properties of the new pokemon object
+//                                set the properties to a new Pokemon entity in Core Data
                                 self.savePokemon(id, name: name, image: data)
-//                            newPokemon.number = id
-//                                newPokemon.name = name
-//                                if let spriteURL = NSURL(string: spriteURL), let data = NSData(contentsOfURL: spriteURL) {
-//                                    newPokemon.sprite = UIImage(data: data)
-//                                }
                             print("did set properties")
                             }
                         } catch {
                             print("error fetching data from PokemonAPI")
                         }
-//                    add newly created pokemon to the master array
-//                    self.allPokemon.append(newPokemon)
-//                    print("\(newPokemon.name) added to allPokemon[]")
                 }
 
 //            once all data has been pulled, reload the collection view

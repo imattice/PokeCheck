@@ -82,11 +82,14 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         if let cellPokemon = cell.pokemon {
             if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
                 cellPokemon.isCaught = true
-                cell.blur(cell.cellImageView)
+                cell.blur(thisImageView: cell.cellImageView)
+                cell.toggleCheck()
+//                cell.addCheck(toImageView: cell.cellImageView)
                 print(cellPokemon.isCaught)
             } else {
                 cellPokemon.isCaught = false
-                cell.unblur(cell.cellImageView)
+                cell.unblur(thisImageView: cell.cellImageView)
+                cell.toggleCheck()
                 print(cellPokemon.isCaught)
             }
 

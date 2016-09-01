@@ -8,19 +8,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCell" id="y5R-RM-pob" customClass="PokemonCell" customModule="PokeCheck" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+            <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gFh-bg-bt5">
-                        <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CellLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijS-se-cC2">
-                        <rect key="frame" x="-3" y="45" width="72" height="21"/>
+                        <rect key="frame" x="2" y="54" width="71" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJn-SJ-YwX">
+                        <rect key="frame" x="25" y="23" width="25" height="29"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75172413793103443" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -30,16 +36,19 @@
                 <constraint firstAttribute="bottom" secondItem="ijS-se-cC2" secondAttribute="bottom" id="7Bc-YB-1lS"/>
                 <constraint firstAttribute="bottom" secondItem="gFh-bg-bt5" secondAttribute="bottom" id="NUU-HO-YOJ"/>
                 <constraint firstItem="ijS-se-cC2" firstAttribute="centerX" secondItem="y5R-RM-pob" secondAttribute="centerX" id="QRE-tk-Exl"/>
+                <constraint firstItem="vJn-SJ-YwX" firstAttribute="centerY" secondItem="y5R-RM-pob" secondAttribute="centerY" id="W0M-dX-6uO"/>
                 <constraint firstItem="gFh-bg-bt5" firstAttribute="leading" secondItem="y5R-RM-pob" secondAttribute="leading" id="YLs-Yr-7Hh"/>
                 <constraint firstItem="gFh-bg-bt5" firstAttribute="top" secondItem="y5R-RM-pob" secondAttribute="top" id="aqr-Vj-Xcp"/>
+                <constraint firstItem="vJn-SJ-YwX" firstAttribute="centerX" secondItem="y5R-RM-pob" secondAttribute="centerX" id="cAp-cu-lZg"/>
                 <constraint firstAttribute="trailing" secondItem="gFh-bg-bt5" secondAttribute="trailing" id="rrg-Ca-QbD"/>
             </constraints>
             <size key="customSize" width="65" height="46"/>
             <connections>
+                <outlet property="cellCheckLabel" destination="vJn-SJ-YwX" id="cci-no-Icj"/>
                 <outlet property="cellImageView" destination="gFh-bg-bt5" id="oAz-Xr-PdW"/>
                 <outlet property="cellLabel" destination="ijS-se-cC2" id="f7t-Ng-iog"/>
             </connections>
-            <point key="canvasLocation" x="363" y="420"/>
+            <point key="canvasLocation" x="362.5" y="419.5"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -69,6 +69,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
                 }
                 if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
                     cell.cellImage.image = UIImage(data: pokemonImage)
+                    print(cellPokemon)
                 } else {
                     cell.cellImage.image = UIImage(named: "0")
                 }
@@ -118,6 +119,8 @@ extension ChecklistViewController {
     
     func fetchAllPokemon(){
         let pokemonFetch = NSFetchRequest(entityName: "Pokemon")
+        let fetchSort = NSSortDescriptor(key: "dexNumber", ascending: true)
+        pokemonFetch.sortDescriptors = [fetchSort]
 
         do {
             let requestedPokemon = try moc.executeFetchRequest(pokemonFetch) as! [Pokemon]
@@ -140,7 +143,7 @@ extension ChecklistViewController {
 //                allSprites => [PKMNamedAPIResource]?
 //                sprite => PKMNamedAPIResource(name, url, init(), mapping()
                 for sprite in allSprites.results! {
-                    print("no sprite data")
+//                    print("no sprite data")
                     let spriteData = NSData(contentsOfURL: NSURL(string: sprite.url!)!)
 //                    print("sprite data: \(spriteData)")
                     do{
@@ -162,8 +165,7 @@ extension ChecklistViewController {
                 }
 
 //            once all data has been pulled, reload the collection view
-            print("collectionView will reload")
-            self.collectionView?.reloadData()
+                self.fetchAllPokemon()
         }
     }
 }

@@ -36,7 +36,7 @@
             </constraints>
             <size key="customSize" width="65" height="46"/>
             <connections>
-                <outlet property="cellImage" destination="gFh-bg-bt5" id="buE-Gz-6jq"/>
+                <outlet property="cellImageView" destination="gFh-bg-bt5" id="oAz-Xr-PdW"/>
                 <outlet property="cellLabel" destination="ijS-se-cC2" id="f7t-Ng-iog"/>
             </connections>
             <point key="canvasLocation" x="363" y="420"/>

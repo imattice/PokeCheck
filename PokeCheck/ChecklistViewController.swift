@@ -58,7 +58,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         if allPokemon.isEmpty{
                 let dexNumber = indexPath.row + 1
                 cell.cellLabel.text = String(dexNumber)
-                cell.cellImage.image = UIImage(named: "0")
+                cell.cellImageView.image = UIImage(named: "0")
             } else {
                 let cellPokemon = allPokemon[indexPath.row]
             //ties the cell to the pokemon at the index of the allPokemon array
@@ -68,10 +68,10 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
                     cell.cellLabel.text = String(pokemonID)
                 }
                 if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
-                    cell.cellImage.image = UIImage(data: pokemonImage)
+                    cell.cellImageView.image = UIImage(data: pokemonImage)
                     print(cellPokemon)
                 } else {
-                    cell.cellImage.image = UIImage(named: "0")
+                    cell.cellImageView.image = UIImage(named: "0")
                 }
             }
         return cell
@@ -80,10 +80,14 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
         if let cellPokemon = cell.pokemon {
-            if (cellPokemon.isCaught == nil) {
+            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
                 cellPokemon.isCaught = true
+                cell.blur(cell.cellImageView)
+                print(cellPokemon.isCaught)
             } else {
                 cellPokemon.isCaught = false
+                cell.unblur(cell.cellImageView)
+                print(cellPokemon.isCaught)
             }
 
             print(cellPokemon)

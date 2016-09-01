@@ -19,11 +19,11 @@ class ChecklistViewController: UICollectionViewController {
         super.viewDidLoad()
         
 //        fectchAllPokemon()
-//        if allPokemon.isEmpty {
+        if allPokemon.isEmpty {
             getAllPokemonSprites()
-//        } else {
-//            collectionView?.reloadData()
-//        }
+        } else {
+            collectionView?.reloadData()
+        }
         //Register nib
         collectionView?.registerNib(UINib(nibName: "PokemonCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
         
@@ -75,18 +75,20 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
             }
         return cell
     }
-//    override func collectionView(collectionView: UICollectionView,
-//                                 didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
-//        if let cellPokemon = cell.pokemon {
-//            if !cellPokemon.isCaught {
-//                cellPokemon.isCaught = true
-//            } else {
-//                cellPokemon.isCaught = false
-//            }
-//        }
-//        
-//    }
+    override func collectionView(collectionView: UICollectionView,
+                                 didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
+        if let cellPokemon = cell.pokemon {
+            if (cellPokemon.isCaught == nil) {
+                cellPokemon.isCaught = true
+            } else {
+                cellPokemon.isCaught = false
+            }
+
+            print(cellPokemon)
+        }
+        
+    }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 75.0, height: 75.0)

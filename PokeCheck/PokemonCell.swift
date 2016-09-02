@@ -37,7 +37,7 @@ class PokemonCell: UICollectionViewCell {
 //        vibrancyEffectView.frame = imageView.bounds
 //        
 //        imageView.addSubview(vibrancyEffectView)
-        addCheck(toImageView: blurredEffectView)
+//        addCheck(toImageView: blurredEffectView)
 
         imageView.addSubview(blurredEffectView)
         
@@ -50,7 +50,18 @@ class PokemonCell: UICollectionViewCell {
             }
         }
     }
-    
+    func desaturate(UIImageView imageView: UIImageView) {
+        //        let scaleFactor = UIScreen.mainScreen().scale
+        //        let extent = CGRect(x: 0, y: 0, width: imageView.frame., height: <#T##CGFloat#>)
+        let filter = CIFilter(name: "CIColorMonochrome")
+        let context = CIContext(options: nil)
+        let ciImage = CIImage(image: imageView.currentImage)
+        
+        filter!.setValue(ciImage, forKey: kCIInputImageKey)
+        
+        imageView.image = UIImage(CGImage: context.createCGImage(filter!.outputImage!, fromRect: imageView.frame))
+        
+    }
     func addCheck(toImageView imageView: UIVisualEffectView) {
 //        let view = UIView()
 //            view.frame = imageView.bounds

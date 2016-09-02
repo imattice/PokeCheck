@@ -36,17 +36,7 @@ class ChecklistViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         print("recieved Memory warning!!!")
     }
-    func desaturate(UIImageView imageView: UIImageView) {
-//        let scaleFactor = UIScreen.mainScreen().scale
-//        let extent = CGRect(x: 0, y: 0, width: imageView.frame., height: <#T##CGFloat#>)
-        let filter = CIFilter(name: "CIColorMonochrome")
-        let ciImage = CIImage(image: imageView.currentImage)
-        
-        filter!.setValue(ciImage, forKey: kCIInputImageKey)
-            
-        imageView.image = UIImage(CGImage: CIContext(options: nil).createCGImage(CIFilter().outputImage!, fromRect: imageView.frame))
-        
-    }
+
     @IBAction func filter() {
         fetchAllPokemon()
     }
@@ -104,7 +94,8 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
         
         cell.cellImageView.stopAnimatingGif()
-        desaturate(UIImageView: cell.cellImageView)
+        cell.blur(thisImageView: cell.cellImageView)
+//        cell.desaturate(UIImageView: cell.cellImageView)
 //        if let cellPokemon = cell.pokemon {
 //            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
 //                cellPokemon.isCaught = true

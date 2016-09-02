@@ -9,10 +9,12 @@
 import UIKit
 import PokemonKit
 import CoreData
+import SwiftyGif
 
 class ChecklistViewController: UICollectionViewController {
     var allPokemon: [Pokemon] = []
     
+    let gifManager = SwiftyGifManager(memoryLimit: 20)
     let moc = DataController().managedObjectContext
     
     override func viewDidLoad() {
@@ -20,7 +22,7 @@ class ChecklistViewController: UICollectionViewController {
         
 //        fectchAllPokemon()
         if allPokemon.isEmpty {
-            getAllPokemonSprites()
+//            getAllPokemonSprites()
         } else {
             collectionView?.reloadData()
         }
@@ -44,60 +46,67 @@ class ChecklistViewController: UICollectionViewController {
 extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        if allPokemon.isEmpty {
-            return 1
-        }
-        
-        return (allPokemon.count)
+//        if allPokemon.isEmpty {
+//            return 1
+//        }
+//        
+//        return (allPokemon.count)
+        return 9
     }
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
         
+        let dexNumber = indexPath.row + 1
+        let gif = UIImage(gifName: "00\(dexNumber)")
+//        UIImageView(gifImage: gif, manager: gifManager)
         
-        if allPokemon.isEmpty{
-                let dexNumber = indexPath.row + 1
-                cell.cellLabel.text = String(dexNumber)
-                cell.cellImageView.image = UIImage(named: "0")
-            } else {
-                let cellPokemon = allPokemon[indexPath.row]
-            //ties the cell to the pokemon at the index of the allPokemon array
-                    cell.pokemon = cellPokemon
-                    print("pokemon name: " + cell.pokemon!.name!)
-                if let cellPokemon = cell.pokemon, let pokemonID = cellPokemon.dexNumber {
-                    cell.cellLabel.text = String(pokemonID)
-                }
-                if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
-                    cell.cellImageView.image = UIImage(data: pokemonImage)
-                    print(cellPokemon)
-                } else {
-                    cell.cellImageView.image = UIImage(named: "0")
-                }
-            }
+        cell.cellLabel.text = String(dexNumber)
+        cell.cellImageView.setGifImage(gif, manager: gifManager)
+//
+//        if allPokemon.isEmpty{
+//                let dexNumber = indexPath.row + 1
+//                cell.cellLabel.text = String(dexNumber)
+//                cell.cellImageView.image = UIImage(named: "0")
+//            } else {
+//                let cellPokemon = allPokemon[indexPath.row]
+//            //ties the cell to the pokemon at the index of the allPokemon array
+//                    cell.pokemon = cellPokemon
+//                    print("pokemon name: " + cell.pokemon!.name!)
+//                if let cellPokemon = cell.pokemon, let pokemonID = cellPokemon.dexNumber {
+//                    cell.cellLabel.text = String(pokemonID)
+//                }
+//                if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
+//                    cell.cellImageView.image = UIImage(data: pokemonImage)
+//                    print(cellPokemon)
+//                } else {
+//                    cell.cellImageView.image = UIImage(named: "0")
+//                }
+//            }
         return cell
     }
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
-        if let cellPokemon = cell.pokemon {
-            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
-                cellPokemon.isCaught = true
-                cell.blur(thisImageView: cell.cellImageView)
-                cell.toggleCheck()
-//                cell.addCheck(toImageView: cell.cellImageView)
-                print(cellPokemon.isCaught)
-            } else {
-                cellPokemon.isCaught = false
-                cell.unblur(thisImageView: cell.cellImageView)
-                cell.toggleCheck()
-                print(cellPokemon.isCaught)
-            }
-
-            print(cellPokemon)
-        }
+//        if let cellPokemon = cell.pokemon {
+//            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
+//                cellPokemon.isCaught = true
+//                cell.blur(thisImageView: cell.cellImageView)
+//                cell.toggleCheck()
+////                cell.addCheck(toImageView: cell.cellImageView)
+//                print(cellPokemon.isCaught)
+//            } else {
+//                cellPokemon.isCaught = false
+//                cell.unblur(thisImageView: cell.cellImageView)
+//                cell.toggleCheck()
+//                print(cellPokemon.isCaught)
+//            }
+//
+//            print(cellPokemon)
+//        }
         
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 75.0, height: 75.0)
     }

@@ -74,7 +74,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
             cell.cellLabel.text = String(dexNumber)
         let gif = UIImage(gifName: gifName)
             cell.cellImageView.setGifImage(gif, manager: gifManager)
-
+ 
 //    get the height and width of the cell and the gif
         let gifHeight = cell.cellImageView.currentImage.size.height
         let gifWidth = cell.cellImageView.currentImage.size.width

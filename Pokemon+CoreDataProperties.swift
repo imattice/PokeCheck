@@ -17,6 +17,5 @@ extension Pokemon {
     @NSManaged var dexNumber: NSNumber?
     @NSManaged var isCaught: NSNumber?
     @NSManaged var name: String?
-    @NSManaged var sprite: NSData?
 
 }

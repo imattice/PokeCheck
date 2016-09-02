@@ -1,0 +1,22 @@
+PODS:
+  - Alamofire (3.4.1)
+  - AlamofireObjectMapper (2.1.2):
+    - Alamofire (~> 3.2)
+    - ObjectMapper (~> 1.0)
+  - ObjectMapper (1.4.0)
+  - PokemonKit (2.0.1):
+    - Alamofire (~> 3.0)
+    - AlamofireObjectMapper (~> 2.1)
+
+DEPENDENCIES:
+  - PokemonKit
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireObjectMapper: 82391c31f23e37bdb2660da174bcf81b202da39d
+  ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
+  PokemonKit: 6ea926de24589ceb5ca34c17551491eff602439a
+
+PODFILE CHECKSUM: ce8c4cb95af8cedab4fd71dde9e7a609134469d9
+
+COCOAPODS: 1.0.1

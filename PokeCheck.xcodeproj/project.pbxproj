@@ -17,6 +17,20 @@
 		5912D6891D64A591003D8986 /* PokemonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5912D6881D64A591003D8986 /* PokemonCell.swift */; };
 		59FCB5D01D792C9000A53F70 /* gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5CF1D792C9000A53F70 /* gif */; };
 		59FCB5D21D792CFC00A53F70 /* png in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5D11D792CFC00A53F70 /* png */; };
+		59FCB5E21D79B44100A53F70 /* 001.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5D41D79B44100A53F70 /* 001.gif */; };
+		59FCB5E31D79B44100A53F70 /* 002.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5D51D79B44100A53F70 /* 002.gif */; };
+		59FCB5E41D79B44100A53F70 /* 003-mega.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5D61D79B44100A53F70 /* 003-mega.gif */; };
+		59FCB5E51D79B44100A53F70 /* 003.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5D71D79B44100A53F70 /* 003.gif */; };
+		59FCB5E61D79B44100A53F70 /* 004.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5D81D79B44100A53F70 /* 004.gif */; };
+		59FCB5E71D79B44100A53F70 /* 005.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5D91D79B44100A53F70 /* 005.gif */; };
+		59FCB5E81D79B44100A53F70 /* 006-mega-x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5DA1D79B44100A53F70 /* 006-mega-x.gif */; };
+		59FCB5E91D79B44100A53F70 /* 006-mega-y.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5DB1D79B44100A53F70 /* 006-mega-y.gif */; };
+		59FCB5EA1D79B44100A53F70 /* 006.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5DC1D79B44100A53F70 /* 006.gif */; };
+		59FCB5EB1D79B44100A53F70 /* 007.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5DD1D79B44100A53F70 /* 007.gif */; };
+		59FCB5EC1D79B44100A53F70 /* 008.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5DE1D79B44100A53F70 /* 008.gif */; };
+		59FCB5ED1D79B44100A53F70 /* 009-mega.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5DF1D79B44100A53F70 /* 009-mega.gif */; };
+		59FCB5EE1D79B44100A53F70 /* 009.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5E01D79B44100A53F70 /* 009.gif */; };
+		59FCB5EF1D79B44100A53F70 /* 010.gif in Resources */ = {isa = PBXBuildFile; fileRef = 59FCB5E11D79B44100A53F70 /* 010.gif */; };
 		7F0A4C2D1D77757500E49E18 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A4C2B1D77757500E49E18 /* DataModel.xcdatamodeld */; };
 		7F0A4C311D77819600E49E18 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F0A4C301D77819600E49E18 /* DataController.swift */; };
 		7F1F06F71D7795BA0053EA9E /* Pokemon+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1F06F51D7795BA0053EA9E /* Pokemon+CoreDataProperties.swift */; };
@@ -36,6 +50,20 @@
 		5912D6881D64A591003D8986 /* PokemonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonCell.swift; sourceTree = "<group>"; };
 		59FCB5CF1D792C9000A53F70 /* gif */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gif; sourceTree = "<group>"; };
 		59FCB5D11D792CFC00A53F70 /* png */ = {isa = PBXFileReference; lastKnownFileType = folder; path = png; sourceTree = "<group>"; };
+		59FCB5D41D79B44100A53F70 /* 001.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 001.gif; path = gif/001.gif; sourceTree = "<group>"; };
+		59FCB5D51D79B44100A53F70 /* 002.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 002.gif; path = gif/002.gif; sourceTree = "<group>"; };
+		59FCB5D61D79B44100A53F70 /* 003-mega.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "003-mega.gif"; path = "gif/003-mega.gif"; sourceTree = "<group>"; };
+		59FCB5D71D79B44100A53F70 /* 003.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 003.gif; path = gif/003.gif; sourceTree = "<group>"; };
+		59FCB5D81D79B44100A53F70 /* 004.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 004.gif; path = gif/004.gif; sourceTree = "<group>"; };
+		59FCB5D91D79B44100A53F70 /* 005.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 005.gif; path = gif/005.gif; sourceTree = "<group>"; };
+		59FCB5DA1D79B44100A53F70 /* 006-mega-x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "006-mega-x.gif"; path = "gif/006-mega-x.gif"; sourceTree = "<group>"; };
+		59FCB5DB1D79B44100A53F70 /* 006-mega-y.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "006-mega-y.gif"; path = "gif/006-mega-y.gif"; sourceTree = "<group>"; };
+		59FCB5DC1D79B44100A53F70 /* 006.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 006.gif; path = gif/006.gif; sourceTree = "<group>"; };
+		59FCB5DD1D79B44100A53F70 /* 007.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 007.gif; path = gif/007.gif; sourceTree = "<group>"; };
+		59FCB5DE1D79B44100A53F70 /* 008.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 008.gif; path = gif/008.gif; sourceTree = "<group>"; };
+		59FCB5DF1D79B44100A53F70 /* 009-mega.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "009-mega.gif"; path = "gif/009-mega.gif"; sourceTree = "<group>"; };
+		59FCB5E01D79B44100A53F70 /* 009.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 009.gif; path = gif/009.gif; sourceTree = "<group>"; };
+		59FCB5E11D79B44100A53F70 /* 010.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = 010.gif; path = gif/010.gif; sourceTree = "<group>"; };
 		7F0A4C2C1D77757500E49E18 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7F0A4C301D77819600E49E18 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataController.swift; path = ../DataController.swift; sourceTree = "<group>"; };
 		7F1F06F51D7795BA0053EA9E /* Pokemon+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Pokemon+CoreDataProperties.swift"; path = "../Pokemon+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -86,12 +114,12 @@
 		5912D6701D642388003D8986 /* PokeCheck */ = {
 			isa = PBXGroup;
 			children = (
-				59FCB5CC1D792C1E00A53F70 /* Assets */,
 				5912D6711D642388003D8986 /* AppDelegate.swift */,
 				5912D6841D6426D4003D8986 /* Controllers */,
 				7F0A4C2E1D777FEE00E49E18 /* Objects */,
 				7F0A4C2F1D777FF700E49E18 /* Extensions */,
 				5912D6831D6426CA003D8986 /* Nibs */,
+				59FCB5CC1D792C1E00A53F70 /* Assets */,
 				5912D6751D642388003D8986 /* Main.storyboard */,
 				5912D67A1D642388003D8986 /* LaunchScreen.storyboard */,
 				7F0A4C2B1D77757500E49E18 /* DataModel.xcdatamodeld */,
@@ -129,11 +157,33 @@
 		59FCB5CC1D792C1E00A53F70 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				59FCB5D31D79B42900A53F70 /* gif */,
 				59FCB5D11D792CFC00A53F70 /* png */,
 				59FCB5CF1D792C9000A53F70 /* gif */,
 				5912D6781D642388003D8986 /* Assets.xcassets */,
 			);
 			name = Assets;
+			sourceTree = "<group>";
+		};
+		59FCB5D31D79B42900A53F70 /* gif */ = {
+			isa = PBXGroup;
+			children = (
+				59FCB5D41D79B44100A53F70 /* 001.gif */,
+				59FCB5D51D79B44100A53F70 /* 002.gif */,
+				59FCB5D61D79B44100A53F70 /* 003-mega.gif */,
+				59FCB5D71D79B44100A53F70 /* 003.gif */,
+				59FCB5D81D79B44100A53F70 /* 004.gif */,
+				59FCB5D91D79B44100A53F70 /* 005.gif */,
+				59FCB5DA1D79B44100A53F70 /* 006-mega-x.gif */,
+				59FCB5DB1D79B44100A53F70 /* 006-mega-y.gif */,
+				59FCB5DC1D79B44100A53F70 /* 006.gif */,
+				59FCB5DD1D79B44100A53F70 /* 007.gif */,
+				59FCB5DE1D79B44100A53F70 /* 008.gif */,
+				59FCB5DF1D79B44100A53F70 /* 009-mega.gif */,
+				59FCB5E01D79B44100A53F70 /* 009.gif */,
+				59FCB5E11D79B44100A53F70 /* 010.gif */,
+			);
+			name = gif;
 			sourceTree = "<group>";
 		};
 		7F0A4C2E1D777FEE00E49E18 /* Objects */ = {
@@ -222,12 +272,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59FCB5EF1D79B44100A53F70 /* 010.gif in Resources */,
+				59FCB5E71D79B44100A53F70 /* 005.gif in Resources */,
+				59FCB5E81D79B44100A53F70 /* 006-mega-x.gif in Resources */,
+				59FCB5EC1D79B44100A53F70 /* 008.gif in Resources */,
+				59FCB5EB1D79B44100A53F70 /* 007.gif in Resources */,
 				59FCB5D21D792CFC00A53F70 /* png in Resources */,
+				59FCB5E41D79B44100A53F70 /* 003-mega.gif in Resources */,
 				5912D67C1D642388003D8986 /* LaunchScreen.storyboard in Resources */,
+				59FCB5EE1D79B44100A53F70 /* 009.gif in Resources */,
 				5912D6871D64A56D003D8986 /* PokemonCell.xib in Resources */,
+				59FCB5EA1D79B44100A53F70 /* 006.gif in Resources */,
+				59FCB5E51D79B44100A53F70 /* 003.gif in Resources */,
+				59FCB5E91D79B44100A53F70 /* 006-mega-y.gif in Resources */,
+				59FCB5E61D79B44100A53F70 /* 004.gif in Resources */,
 				59FCB5D01D792C9000A53F70 /* gif in Resources */,
 				5912D6791D642388003D8986 /* Assets.xcassets in Resources */,
+				59FCB5E31D79B44100A53F70 /* 002.gif in Resources */,
 				5912D6771D642388003D8986 /* Main.storyboard in Resources */,
+				59FCB5ED1D79B44100A53F70 /* 009-mega.gif in Resources */,
+				59FCB5E21D79B44100A53F70 /* 001.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,7 @@ import SwiftyGif
 class ChecklistViewController: UICollectionViewController {
     var allPokemon: [Pokemon] = []
     
-    let gifManager = SwiftyGifManager(memoryLimit: 20)
+    let gifManager = SwiftyGifManager(memoryLimit: 50)
     let moc = DataController().managedObjectContext
     
     override func viewDidLoad() {
@@ -36,7 +36,17 @@ class ChecklistViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
         print("recieved Memory warning!!!")
     }
-    
+    func desaturate(UIImageView imageView: UIImageView) {
+//        let scaleFactor = UIScreen.mainScreen().scale
+//        let extent = CGRect(x: 0, y: 0, width: imageView.frame., height: <#T##CGFloat#>)
+        let filter = CIFilter(name: "CIColorMonochrome")
+        let ciImage = CIImage(image: imageView.currentImage)
+        
+        filter!.setValue(ciImage, forKey: kCIInputImageKey)
+            
+        imageView.image = UIImage(CGImage: CIContext(options: nil).createCGImage(CIFilter().outputImage!, fromRect: imageView.frame))
+        
+    }
     @IBAction func filter() {
         fetchAllPokemon()
     }
@@ -51,59 +61,50 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 //        }
 //        
 //        return (allPokemon.count)
-        return 9
+        return 100
     }
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-        
         let dexNumber = indexPath.row + 1
-        let gif = UIImage(gifName: "00\(dexNumber)")
+        var gifName = "?"
+            switch dexNumber {
+            case 1...9:
+                gifName = "00\(dexNumber)"
+            case 10...99:
+                gifName = "0\(dexNumber)"
+            case 100...999:
+                gifName = "\(dexNumber)"
+            default:
+                cell.cellLabel.text = String(dexNumber)
+                cell.cellImageView.image = UIImage(named: "1")
+            }
         
-        
-//        UIImageView(gifImage: gif, manager: gifManager)
-        
-        cell.cellLabel.text = String(dexNumber)
-        cell.cellImageView.setGifImage(gif, manager: gifManager)
+//    set the label and the image of the cell to the appropriate number and gif
+            cell.cellLabel.text = String(dexNumber)
+        let gif = UIImage(gifName: gifName)
+            cell.cellImageView.setGifImage(gif, manager: gifManager)
 
+//    get the height and width of the cell and the gif
         let gifHeight = cell.cellImageView.currentImage.size.height
         let gifWidth = cell.cellImageView.currentImage.size.width
         let cellHeight = cell.frame.size.height
         let cellWidth = cell.frame.size.width
         
-        if gifHeight > cellHeight || gifWidth > cellWidth {
-            cell.cellImageView.contentMode = .ScaleAspectFit
-//            print("Gif was larger than frame. \n gif height & width: \(gifHeight) \(gifWidth) \n ImageView height & width: \(gifHeight) \(gifWidth)")
-        } else {
-//            print("Gif was SMALLER than frame. \n gif height & width: \(gifHeight) \(gifWidth) \n ImageView height & width: \(gifHeight) \(gifWidth)")
-            cell.cellImageView.contentMode = .Bottom
-        }
-        
-        //
-//        if allPokemon.isEmpty{
-//                let dexNumber = indexPath.row + 1
-//                cell.cellLabel.text = String(dexNumber)
-//                cell.cellImageView.image = UIImage(named: "0")
-//            } else {
-//                let cellPokemon = allPokemon[indexPath.row]
-//            //ties the cell to the pokemon at the index of the allPokemon array
-//                    cell.pokemon = cellPokemon
-//                    print("pokemon name: " + cell.pokemon!.name!)
-//                if let cellPokemon = cell.pokemon, let pokemonID = cellPokemon.dexNumber {
-//                    cell.cellLabel.text = String(pokemonID)
-//                }
-//                if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
-//                    cell.cellImageView.image = UIImage(data: pokemonImage)
-//                    print(cellPokemon)
-//                } else {
-//                    cell.cellImageView.image = UIImage(named: "0")
-//                }
-//            }
+//      if the gif is larger that the cell, scale the gif down.  Otherwise, display it on the bottom of the cell
+            if gifHeight > cellHeight || gifWidth > cellWidth {
+                cell.cellImageView.contentMode = .ScaleAspectFit
+            } else {
+                cell.cellImageView.contentMode = .Bottom
+            }
         return cell
     }
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
+        
+        cell.cellImageView.stopAnimatingGif()
+        desaturate(UIImageView: cell.cellImageView)
 //        if let cellPokemon = cell.pokemon {
 //            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
 //                cellPokemon.isCaught = true

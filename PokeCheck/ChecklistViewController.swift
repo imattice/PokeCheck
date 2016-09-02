@@ -59,11 +59,27 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         
         let dexNumber = indexPath.row + 1
         let gif = UIImage(gifName: "00\(dexNumber)")
+        
+        
 //        UIImageView(gifImage: gif, manager: gifManager)
         
         cell.cellLabel.text = String(dexNumber)
         cell.cellImageView.setGifImage(gif, manager: gifManager)
-//
+
+        let gifHeight = cell.cellImageView.currentImage.size.height
+        let gifWidth = cell.cellImageView.currentImage.size.width
+        let cellHeight = cell.frame.size.height
+        let cellWidth = cell.frame.size.width
+        
+        if gifHeight > cellHeight || gifWidth > cellWidth {
+            cell.cellImageView.contentMode = .ScaleAspectFit
+//            print("Gif was larger than frame. \n gif height & width: \(gifHeight) \(gifWidth) \n ImageView height & width: \(gifHeight) \(gifWidth)")
+        } else {
+//            print("Gif was SMALLER than frame. \n gif height & width: \(gifHeight) \(gifWidth) \n ImageView height & width: \(gifHeight) \(gifWidth)")
+            cell.cellImageView.contentMode = .Bottom
+        }
+        
+        //
 //        if allPokemon.isEmpty{
 //                let dexNumber = indexPath.row + 1
 //                cell.cellLabel.text = String(dexNumber)
@@ -104,7 +120,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 //
 //            print(cellPokemon)
 //        }
-        
+                
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {

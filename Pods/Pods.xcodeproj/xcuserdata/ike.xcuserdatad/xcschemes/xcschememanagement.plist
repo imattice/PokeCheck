@@ -29,15 +29,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyGif.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<key>325DF5787576038DDF9F4F69D683D2CB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>90ECC61D169F264CEC4AA947B8FD73A7</key>
+		<key>422A571614AF0C8B99D4EC655BE7A72F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53FDF1583D4AFAD299BE1713FC326CF5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -48,11 +63,6 @@
 			<true/>
 		</dict>
 		<key>FBD082A0D35F7917EAB9DD9D3CCA9976</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FCF6970F82E3727C571948C2F3E906B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

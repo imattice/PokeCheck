@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyGif
 
 
 class PokemonCell: UICollectionViewCell {
@@ -16,6 +17,44 @@ class PokemonCell: UICollectionViewCell {
     
     var pokemon: Pokemon?
  
+    func configureCell(fromPokemon pokemon: Pokemon, gifManager: SwiftyGifManager) {
+//      add the dexNumber to the bottom of the cell
+        let dexNumber = pokemon.dexNumber
+        cellLabel.text = String(dexNumber)
+        
+        var gifName = "?"
+
+//      append the appropriate amount of 0's to the image name
+        switch Int(dexNumber!) {
+        case 1...9:
+            gifName = "00\(dexNumber)"
+        case 10...99:
+            gifName = "0\(dexNumber)"
+        case 100...999:
+            gifName = "\(dexNumber)"
+        default:
+            cellImageView.image = UIImage(named: "1")
+        }
+        
+//      set the label and the image of the cell to the appropriate number and gif
+        let gif = UIImage(gifName: gifName)
+        cellImageView.setGifImage(gif, manager: gifManager)
+        
+//      get the height and width of the cell and the gif
+        let gifHeight = cellImageView.currentImage.size.height
+        let gifWidth = cellImageView.currentImage.size.width
+        let cellHeight = frame.size.height
+        let cellWidth = frame.size.width
+        
+//      if the gif is larger that the cell, scale the gif down.  Otherwise, display it on the bottom of the cell
+        if gifHeight > cellHeight || gifWidth > cellWidth {
+            cellImageView.contentMode = .ScaleAspectFit
+        } else {
+            cellImageView.contentMode = .Bottom
+        }
+
+    }
+    
     func toggleCheck() {
         if let cellPokemon = pokemon {
             if (cellPokemon.isCaught == true) {

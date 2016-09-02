@@ -58,45 +58,25 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-        let dexNumber = indexPath.row + 1 //cell.pokemon?.dexNumber as! Int
-        var gifName = "?"
-            switch dexNumber {
-            case 1...9:
-                gifName = "00\(dexNumber)"
-            case 10...99:
-                gifName = "0\(dexNumber)"
-            case 100...999:
-                gifName = "\(dexNumber)"
-            default:
-                cell.cellLabel.text = String(dexNumber)
-                cell.cellImageView.image = UIImage(named: "1")
-            }
-            
-//    set the label and the image of the cell to the appropriate number and gif
-            cell.cellLabel.text = String(dexNumber)
-        let gif = UIImage(gifName: gifName)
-            cell.cellImageView.setGifImage(gif, manager: gifManager)
- 
-//    get the height and width of the cell and the gif
-        let gifHeight = cell.cellImageView.currentImage.size.height
-        let gifWidth = cell.cellImageView.currentImage.size.width
-        let cellHeight = cell.frame.size.height
-        let cellWidth = cell.frame.size.width
+        print(cell.pokemon)
+//        cell.configureCell(fromPokemon: allPokemon[indexPath.row], gifManager: gifManager)
         
-//      if the gif is larger that the cell, scale the gif down.  Otherwise, display it on the bottom of the cell
-            if gifHeight > cellHeight || gifWidth > cellWidth {
-                cell.cellImageView.contentMode = .ScaleAspectFit
-            } else {
-                cell.cellImageView.contentMode = .Bottom
-            }
         return cell
     }
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
-        
-        cell.cellImageView.stopAnimatingGif()
-        cell.blur(thisImageView: cell.cellImageView)
+            print(cell.pokemon)
+            print(cell.pokemon?.isCaught)
+        if cell.pokemon?.isCaught == false {
+            print("uncaught!")
+            cell.cellImageView.stopAnimatingGif()
+            cell.blur(thisImageView: cell.cellImageView)
+        } else {
+            cell.cellImageView.startAnimatingGif()
+            cell.unblur(thisImageView: cell.cellImageView)
+            print("caught!")
+        }
 //        cell.desaturate(UIImageView: cell.cellImageView)
 //        if let cellPokemon = cell.pokemon {
 //            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
@@ -161,6 +141,7 @@ extension ChecklistViewController {
             let requestedPokemon = try moc.executeFetchRequest(pokemonFetch) as! [Pokemon]
             allPokemon = requestedPokemon
             print("allPokemon array has been filled with data")
+            print(allPokemon)
         } catch {
             print("bad things happened \(error)")
         }

@@ -58,8 +58,11 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
+        let cellPokemon = allPokemon[indexPath.row]
+        cell.pokemon = cellPokemon
+        
         print(cell.pokemon)
-//        cell.configureCell(fromPokemon: allPokemon[indexPath.row], gifManager: gifManager)
+        cell.configureCell(fromPokemon: cellPokemon)
         
         return cell
     }
@@ -69,10 +72,12 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
             print(cell.pokemon)
             print(cell.pokemon?.isCaught)
         if cell.pokemon?.isCaught == false {
+            cell.pokemon?.isCaught = true
             print("uncaught!")
             cell.cellImageView.stopAnimatingGif()
             cell.blur(thisImageView: cell.cellImageView)
         } else {
+            cell.pokemon?.isCaught = false
             cell.cellImageView.startAnimatingGif()
             cell.unblur(thisImageView: cell.cellImageView)
             print("caught!")

@@ -15,29 +15,32 @@ class PokemonCell: UICollectionViewCell {
     @IBOutlet weak var cellImageView: UIImageView!
     @IBOutlet weak var cellCheckLabel: UILabel!
     
+    let gifManager = SwiftyGifManager(memoryLimit: 50)
+
     var pokemon: Pokemon?
  
-    func configureCell(fromPokemon pokemon: Pokemon, gifManager: SwiftyGifManager) {
+    func configureCell(fromPokemon pokemon: Pokemon) {
 //      add the dexNumber to the bottom of the cell
         let dexNumber = pokemon.dexNumber
-        cellLabel.text = String(dexNumber)
+        cellLabel.text = String(dexNumber!)
         
         var gifName = "?"
 
 //      append the appropriate amount of 0's to the image name
         switch Int(dexNumber!) {
         case 1...9:
-            gifName = "00\(dexNumber)"
+            gifName = "00\(dexNumber!)"
         case 10...99:
-            gifName = "0\(dexNumber)"
+            gifName = "0\(dexNumber!)"
         case 100...999:
-            gifName = "\(dexNumber)"
+            gifName = "\(dexNumber!)"
         default:
             cellImageView.image = UIImage(named: "1")
         }
         
 //      set the label and the image of the cell to the appropriate number and gif
         let gif = UIImage(gifName: gifName)
+        print("gif: \(gif) \n gifname: |(gifName)")
         cellImageView.setGifImage(gif, manager: gifManager)
         
 //      get the height and width of the cell and the gif
@@ -51,6 +54,12 @@ class PokemonCell: UICollectionViewCell {
             cellImageView.contentMode = .ScaleAspectFit
         } else {
             cellImageView.contentMode = .Bottom
+        }
+        
+//      if pokemon has already been caught, apply blur
+        if pokemon.isCaught == true {
+            cellImageView.stopAnimatingGif()
+            blur(thisImageView: cellImageView)
         }
 
     }
@@ -116,5 +125,12 @@ class PokemonCell: UICollectionViewCell {
 //        view.addSubview(textField)
         imageView.addSubview(textField)
         print("added check")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cellImageView.image = nil
+        cellLabel.text = nil
+        unblur(thisImageView: cellImageView)
     }
 }

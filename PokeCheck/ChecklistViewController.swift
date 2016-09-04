@@ -9,6 +9,7 @@
 import UIKit
 import PokemonKit
 import CoreData
+//import SwiftyGif
 
 class ChecklistViewController: UICollectionViewController {
     var allPokemon: [Pokemon] = []
@@ -20,7 +21,8 @@ class ChecklistViewController: UICollectionViewController {
         
 //        fectchAllPokemon()
         if allPokemon.isEmpty {
-            getAllPokemonSprites()
+//            getAllPokemonSprites()
+            initializeData()
         } else {
             collectionView?.reloadData()
         }
@@ -35,8 +37,9 @@ class ChecklistViewController: UICollectionViewController {
         print("recieved Memory warning!!!")
     }
     
+
     @IBAction func filter() {
-        fetchAllPokemon()
+        collectionView?.reloadData()
     }
 }
 
@@ -49,55 +52,57 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         }
         
         return (allPokemon.count)
+//        return 100
     }
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
+        let cellPokemon = allPokemon[indexPath.row]
+        cell.pokemon = cellPokemon
         
+        print(cell.pokemon)
+        cell.configureCell(fromPokemon: cellPokemon)
         
-        if allPokemon.isEmpty{
-                let dexNumber = indexPath.row + 1
-                cell.cellLabel.text = String(dexNumber)
-                cell.cellImageView.image = UIImage(named: "0")
-            } else {
-                let cellPokemon = allPokemon[indexPath.row]
-            //ties the cell to the pokemon at the index of the allPokemon array
-                    cell.pokemon = cellPokemon
-                    print("pokemon name: " + cell.pokemon!.name!)
-                if let cellPokemon = cell.pokemon, let pokemonID = cellPokemon.dexNumber {
-                    cell.cellLabel.text = String(pokemonID)
-                }
-                if let cellPokemon = cell.pokemon, let pokemonImage = cellPokemon.sprite {
-                    cell.cellImageView.image = UIImage(data: pokemonImage)
-                    print(cellPokemon)
-                } else {
-                    cell.cellImageView.image = UIImage(named: "0")
-                }
-            }
         return cell
     }
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
-        if let cellPokemon = cell.pokemon {
-            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
-                cellPokemon.isCaught = true
-                cell.blur(thisImageView: cell.cellImageView)
-                cell.toggleCheck()
-//                cell.addCheck(toImageView: cell.cellImageView)
-                print(cellPokemon.isCaught)
-            } else {
-                cellPokemon.isCaught = false
-                cell.unblur(thisImageView: cell.cellImageView)
-                cell.toggleCheck()
-                print(cellPokemon.isCaught)
-            }
-
-            print(cellPokemon)
+            print(cell.pokemon)
+            print(cell.pokemon?.isCaught)
+        if cell.pokemon?.isCaught == false {
+            CaughtIndicator.addPokeBall(toCell: cell, animated: true)
+            cell.pokemon?.isCaught = true
+            print("uncaught!")
+            cell.cellImageView.stopAnimatingGif()
+            cell.blur(thisImageView: cell.cellImageView)
+        } else {
+            CaughtIndicator.removePokeBall(fromCell: cell, animated: true)
+            cell.pokemon?.isCaught = false
+            cell.cellImageView.startAnimatingGif()
+            cell.unblur(thisImageView: cell.cellImageView)
+            print("caught!")
         }
-        
+//        cell.desaturate(UIImageView: cell.cellImageView)
+//        if let cellPokemon = cell.pokemon {
+//            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
+//                cellPokemon.isCaught = true
+//                cell.blur(thisImageView: cell.cellImageView)
+//                cell.toggleCheck()
+////                cell.addCheck(toImageView: cell.cellImageView)
+//                print(cellPokemon.isCaught)
+//            } else {
+//                cellPokemon.isCaught = false
+//                cell.unblur(thisImageView: cell.cellImageView)
+//                cell.toggleCheck()
+//                print(cellPokemon.isCaught)
+//            }
+//
+//            print(cellPokemon)
+//        }
+                
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: 75.0, height: 75.0)
     }
@@ -116,15 +121,24 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 
 //Core Data and POKEMON Stuff
 extension ChecklistViewController {
-    func savePokemon(dexNumber: Int, name: String, image: NSData) {
+    func initializeData(){
+        for (index, pokemonName) in pokemonArray.enumerate() {
+            let dexNumber = index + 1 
+            savePokemon(dexNumber, name: pokemonName)
+        }
+        fetchAllPokemon()
+        collectionView?.reloadData()
+    }
+
+    func savePokemon(dexNumber: Int, name: String) {
         let entity = NSEntityDescription.insertNewObjectForEntityForName("Pokemon", inManagedObjectContext: moc) as! Pokemon
         
         entity.setValue(dexNumber, forKey: "dexNumber")
         entity.setValue(name, forKey: "name")
-        entity.setValue(image, forKey: "sprite")
+        print("\(name) has been saved.")
     }
     
-    func fetchAllPokemon(){
+    func fetchAllPokemon() -> (){
         let pokemonFetch = NSFetchRequest(entityName: "Pokemon")
         let fetchSort = NSSortDescriptor(key: "dexNumber", ascending: true)
         pokemonFetch.sortDescriptors = [fetchSort]
@@ -132,38 +146,36 @@ extension ChecklistViewController {
         do {
             let requestedPokemon = try moc.executeFetchRequest(pokemonFetch) as! [Pokemon]
             allPokemon = requestedPokemon
-            collectionView?.reloadData()
+            print("allPokemon array has been filled with data")
+            print(allPokemon)
         } catch {
             print("bad things happened \(error)")
         }
     }
     
 ///    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
-    func getAllPokemonSprites() {
+    func getAllPokemonFromAPI() {
         print("will request forms")
-        fetchPokemonForms().then {
-//            allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
-            
-            allSprites -> Void in
-            
+        fetchPokemons().then {
+//          allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
+            allPokemon -> Void in
             print("recieved sprites.  Will begin looping")
 //                allSprites => [PKMNamedAPIResource]?
 //                sprite => PKMNamedAPIResource(name, url, init(), mapping()
-                for sprite in allSprites.results! {
+                for pokemon in allPokemon.results! {
 //                    print("no sprite data")
-                    let spriteData = NSData(contentsOfURL: NSURL(string: sprite.url!)!)
+                    let spriteData = NSData(contentsOfURL: NSURL(string: pokemon.url!)!)
 //                    print("sprite data: \(spriteData)")
                     do{
 //                        transform json data into a Swift object
                         let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
                         print("did the json")
 //                        go through the json object and set local variables to the important information
-                        if  let spriteURL = json["sprites"]!!["front_default"] as? String, let data = NSData(contentsOfURL: NSURL(string: spriteURL)!),
-                            let name = json["pokemon"]!!["name"] as? String,
+                        if  let name = json["pokemon"]!!["name"] as? String,
                             let id = json["id"] as? Int {
                                 print("will set properties")
 //                                set the properties to a new Pokemon entity in Core Data
-                                self.savePokemon(id, name: name, image: data)
+                                self.savePokemon(id, name: name)
                             print("did set properties")
                             }
                         } catch {

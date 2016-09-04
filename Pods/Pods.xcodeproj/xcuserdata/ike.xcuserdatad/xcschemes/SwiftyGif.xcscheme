@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '325DF5787576038DDF9F4F69D683D2CB'
-               BlueprintName = 'PokemonKit'
+               BlueprintIdentifier = '53FDF1583D4AFAD299BE1713FC326CF5'
+               BlueprintName = 'SwiftyGif'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'PokemonKit.framework'>
+               BuildableName = 'SwiftyGif.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

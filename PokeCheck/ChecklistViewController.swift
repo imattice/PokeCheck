@@ -9,12 +9,11 @@
 import UIKit
 import PokemonKit
 import CoreData
-import SwiftyGif
+//import SwiftyGif
 
 class ChecklistViewController: UICollectionViewController {
     var allPokemon: [Pokemon] = []
     
-    let gifManager = SwiftyGifManager(memoryLimit: 50)
     let moc = DataController().managedObjectContext
     
     override func viewDidLoad() {
@@ -72,11 +71,13 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
             print(cell.pokemon)
             print(cell.pokemon?.isCaught)
         if cell.pokemon?.isCaught == false {
+            CaughtIndicator.addPokeBall(toCell: cell, animated: true)
             cell.pokemon?.isCaught = true
             print("uncaught!")
             cell.cellImageView.stopAnimatingGif()
             cell.blur(thisImageView: cell.cellImageView)
         } else {
+            CaughtIndicator.removePokeBall(fromCell: cell, animated: true)
             cell.pokemon?.isCaught = false
             cell.cellImageView.startAnimatingGif()
             cell.unblur(thisImageView: cell.cellImageView)

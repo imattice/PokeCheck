@@ -40,7 +40,6 @@ class PokemonCell: UICollectionViewCell {
         
 //      set the label and the image of the cell to the appropriate number and gif
         let gif = UIImage(gifName: gifName)
-        print("gif: \(gif) \n gifname: |(gifName)")
         cellImageView.setGifImage(gif, manager: gifManager)
         
 //      get the height and width of the cell and the gif
@@ -60,10 +59,19 @@ class PokemonCell: UICollectionViewCell {
         if pokemon.isCaught == true {
             cellImageView.stopAnimatingGif()
             blur(thisImageView: cellImageView)
+        } else {
+            cellImageView.startAnimatingGif()
         }
 
     }
     
+    
+    func caughtPokemon() {
+        
+    }
+    func releasePokemon() {
+        
+    }
     func toggleCheck() {
         if let cellPokemon = pokemon {
             if (cellPokemon.isCaught == true) {
@@ -122,7 +130,7 @@ class PokemonCell: UICollectionViewCell {
             textField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
             textField.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         
-//        view.addSubview(textField)
+//      view.addSubview(textField)
         imageView.addSubview(textField)
         print("added check")
     }
@@ -132,5 +140,41 @@ class PokemonCell: UICollectionViewCell {
         cellImageView.image = nil
         cellLabel.text = nil
         unblur(thisImageView: cellImageView)
+    }
+}
+
+class CaughtIndicator: UIView {
+    class func addPokeBall(toCell cell: PokemonCell, animated: Bool) -> CaughtIndicator {
+//      create a view the same size as the cell
+        let indicatorView = CaughtIndicator(frame: cell.bounds)
+        indicatorView.opaque = false
+        indicatorView.tag = 200
+        
+//      create an image view to hold the pokeball image
+        let containerWidth: CGFloat = 35
+        let containerHeight: CGFloat = 35
+        let imageViewFrame = CGRect(
+            x: round((indicatorView.frame.size.width - containerWidth) / 2),
+            y: round((indicatorView.frame.size.height - containerHeight) / 2),
+            width: containerWidth,
+            height: containerHeight
+        )
+        let imageView = UIImageView(frame: imageViewFrame)
+            imageView.image = UIImage(named: "PokeBall")
+        
+//      add the subviews and allow use to interact through the view
+        indicatorView.addSubview(imageView)
+        
+        cell.addSubview(indicatorView)
+        cell.userInteractionEnabled = true
+        
+        return indicatorView
+    }
+    class func removePokeBall(fromCell cell: PokemonCell, animated: Bool) {
+        if let pokeBall = cell.viewWithTag(200) {
+            pokeBall.removeFromSuperview()
+        } else {
+            print("didn't remove")
+        }
     }
 }

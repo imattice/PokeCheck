@@ -55,31 +55,29 @@ class PokemonCell: UICollectionViewCell {
             cellImageView.contentMode = .Bottom
         }
         
-//      if pokemon has already been caught, apply blur
+//      if pokemon has already been caught, apply indicator
         if pokemon.isCaught == true {
-            cellImageView.stopAnimatingGif()
-            blur(thisImageView: cellImageView)
+            caughtPokemon(self)
         } else {
-            cellImageView.startAnimatingGif()
+            releasePokemon(self)
         }
 
     }
     
     
-    func caughtPokemon() {
-        
+    func caughtPokemon(cell: PokemonCell) {
+        addPokeBall(toCell: cell, animated: true)
+        pokemon?.isCaught = true
+        cellImageView.stopAnimatingGif()
+        blur(thisImageView: cellImageView)
+        print("caught!")
     }
-    func releasePokemon() {
-        
-    }
-    func toggleCheck() {
-        if let cellPokemon = pokemon {
-            if (cellPokemon.isCaught == true) {
-                cellCheckLabel.text = "\u{2713}"
-            } else {
-                cellCheckLabel.text = ""
-            }
-        }
+    func releasePokemon(cell: PokemonCell) {
+        removePokeBall(fromCell: cell, animated: true)
+        pokemon?.isCaught = false
+        cellImageView.startAnimatingGif()
+        unblur(thisImageView: cellImageView)
+        print("uncaught!")
     }
     
     func blur(thisImageView imageView: UIImageView) {
@@ -141,12 +139,10 @@ class PokemonCell: UICollectionViewCell {
         cellLabel.text = nil
         unblur(thisImageView: cellImageView)
     }
-}
-
-class CaughtIndicator: UIView {
-    class func addPokeBall(toCell cell: PokemonCell, animated: Bool) -> CaughtIndicator {
+    
+    func addPokeBall(toCell cell: PokemonCell, animated: Bool) -> UIView {
 //      create a view the same size as the cell
-        let indicatorView = CaughtIndicator(frame: cell.bounds)
+        let indicatorView = UIView(frame: cell.bounds)
         indicatorView.opaque = false
         indicatorView.tag = 200
         
@@ -170,7 +166,7 @@ class CaughtIndicator: UIView {
         
         return indicatorView
     }
-    class func removePokeBall(fromCell cell: PokemonCell, animated: Bool) {
+    func removePokeBall(fromCell cell: PokemonCell, animated: Bool) {
         if let pokeBall = cell.viewWithTag(200) {
             pokeBall.removeFromSuperview()
         } else {

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PokemonKit
+//import PokemonKit
 import CoreData
 //import SwiftyGif
 
@@ -68,20 +68,11 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
-            print(cell.pokemon)
-            print(cell.pokemon?.isCaught)
+        
         if cell.pokemon?.isCaught == false {
-            CaughtIndicator.addPokeBall(toCell: cell, animated: true)
-            cell.pokemon?.isCaught = true
-            print("uncaught!")
-            cell.cellImageView.stopAnimatingGif()
-            cell.blur(thisImageView: cell.cellImageView)
+            cell.caughtPokemon(cell)
         } else {
-            CaughtIndicator.removePokeBall(fromCell: cell, animated: true)
-            cell.pokemon?.isCaught = false
-            cell.cellImageView.startAnimatingGif()
-            cell.unblur(thisImageView: cell.cellImageView)
-            print("caught!")
+            cell.releasePokemon(cell)
         }
 //        cell.desaturate(UIImageView: cell.cellImageView)
 //        if let cellPokemon = cell.pokemon {
@@ -154,38 +145,38 @@ extension ChecklistViewController {
     }
     
 ///    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
-    func getAllPokemonFromAPI() {
-        print("will request forms")
-        fetchPokemons().then {
-//          allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
-            allPokemon -> Void in
-            print("recieved sprites.  Will begin looping")
-//                allSprites => [PKMNamedAPIResource]?
-//                sprite => PKMNamedAPIResource(name, url, init(), mapping()
-                for pokemon in allPokemon.results! {
-//                    print("no sprite data")
-                    let spriteData = NSData(contentsOfURL: NSURL(string: pokemon.url!)!)
-//                    print("sprite data: \(spriteData)")
-                    do{
-//                        transform json data into a Swift object
-                        let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
-                        print("did the json")
-//                        go through the json object and set local variables to the important information
-                        if  let name = json["pokemon"]!!["name"] as? String,
-                            let id = json["id"] as? Int {
-                                print("will set properties")
-//                                set the properties to a new Pokemon entity in Core Data
-                                self.savePokemon(id, name: name)
-                            print("did set properties")
-                            }
-                        } catch {
-                            print("error fetching data from PokemonAPI")
-                        }
-                }
-
-//            once all data has been pulled, reload the collection view
-                self.fetchAllPokemon()
-        }
-    }
+//    func getAllPokemonFromAPI() {
+//        print("will request forms")
+//        fetchPokemons().then {
+////          allSprites => PKMPagedObject(count, next, previous, results, init(), mapping())
+//            allPokemon -> Void in
+//            print("recieved sprites.  Will begin looping")
+////                allSprites => [PKMNamedAPIResource]?
+////                sprite => PKMNamedAPIResource(name, url, init(), mapping()
+//                for pokemon in allPokemon.results! {
+////                    print("no sprite data")
+//                    let spriteData = NSData(contentsOfURL: NSURL(string: pokemon.url!)!)
+////                    print("sprite data: \(spriteData)")
+//                    do{
+////                        transform json data into a Swift object
+//                        let json = try NSJSONSerialization.JSONObjectWithData(spriteData!, options: .AllowFragments)
+//                        print("did the json")
+////                        go through the json object and set local variables to the important information
+//                        if  let name = json["pokemon"]!!["name"] as? String,
+//                            let id = json["id"] as? Int {
+//                                print("will set properties")
+////                                set the properties to a new Pokemon entity in Core Data
+//                                self.savePokemon(id, name: name)
+//                            print("did set properties")
+//                            }
+//                        } catch {
+//                            print("error fetching data from PokemonAPI")
+//                        }
+//                }
+//
+////            once all data has been pulled, reload the collection view
+//                self.fetchAllPokemon()
+//        }
+//    }
 }
 

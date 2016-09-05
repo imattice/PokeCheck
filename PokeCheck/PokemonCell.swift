@@ -64,12 +64,12 @@ class PokemonCell: UICollectionViewCell {
 
     }
     
-    
     func caughtPokemon(cell: PokemonCell) {
         addPokeBall(toCell: cell, animated: true)
-        pokemon?.isCaught = true
         cellImageView.stopAnimatingGif()
-        blur(thisImageView: cellImageView)
+        pokemon?.isCaught = true
+        desaturate(UIImageView: cell.cellImageView)
+//        blur(thisImageView: cellImageView)
         print("caught!")
     }
     func releasePokemon(cell: PokemonCell) {
@@ -107,30 +107,32 @@ class PokemonCell: UICollectionViewCell {
     func desaturate(UIImageView imageView: UIImageView) {
         //        let scaleFactor = UIScreen.mainScreen().scale
         //        let extent = CGRect(x: 0, y: 0, width: imageView.frame., height: <#T##CGFloat#>)
-        let filter = CIFilter(name: "CIColorMonochrome")
-        let context = CIContext(options: nil)
         let ciImage = CIImage(image: imageView.currentImage)
+        let filterColor = CIColor(red: 255/255, green: 1/255, blue: 1/255)
         
-        filter!.setValue(ciImage, forKey: kCIInputImageKey)
-        
-        imageView.image = UIImage(CGImage: context.createCGImage(filter!.outputImage!, fromRect: imageView.frame))
-        
-    }
-    func addCheck(toImageView imageView: UIVisualEffectView) {
-//        let view = UIView()
-//            view.frame = imageView.bounds
-        
-        let textField = UITextField()
-            textField.text = "OOO"//"\u{2713}"
-            textField.minimumFontSize = 16
-        
-            textField.textAlignment = .Center
-            textField.contentVerticalAlignment = UIControlContentVerticalAlignment.Center
-            textField.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-        
-//      view.addSubview(textField)
-        imageView.addSubview(textField)
-        print("added check")
+        print("current Image = \(ciImage)")
+        if let filter = CIFilter(name: "CIColorMonochrome") {
+
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        filter.setValue(filterColor, forKey: kCIInputColorKey)
+        filter.setValue(1, forKey: kCIInputIntensityKey)
+            
+            if let outputImage = filter.outputImage {
+//        print(filter.outputImage)
+//        let context = CIContext(options: nil)
+//        let cgimage = context.createCGImage((filter.outputImage)!, fromRect: (filter.outputImage?.extent)!)
+//        
+//        let newImage = UIImage(CGImage: cgimage)
+            let newImage = UIImage(CIImage: outputImage)
+            imageView.image = newImage
+                print("New Image: \(newImage)")
+            } else {
+                print("No output image")
+            }
+//        imageView.updateCurrentImage()
+        } else {
+            print("broken filter")
+        }
     }
     
     override func prepareForReuse() {
@@ -145,6 +147,7 @@ class PokemonCell: UICollectionViewCell {
         let indicatorView = UIView(frame: cell.bounds)
         indicatorView.opaque = false
         indicatorView.tag = 200
+
         
 //      create an image view to hold the pokeball image
         let containerWidth: CGFloat = 35

@@ -23,12 +23,6 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJn-SJ-YwX">
-                        <rect key="frame" x="15" y="8" width="52" height="51"/>
-                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.75172413793103443" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -36,15 +30,12 @@
                 <constraint firstAttribute="bottom" secondItem="ijS-se-cC2" secondAttribute="bottom" id="7Bc-YB-1lS"/>
                 <constraint firstAttribute="bottom" secondItem="gFh-bg-bt5" secondAttribute="bottom" id="NUU-HO-YOJ"/>
                 <constraint firstItem="ijS-se-cC2" firstAttribute="centerX" secondItem="y5R-RM-pob" secondAttribute="centerX" id="QRE-tk-Exl"/>
-                <constraint firstItem="vJn-SJ-YwX" firstAttribute="centerY" secondItem="y5R-RM-pob" secondAttribute="centerY" id="W0M-dX-6uO"/>
                 <constraint firstItem="gFh-bg-bt5" firstAttribute="leading" secondItem="y5R-RM-pob" secondAttribute="leading" id="YLs-Yr-7Hh"/>
                 <constraint firstItem="gFh-bg-bt5" firstAttribute="top" secondItem="y5R-RM-pob" secondAttribute="top" id="aqr-Vj-Xcp"/>
-                <constraint firstItem="vJn-SJ-YwX" firstAttribute="centerX" secondItem="y5R-RM-pob" secondAttribute="centerX" id="cAp-cu-lZg"/>
                 <constraint firstAttribute="trailing" secondItem="gFh-bg-bt5" secondAttribute="trailing" id="rrg-Ca-QbD"/>
             </constraints>
             <size key="customSize" width="65" height="46"/>
             <connections>
-                <outlet property="cellCheckLabel" destination="vJn-SJ-YwX" id="cci-no-Icj"/>
                 <outlet property="cellImageView" destination="gFh-bg-bt5" id="oAz-Xr-PdW"/>
                 <outlet property="cellLabel" destination="ijS-se-cC2" id="f7t-Ng-iog"/>
             </connections>

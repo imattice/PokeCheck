@@ -70,14 +70,14 @@ class PokemonCell: UICollectionViewCell {
         pokemon?.isCaught = true
         desaturate(UIImageView: cell.cellImageView)
 //        blur(thisImageView: cellImageView)
-        print("caught!")
+//        print("caught!")
     }
     func releasePokemon(cell: PokemonCell) {
         removePokeBall(fromCell: cell, animated: true)
         pokemon?.isCaught = false
         cellImageView.startAnimatingGif()
         unblur(thisImageView: cellImageView)
-        print("uncaught!")
+//        print("uncaught!")
     }
     
     func blur(thisImageView imageView: UIImageView) {
@@ -127,11 +127,11 @@ class PokemonCell: UICollectionViewCell {
             imageView.image = newImage
                 print("New Image: \(newImage)")
             } else {
-                print("No output image")
+                print("No output image from monochrome filter")
             }
 //        imageView.updateCurrentImage()
         } else {
-            print("broken filter")
+            print("broken monochrome filter")
         }
     }
     
@@ -173,7 +173,7 @@ class PokemonCell: UICollectionViewCell {
         if let pokeBall = cell.viewWithTag(200) {
             pokeBall.removeFromSuperview()
         } else {
-            print("didn't remove")
+//            print("didn't remove PokeBall image")
         }
     }
 }

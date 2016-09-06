@@ -7,39 +7,142 @@
 //
 
 import UIKit
-//import PokemonKit
 import CoreData
-//import SwiftyGif
 
-class ChecklistViewController: UICollectionViewController {
+class ChecklistViewController: UICollectionViewController, UISearchBarDelegate {
     var allPokemon: [Pokemon] = []
-    
     let moc = DataController().managedObjectContext
+
+    let searchController = UISearchController(searchResultsController: nil)
+    var dataSourceForSearchresult: [Pokemon] = []
+    var searchBarIsActive = false
+    var searchBarBoundsY: CGFloat? = nil
+    var searchBar: UISearchBar? = nil
+    var refreshControl: UIRefreshControl? = nil
     
+    func refreshControlAction(){
+        cancelSearching()
+        
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.collectionView?.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.characters.count > 0 {
+            searchBarIsActive = true
+            collectionView?.reloadData()
+        } else {
+            searchBarIsActive = false
+            collectionView?.reloadData()
+        }
+    }
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBarIsActive = true
+        view.endEditing(true)
+    }
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchBarIsActive = false
+        searchBar.setShowsCancelButton(false, animated: false)
+    }
+    func cancelSearching() {
+        searchBarIsActive = false
+        searchBar?.resignFirstResponder()
+        searchBar?.text = ""
+    }
+    func prepareUI() {
+        addSearchBar()
+        addRefreshControl()
+    }
+    func addSearchBar() {
+        if searchBar == nil {
+            searchBarBoundsY = (navigationController?.navigationBar.frame.size.height)! + UIApplication.sharedApplication().statusBarFrame.size.height + 50
+            
+            searchBar = UISearchBar(frame: CGRectMake(0, searchBarBoundsY!, UIScreen.mainScreen().bounds.size.width, 44))
+            searchBar?.searchBarStyle = UISearchBarStyle.Minimal
+            searchBar?.tintColor = UIColor.redColor()
+            searchBar?.barTintColor = UIColor.redColor()
+            searchBar?.delegate = self
+            searchBar?.placeholder = "search here"
+            
+            print("search bar should have been added")
+            addObservers()
+        }
+    }
+    func addRefreshControl() {
+        if refreshControl == nil {
+            refreshControl = UIRefreshControl()
+            refreshControl?.tintColor = UIColor.whiteColor()
+            refreshControl?.addTarget(self, action: #selector(ChecklistViewController.refreshControlAction), forControlEvents: UIControlEvents.ValueChanged)
+        }
+        if ((refreshControl?.isDescendantOfView(collectionView!)) != nil) {
+            collectionView?.addSubview(refreshControl!)
+        }
+    }
+    func startRefreshControl() {
+        if refreshControl!.refreshing {
+            refreshControl?.beginRefreshing()
+        }
+    }
+    func addObservers() {
+        let context = UnsafeMutablePointer<Int8>(bitPattern: 1)
+        collectionView!.addObserver(self, forKeyPath: "contentOffset", options: [.New, .Old], context: context)
+    }
+    func removeObservers() {
+        collectionView!.removeObserver(self, forKeyPath: "contentOffset")
+    }
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if keyPath == "contentOffset" {
+            if let collectionV:UICollectionView = object as? UICollectionView {
+                searchBar!.frame = CGRectMake(
+                    searchBar!.frame.origin.x,
+                    searchBarBoundsY! + ((-1 * collectionV.contentOffset.y) - searchBarBoundsY!),
+                    searchBar!.frame.size.width,
+                    searchBar!.frame.size.height
+                )
+            }
+        }
+    }
+    deinit {
+        removeObservers()
+    }
+}
+
+//INITIALIZING
+extension ChecklistViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        fectchAllPokemon()
+//      fectchAllPokemon()
         if allPokemon.isEmpty {
-//            getAllPokemonSprites()
             initializeData()
         } else {
             collectionView?.reloadData()
         }
-        //Register nib
-        collectionView?.registerNib(UINib(nibName: "PokemonCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
         
-        //STYLES: 
+//      Register nib
+        collectionView?.registerNib(UINib(nibName: "PokemonCell", bundle: nil), forCellWithReuseIdentifier: "PokemonCell")
+
+//      STYLES:
         collectionView?.backgroundColor = UIColor.whiteColor()
         }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        prepareUI()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("recieved Memory warning!!!")
     }
     
-
     @IBAction func filter() {
-        collectionView?.reloadData()
+//        startSearch(searchController)
+        prepareUI()
     }
 }
 
@@ -51,16 +154,24 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
             return 1
         }
         
+//        if searchBarIsActive {
+//            return dataSourceForSearchResult.count
+//        }
+        
         return (allPokemon.count)
-//        return 100
     }
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-        let cellPokemon = allPokemon[indexPath.row]
+        var cellPokemon = allPokemon[indexPath.row]
+        
+        if searchBarIsActive {
+//            celPokemon = dataSourceForSearchResult[indexPath.row]
+        }
+        
         cell.pokemon = cellPokemon
         
-        print(cell.pokemon)
+//        print(cell.pokemon)
         cell.configureCell(fromPokemon: cellPokemon)
         
         return cell
@@ -68,30 +179,13 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PokemonCell
-        
+
+//      toggle capture image effects
         if cell.pokemon?.isCaught == false {
             cell.caughtPokemon(cell)
         } else {
             cell.releasePokemon(cell)
         }
-//        cell.desaturate(UIImageView: cell.cellImageView)
-//        if let cellPokemon = cell.pokemon {
-//            if (cellPokemon.isCaught == false || cellPokemon.isCaught == nil) {
-//                cellPokemon.isCaught = true
-//                cell.blur(thisImageView: cell.cellImageView)
-//                cell.toggleCheck()
-////                cell.addCheck(toImageView: cell.cellImageView)
-//                print(cellPokemon.isCaught)
-//            } else {
-//                cellPokemon.isCaught = false
-//                cell.unblur(thisImageView: cell.cellImageView)
-//                cell.toggleCheck()
-//                print(cellPokemon.isCaught)
-//            }
-//
-//            print(cellPokemon)
-//        }
-                
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -101,16 +195,10 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
                         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     }
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-//        <#code#>
-//    }
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
-//        <#code#>
-//    }
 }
 
 
-//Core Data and POKEMON Stuff
+//CORE DATA
 extension ChecklistViewController {
     func initializeData(){
         for (index, pokemonName) in pokemonArray.enumerate() {

@@ -163,7 +163,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(collectionView: UICollectionView,
                                  cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-        var cellPokemon = allPokemon[indexPath.row]
+        let cellPokemon = allPokemon[indexPath.row]
         
         if searchBarIsActive {
 //            celPokemon = dataSourceForSearchResult[indexPath.row]
@@ -182,9 +182,9 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 
 //      toggle capture image effects
         if cell.pokemon?.isCaught == false {
-            cell.caughtPokemon(cell)
+            cell.caughtPokemon(cell, animated: true)
         } else {
-            cell.releasePokemon(cell)
+            cell.releasePokemon(cell, animated: true)
         }
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

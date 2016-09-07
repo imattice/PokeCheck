@@ -57,45 +57,45 @@ class PokemonCell: UICollectionViewCell {
         
 //      if pokemon has already been caught, apply indicator
         if pokemon.isCaught == true {
-            caughtPokemon(self)
+            caughtPokemon(self, animated: false)
         } else {
-            releasePokemon(self)
+            releasePokemon(self, animated: false)
         }
 
     }
     
-    func caughtPokemon(cell: PokemonCell) {
-        addPokeBall(toCell: cell, animated: true)
+    func caughtPokemon(cell: PokemonCell, animated: Bool) {
+        blur(thisImageView: cellImageView, animated: animated)
+//        addPokeBall(toCell: cell, animated: true)
+//        animatePokemball(true, cell: cell, frame: cell.frame, containerWidth: 35, containerHeight: 35)
+//        desaturate(UIImageView: cell.cellImageView)
         cellImageView.stopAnimatingGif()
         pokemon?.isCaught = true
-        desaturate(UIImageView: cell.cellImageView)
-//        blur(thisImageView: cellImageView)
 //        print("caught!")
     }
-    func releasePokemon(cell: PokemonCell) {
-        removePokeBall(fromCell: cell, animated: true)
+    func releasePokemon(cell: PokemonCell, animated: Bool) {
+        removePokeBall(fromCell: cell, animated: animated)
         pokemon?.isCaught = false
         cellImageView.startAnimatingGif()
         unblur(thisImageView: cellImageView)
 //        print("uncaught!")
     }
     
-    func blur(thisImageView imageView: UIImageView) {
+    func blur(thisImageView imageView: UIImageView, animated: Bool) {
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
         blurredEffectView.frame = imageView.bounds
         blurredEffectView.alpha = 0.5
-//        blurredEffectView.frame.insetInPlace(dx: 25.0, dy: 5.0)
-//        let vibrancyEffect = UIVibrancyEffect(forBlurEffect: blurEffect)
-//        let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
-//        vibrancyEffectView.frame = imageView.bounds
-//        
-//        imageView.addSubview(vibrancyEffectView)
-//        addCheck(toImageView: blurredEffectView)
-
-        imageView.addSubview(blurredEffectView)
         
-
+//      add fade in effect
+        if animated {
+            alpha = 0
+            UIView.animateWithDuration(0.3, animations: {
+                self.alpha = 0.9
+            })
+        }
+        
+        imageView.addSubview(blurredEffectView)
     }
     func unblur(thisImageView imageView: UIImageView) {
         for subview in imageView.subviews {
@@ -150,25 +150,57 @@ class PokemonCell: UICollectionViewCell {
 
         
 //      create an image view to hold the pokeball image
-        let containerWidth: CGFloat = 35
-        let containerHeight: CGFloat = 35
-        let imageViewFrame = CGRect(
-            x: round((indicatorView.frame.size.width - containerWidth) / 2),
-            y: round((indicatorView.frame.size.height - containerHeight) / 2),
-            width: containerWidth,
-            height: containerHeight
-        )
-        let imageView = UIImageView(frame: imageViewFrame)
-            imageView.image = UIImage(named: "PokeBall")
-        
-//      add the subviews and allow use to interact through the view
-        indicatorView.addSubview(imageView)
+//        let containerWidth: CGFloat = 35
+//        let containerHeight: CGFloat = 35
+//        let imageViewContainerFrame = CGRect(
+//            x: round((indicatorView.frame.size.width - containerWidth) / 2),
+//            y: round((indicatorView.frame.size.height - containerHeight) / 2),
+//            width: containerWidth,
+//            height: containerHeight
+//        )
+//        let pokeBall = animatePokemball(animated, frame: imageViewContainerFrame, containerWidth: containerWidth, containerHeight: containerHeight)
+//
+//        indicatorView.addSubview(pokeBall)
         
         cell.addSubview(indicatorView)
         cell.userInteractionEnabled = true
         
+        
         return indicatorView
     }
+    func animatePokemball(animated: Bool, cell: PokemonCell, frame: CGRect, containerWidth: CGFloat, containerHeight: CGFloat) -> UIView{
+        let imageViewContainer = UIView(frame: frame)
+            imageViewContainer.backgroundColor = UIColor.purpleColor()
+        
+        
+        let imageViewFrame = CGRect(
+            x: round((imageViewContainer.frame.size.width - containerWidth) / 2),
+            y: round((imageViewContainer.frame.size.height - containerHeight) / 2),
+            width: imageViewContainer.frame.size.width,
+            height: imageViewContainer.frame.size.height
+        )
+        
+        let imageView = UIImageView(frame: imageViewFrame)
+        imageView.image = UIImage(named: "PokeBall")
+        imageView.backgroundColor = UIColor.yellowColor()
+        
+        //      add the subviews and allow use to interact through the view
+
+        if animated {
+            alpha = 0
+            transform = CGAffineTransformMakeScale(1.3, 1.3) // 2
+            UIView.animateWithDuration(0.3, animations: {
+                self.alpha = 1
+                self.transform = CGAffineTransformIdentity })
+        }
+        
+        imageViewContainer.addSubview(imageView)
+        cell.addSubview(imageViewContainer)
+        print("did add subviews")
+        
+        return imageViewContainer
+    }
+    
     func removePokeBall(fromCell cell: PokemonCell, animated: Bool) {
         if let pokeBall = cell.viewWithTag(200) {
             pokeBall.removeFromSuperview()

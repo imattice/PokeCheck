@@ -57,38 +57,33 @@ class PokemonCell: UICollectionViewCell {
         
 //      if pokemon has already been caught, apply indicator
         if pokemon.isCaught == true {
-            caughtPokemon(self, animated: false)
+            self.caughtPokemon(withAnimation: false)
         } else {
-            releasePokemon(self, animated: false)
+            self.releasePokemon(withAnimation: false)
         }
 
     }
-    
-    func caughtPokemon(cell: PokemonCell, animated: Bool) {
+    func caughtPokemon(withAnimation animated: Bool) {
         blur(thisImageView: cellImageView, animated: animated)
         addPokeBall(toCell: self, animated: animated)
         addSubviewAnimations(true, cell: self)
-//        desaturate(UIImageView: cell.cellImageView)
         cellImageView.stopAnimatingGif()
         pokemon?.isCaught = true
-//        print("caught!")
     }
-    func releasePokemon(cell: PokemonCell, animated: Bool) {
+    func releasePokemon(withAnimation animated: Bool) {
+        removeSubviewAnimations(animated, cell: self)
         unblur(thisImageView: self.cellImageView)
         removePokeBall(fromCell: self, animated: animated)
-        removeSubviewAnimations(animated, cell: self)
         pokemon?.isCaught = false
         cellImageView.startAnimatingGif()
-//        unblur(thisImageView: cellImageView)
-//        print("uncaught!")
     }
     
     func blur(thisImageView imageView: UIImageView, animated: Bool) {
         let blurEffect = UIBlurEffect(style: .ExtraLight)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
-        blurredEffectView.frame = imageView.bounds
-        blurredEffectView.alpha = 0.5
-        blurredEffectView.tag = 100
+            blurredEffectView.frame = imageView.bounds
+            blurredEffectView.alpha = 0.5
+            blurredEffectView.tag = 100
                 
         imageView.addSubview(blurredEffectView)
     }
@@ -96,46 +91,6 @@ class PokemonCell: UICollectionViewCell {
         if let blur = imageView.viewWithTag(100) {
             blur.removeFromSuperview()
         }
-    }
-    func desaturate(UIImageView imageView: UIImageView) {
-        //        let scaleFactor = UIScreen.mainScreen().scale
-        //        let extent = CGRect(x: 0, y: 0, width: imageView.frame., height: <#T##CGFloat#>)
-        let ciImage = CIImage(image: imageView.currentImage)
-        let filterColor = CIColor(red: 255/255, green: 1/255, blue: 1/255)
-        
-        print("current Image = \(ciImage)")
-        if let filter = CIFilter(name: "CIColorMonochrome") {
-
-        filter.setValue(ciImage, forKey: kCIInputImageKey)
-        filter.setValue(filterColor, forKey: kCIInputColorKey)
-        filter.setValue(1, forKey: kCIInputIntensityKey)
-            
-            if let outputImage = filter.outputImage {
-//        print(filter.outputImage)
-//        let context = CIContext(options: nil)
-//        let cgimage = context.createCGImage((filter.outputImage)!, fromRect: (filter.outputImage?.extent)!)
-//        
-//        let newImage = UIImage(CGImage: cgimage)
-            let newImage = UIImage(CIImage: outputImage)
-            imageView.image = newImage
-                print("New Image: \(newImage)")
-            } else {
-                print("No output image from monochrome filter")
-            }
-//        imageView.updateCurrentImage()
-        } else {
-            print("broken monochrome filter")
-        }
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-//      remove all data user modifications to cell
-        cellImageView.image = nil
-        cellLabel.text = nil
-        removePokeBall(fromCell: self, animated: false)
-        unblur(thisImageView: self.cellImageView)
     }
     
     func addPokeBall(toCell cell: PokemonCell, animated: Bool) -> UIView {
@@ -173,11 +128,11 @@ class PokemonCell: UICollectionViewCell {
             print("didn't remove")
         }
     }
-    func addSubviewAnimations(animated: Bool, cell: PokemonCell) {
+    func addSubviewAnimations(withAnimation animated: Bool) {
         if animated {
             
 //          add blur effect
-            if let blurView = cell.cellImageView.viewWithTag(100) {
+            if let blurView = self.cellImageView.viewWithTag(100) {
                 blurView.alpha = 0
                 UIView.animateWithDuration(0.3, animations: {
                     blurView.alpha = 0.5
@@ -185,7 +140,7 @@ class PokemonCell: UICollectionViewCell {
             }
             
 //          add pokeball image
-            if let pokeBallImage = cell.viewWithTag(200) {
+            if let pokeBallImage = self.viewWithTag(200) {
                 pokeBallImage.transform = CGAffineTransformMakeScale(1.6, 1.6)
                 UIView.animateWithDuration(0.3, animations: {
                     pokeBallImage.transform = CGAffineTransformIdentity
@@ -194,11 +149,11 @@ class PokemonCell: UICollectionViewCell {
         }
     }
     
-    func removeSubviewAnimations(animated: Bool, cell: PokemonCell) {
+    func removeSubviewAnimations(withAnimations animated: Bool) {
         if animated {
             
 //          remove blur effect
-            if let blurView = cell.cellImageView.viewWithTag(100) {
+            if let blurView = self.cellImageView.viewWithTag(100) {
                 blurView.alpha = 0.5
                 UIView.animateWithDuration(0.3, animations: {
                     blurView.alpha = 0
@@ -207,7 +162,7 @@ class PokemonCell: UICollectionViewCell {
             }
             
 //          remove pokeball image
-            if let pokeBallImage = cell.viewWithTag(200) {
+            if let pokeBallImage = self.viewWithTag(200) {
                 pokeBallImage.transform = CGAffineTransformIdentity
                 pokeBallImage.alpha = 1
                 UIView.animateWithDuration(0.3, animations: {
@@ -216,6 +171,53 @@ class PokemonCell: UICollectionViewCell {
                     pokeBallImage.removeFromSuperview()
                 })
             }
+        }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        //      remove all data user modifications to cell
+        cellImageView.image = nil
+        cellLabel.text = nil
+        removePokeBall(fromCell: self, animated: false)
+        unblur(thisImageView: self.cellImageView)
+    }
+    
+    
+    
+    
+    
+    
+    
+    func desaturate(UIImageView imageView: UIImageView) {
+        //        let scaleFactor = UIScreen.mainScreen().scale
+        //        let extent = CGRect(x: 0, y: 0, width: imageView.frame., height: <#T##CGFloat#>)
+        let ciImage = CIImage(image: imageView.currentImage)
+        let filterColor = CIColor(red: 255/255, green: 1/255, blue: 1/255)
+        
+        print("current Image = \(ciImage)")
+        if let filter = CIFilter(name: "CIColorMonochrome") {
+            
+            filter.setValue(ciImage, forKey: kCIInputImageKey)
+            filter.setValue(filterColor, forKey: kCIInputColorKey)
+            filter.setValue(1, forKey: kCIInputIntensityKey)
+            
+            if let outputImage = filter.outputImage {
+                //        print(filter.outputImage)
+                //        let context = CIContext(options: nil)
+                //        let cgimage = context.createCGImage((filter.outputImage)!, fromRect: (filter.outputImage?.extent)!)
+                //        
+                //        let newImage = UIImage(CGImage: cgimage)
+                let newImage = UIImage(CIImage: outputImage)
+                imageView.image = newImage
+                print("New Image: \(newImage)")
+            } else {
+                print("No output image from monochrome filter")
+            }
+            //        imageView.updateCurrentImage()
+        } else {
+            print("broken monochrome filter")
         }
     }
 }

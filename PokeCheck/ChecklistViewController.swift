@@ -182,9 +182,9 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 
 //      toggle capture image effects
         if cell.pokemon?.isCaught == false {
-            cell.caughtPokemon(cell, animated: true)
+            cell.caughtPokemon(withAnimation: true)
         } else {
-            cell.releasePokemon(cell, animated: true)
+            cell.releasePokemon(withAnimation: true)
         }
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,

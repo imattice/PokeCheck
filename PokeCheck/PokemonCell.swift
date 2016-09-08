@@ -64,16 +64,12 @@ class PokemonCell: UICollectionViewCell {
 
     }
     func caughtPokemon(withAnimation animated: Bool) {
-        blur(thisImageView: cellImageView, animated: animated)
-        addPokeBall(toCell: self, animated: animated)
-        addSubviewAnimations(true, cell: self)
+        addSubviews(withAnimation: animated)
         cellImageView.stopAnimatingGif()
         pokemon?.isCaught = true
     }
     func releasePokemon(withAnimation animated: Bool) {
-        removeSubviewAnimations(animated, cell: self)
-        unblur(thisImageView: self.cellImageView)
-        removePokeBall(fromCell: self, animated: animated)
+        removeSubviews(withAnimations: animated)
         pokemon?.isCaught = false
         cellImageView.startAnimatingGif()
     }
@@ -128,7 +124,10 @@ class PokemonCell: UICollectionViewCell {
             print("didn't remove")
         }
     }
-    func addSubviewAnimations(withAnimation animated: Bool) {
+    func addSubviews(withAnimation animated: Bool) {
+        blur(thisImageView: self.cellImageView, animated: animated)
+        addPokeBall(toCell: self, animated: animated)
+        
         if animated {
             
 //          add blur effect
@@ -149,7 +148,8 @@ class PokemonCell: UICollectionViewCell {
         }
     }
     
-    func removeSubviewAnimations(withAnimations animated: Bool) {
+//TODO: I dont think this is animating
+    func removeSubviews(withAnimations animated: Bool) {
         if animated {
             
 //          remove blur effect
@@ -172,6 +172,8 @@ class PokemonCell: UICollectionViewCell {
                 })
             }
         }
+        unblur(thisImageView: self.cellImageView)
+        removePokeBall(fromCell: self, animated: animated)
     }
     
     override func prepareForReuse() {

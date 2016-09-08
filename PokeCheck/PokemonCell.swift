@@ -120,8 +120,6 @@ class PokemonCell: UICollectionViewCell {
     func removePokeBall(fromCell cell: PokemonCell, animated: Bool) {
         if let pokeBall = cell.viewWithTag(200) {
             pokeBall.removeFromSuperview()
-        } else {
-            print("didn't remove")
         }
     }
     func addSubviews(withAnimation animated: Bool) {

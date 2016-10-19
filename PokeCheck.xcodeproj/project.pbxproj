@@ -11,13 +11,15 @@
 		5968A5271DB47CBA0051028F /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5968A5261DB47CBA0051028F /* Checklist.swift */; };
 		5968A5291DB47D260051028F /* Generation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5968A5281DB47D260051028F /* Generation.swift */; };
 		59CB99921DB46A85002172F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB99911DB46A85002172F4 /* AppDelegate.swift */; };
-		59CB99941DB46A85002172F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB99931DB46A85002172F4 /* ViewController.swift */; };
+		59CB99941DB46A85002172F4 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB99931DB46A85002172F4 /* ChecklistViewController.swift */; };
 		59CB99971DB46A85002172F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59CB99951DB46A85002172F4 /* Main.storyboard */; };
 		59CB999A1DB46A85002172F4 /* PokeCheck.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 59CB99981DB46A85002172F4 /* PokeCheck.xcdatamodeld */; };
 		59CB999C1DB46A85002172F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59CB999B1DB46A85002172F4 /* Assets.xcassets */; };
 		59CB999F1DB46A85002172F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59CB999D1DB46A85002172F4 /* LaunchScreen.storyboard */; };
 		59CB99AA1DB46A85002172F4 /* PokeCheckTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB99A91DB46A85002172F4 /* PokeCheckTests.swift */; };
 		59CB99B51DB46A85002172F4 /* PokeCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CB99B41DB46A85002172F4 /* PokeCheckUITests.swift */; };
+		7F668E6D1DB55E6C003DA6B1 /* PokemonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F668E6C1DB55E6C003DA6B1 /* PokemonTests.swift */; };
+		7F668E6F1DB55F33003DA6B1 /* ChecklistTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F668E6E1DB55F33003DA6B1 /* ChecklistTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,7 @@
 		5968A5281DB47D260051028F /* Generation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generation.swift; sourceTree = "<group>"; };
 		59CB998E1DB46A85002172F4 /* PokeCheck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeCheck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CB99911DB46A85002172F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		59CB99931DB46A85002172F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		59CB99931DB46A85002172F4 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		59CB99961DB46A85002172F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		59CB99991DB46A85002172F4 /* PokeCheck.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PokeCheck.xcdatamodel; sourceTree = "<group>"; };
 		59CB999B1DB46A85002172F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 		59CB99B01DB46A85002172F4 /* PokeCheckUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokeCheckUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59CB99B41DB46A85002172F4 /* PokeCheckUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCheckUITests.swift; sourceTree = "<group>"; };
 		59CB99B61DB46A85002172F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F668E6C1DB55E6C003DA6B1 /* PokemonTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonTests.swift; sourceTree = "<group>"; };
+		7F668E6E1DB55F33003DA6B1 /* ChecklistTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +89,8 @@
 		5968A5231DB47C8C0051028F /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				5968A5241DB47CAA0051028F /* Pokemon.swift */,
 				5968A5261DB47CBA0051028F /* Checklist.swift */,
+				5968A5241DB47CAA0051028F /* Pokemon.swift */,
 				5968A5281DB47D260051028F /* Generation.swift */,
 			);
 			name = Objects;
@@ -116,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				59CB99911DB46A85002172F4 /* AppDelegate.swift */,
+				7F668E691DB55C25003DA6B1 /* View Controllers */,
 				5968A5231DB47C8C0051028F /* Objects */,
-				59CB99931DB46A85002172F4 /* ViewController.swift */,
 				59CB99951DB46A85002172F4 /* Main.storyboard */,
 				59CB999B1DB46A85002172F4 /* Assets.xcassets */,
 				59CB999D1DB46A85002172F4 /* LaunchScreen.storyboard */,
@@ -131,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				59CB99A91DB46A85002172F4 /* PokeCheckTests.swift */,
+				7F668E6E1DB55F33003DA6B1 /* ChecklistTests.swift */,
+				7F668E6C1DB55E6C003DA6B1 /* PokemonTests.swift */,
 				59CB99AB1DB46A85002172F4 /* Info.plist */,
 			);
 			path = PokeCheckTests;
@@ -143,6 +149,14 @@
 				59CB99B61DB46A85002172F4 /* Info.plist */,
 			);
 			path = PokeCheckUITests;
+			sourceTree = "<group>";
+		};
+		7F668E691DB55C25003DA6B1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				59CB99931DB46A85002172F4 /* ChecklistViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +227,7 @@
 				TargetAttributes = {
 					59CB998D1DB46A85002172F4 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = VNA55J4REY;
 						ProvisioningStyle = Automatic;
 					};
 					59CB99A41DB46A85002172F4 = {
@@ -281,7 +296,7 @@
 			files = (
 				5968A5271DB47CBA0051028F /* Checklist.swift in Sources */,
 				5968A5291DB47D260051028F /* Generation.swift in Sources */,
-				59CB99941DB46A85002172F4 /* ViewController.swift in Sources */,
+				59CB99941DB46A85002172F4 /* ChecklistViewController.swift in Sources */,
 				5968A5251DB47CAA0051028F /* Pokemon.swift in Sources */,
 				59CB999A1DB46A85002172F4 /* PokeCheck.xcdatamodeld in Sources */,
 				59CB99921DB46A85002172F4 /* AppDelegate.swift in Sources */,
@@ -293,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				59CB99AA1DB46A85002172F4 /* PokeCheckTests.swift in Sources */,
+				7F668E6F1DB55F33003DA6B1 /* ChecklistTests.swift in Sources */,
+				7F668E6D1DB55E6C003DA6B1 /* PokemonTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +451,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VNA55J4REY;
 				INFOPLIST_FILE = PokeCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ike-Mattice.PokeCheck";
@@ -446,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VNA55J4REY;
 				INFOPLIST_FILE = PokeCheck/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ike-Mattice.PokeCheck";

@@ -9,5 +9,5 @@
 import Foundation
 
 class Checklist {
-    
+    //init will create a checklist prepopulated with all pokemon uncaught
 }

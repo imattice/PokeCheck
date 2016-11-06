@@ -5,10 +5,68 @@
 //  Created by Ike Mattice on 9/2/16.
 //  Copyright © 2016 Ike Mattice. All rights reserved.
 //
+enum Generation {
+    case RedBlueYellow
+    case GoldSilverCrystal
+    case RubySaphireEmerald
+    case FireRedLeafGreen
+    case DiamondPearlPlatinum
+    case HeartGoldSoulSilver
+    case BlackWhite
+    case XY
+    case OmegaRubyAlphaSaphire
+    case SunMoon
+}
+enum Forms {
+    case Male
+    case Female
+    case MaleShiny
+    case FemaleShiny
+    case Mega
+    case Other
+}
 
-import Foundation
+func requestAllDataFromAPI() {
+    let baseURL = "http://pokeapi.co/api/v2/pokemon"
 
-let pokemonArray = [
+    
+    
+}
+
+
+
+let pokemonNames = [
+//    [   "id": 1,
+//        "name": "Bulbasaur",
+//        "forms":
+//            [   Forms.Male: "",
+//                Forms.Female: "",
+//                Forms.Male: "",
+//                Forms.FemaleShiny: "",
+//                Forms.Mega: "",
+//                Forms.Other: [
+//                    "","","",
+//                ]   ],
+//        "location":[
+//            Generation.RedBlueYellow: [
+//                "locationDetail": "",
+//                "mapImage": "",
+//            ],
+//            Generation.GoldSilverCrystal: [],
+//            Generation.RubySaphireEmerald: [],
+//            Generation.FireRedLeafGreen: [],
+//            Generation.DiamondPearlPlatinum: [],
+//            Generation.HeartGoldSoulSilver: [],
+//            Generation.BlackWhite: [],
+//            Generation.XY: [],
+//            Generation.OmegaRubyAlphaSaphire: [],
+//            Generation.SunMoon: [],
+//
+//        ],  ],
+    
+    
+    
+    
     "Bulbasaur",
     "Ivysaur",
     "Venusaur",

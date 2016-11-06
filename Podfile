@@ -1,8 +1,8 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'PokeCheck' do
 
   use_frameworks!
 
-    pod 'SwiftyGif'
+#    pod 'Gifu'
 end

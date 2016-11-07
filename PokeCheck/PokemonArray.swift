@@ -15,7 +15,7 @@ enum Generation {
     case BlackWhite
     case XY
     case OmegaRubyAlphaSaphire
-    case SunMoon
+ //   case SunMoon
 }
 enum Forms {
     case Male
@@ -27,7 +27,7 @@ enum Forms {
 }
 
 func requestAllDataFromAPI() {
-    let baseURL = "http://pokeapi.co/api/v2/pokemon"
+    //let baseURL = "http://pokeapi.co/api/v2/pokemon"
 
     
     

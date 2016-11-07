@@ -24,7 +24,7 @@ class PokemonCell: UICollectionViewCell {
         if let dexNumber = pokemon.dexNumber {
             cellLabel.text = String(describing: dexNumber)
             
-            var image = "?"
+            let missingImage = UIImage(named: "?")
 
             if animated {
     //      append the appropriate amount of 0's to the image name
@@ -56,8 +56,11 @@ class PokemonCell: UICollectionViewCell {
     //            cellImageView.contentMode = .Bottom
     //        }
             } else {
-                let pngImage = UIImage(named: String(describing: dexNumber))
+                if let pngImage = UIImage(named: String(describing: dexNumber)) {
                     cellImageView.image = pngImage
+                } else {
+                    cellImageView.image = missingImage
+                }
                 
         //      get the height and width of the cell and the gif
                 let gifHeight = cellImageView.image!.size.height
@@ -145,7 +148,7 @@ class PokemonCell: UICollectionViewCell {
     }
     func addSubviews(withAnimation animated: Bool) {
         blur(thisImageView: self.cellImageView, animated: animated)
-        addPokeBall(toCell: self, animated: animated)
+        //addPokeBall(toCell: self, animated: animated)
         
         if animated {
             

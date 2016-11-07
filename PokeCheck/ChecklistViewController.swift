@@ -12,7 +12,8 @@ import CoreData
 class ChecklistViewController: UICollectionViewController, UISearchBarDelegate {
     let moc = DataController().managedObjectContext
     
-    var allPokemon: [Pokemon] = []
+    //var allPokemon: [Pokemon] = []
+    var checklist = Checklist()
 }
 
 //INITIALIZING
@@ -21,7 +22,8 @@ extension ChecklistViewController {
         super.viewDidLoad()
         
         //fectchAllPokemon()
-        if allPokemon.isEmpty {
+        //if allPokemon.isEmpty {
+        if checklist.list.isEmpty {
             initializeData()
         } else {
             collectionView?.reloadData()
@@ -42,7 +44,7 @@ extension ChecklistViewController {
     }
     
     @IBAction func filter() {
-//        startSearch(searchController)
+
     }
 }
 
@@ -50,7 +52,7 @@ extension ChecklistViewController {
 extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
-        if allPokemon.isEmpty {
+        if checklist.list.isEmpty {
             return 1
         }
         
@@ -58,12 +60,12 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 //            return dataSourceForSearchResult.count
 //        }
         
-        return (allPokemon.count)
+        return (checklist.list.count)
     }
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
-        let cellPokemon = allPokemon[indexPath.row]
+        let cellPokemon = checklist.list[indexPath.row]
         
 //        if searchBarIsActive {
 ////            celPokemon = dataSourceForSearchResult[indexPath.row]
@@ -89,11 +91,11 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 75.0, height: 75.0)
+        return CGSize(width: 70.0, height: 70.0)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
 }
 
@@ -126,9 +128,9 @@ extension ChecklistViewController {
 
         do {
             let requestedPokemon = try moc.fetch(pokemonFetch) as! [Pokemon]
-            allPokemon = requestedPokemon
+            checklist.list = requestedPokemon
             print("allPokemon array has been filled with data")
-            print(allPokemon)
+            print()
         } catch {
             print("bad things happened \(error)")
         }

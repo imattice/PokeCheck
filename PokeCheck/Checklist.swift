@@ -34,7 +34,7 @@ struct Checklist {
     }
     
     func filterBy(_ generation: Generation) -> [Pokemon] {
-        var filteredList = list
+        var filteredList = [Pokemon]()
 
         switch generation {
             case .RedBlueYellow:

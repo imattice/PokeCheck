@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jzV-If-cZ6">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jzV-If-cZ6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--PokeCheck-->
@@ -10,7 +14,7 @@
             <objects>
                 <collectionViewController id="Zpb-Nb-Oes" customClass="ChecklistViewController" customModule="PokeCheck" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2RQ-Hh-ObU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NL0-jF-aDh">
                             <size key="itemSize" width="50" height="50"/>
@@ -26,7 +30,11 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="PokeCheck" id="45Z-vH-1OT">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="Ruf-eh-bQv"/>
-                        <barButtonItem key="rightBarButtonItem" title="Filter" id="07m-ac-CWo"/>
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="07m-ac-CWo">
+                            <connections>
+                                <action selector="filter" destination="Zpb-Nb-Oes" id="Ifw-Ha-20l"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37s-Lk-jBT" userLabel="First Responder" sceneMemberID="firstResponder"/>

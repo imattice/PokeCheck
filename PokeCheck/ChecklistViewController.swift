@@ -44,7 +44,9 @@ extension ChecklistViewController {
     }
     
     @IBAction func filter() {
-
+        print("pressed")
+        checklist.list = checklist.filterBy(.BlackWhite)
+        collectionView?.reloadData()
     }
 }
 

@@ -44,9 +44,9 @@ extension ChecklistViewController {
     }
     
     @IBAction func filter() {
-        print("pressed")
-        checklist.list = checklist.filterBy(.BlackWhite)
-        collectionView?.reloadData()
+//        print("pressed")
+//        checklist.list = checklist.filterBy(.BlackWhite)
+//        collectionView?.reloadData()
     }
 }
 
@@ -98,6 +98,18 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, 
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print("header to be added")
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ChecklistHeaderView", for: indexPath) as! ChecklistHeaderView
+            headerView.label.text = "Generation 1: Red, Blue, Yellow"
+            return headerView
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
 }
 

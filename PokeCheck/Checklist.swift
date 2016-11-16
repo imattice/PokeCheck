@@ -16,11 +16,81 @@ enum FilterType {
 }
 
 struct Checklist {
+    var allPokemonList: [[Pokemon]]
     var list: [Pokemon]
     
     init() {
+        var allPokemonList: [[Int]] = []
+        var generationList: [Int] = []
+
+        //loop through all pokemon
+        //create first generation dict
+        //loop through first generation
+            //
+                //for each generation, label it and add the pokemon
+        
+        for pokemonId in 0...pokemonNames.count {
+            
+            switch pokemonId {
+            case 0...151: 
+                generationList.append(pokemonId)
+            case 152...251:
+                if pokemonId == 152 {
+                    //print("First gen list: \(generationList)")
+                    allPokemonList.append(generationList)
+                    print("Current AllPokemonList: \(allPokemonList)")
+                    generationList = []
+                }
+                generationList.append(pokemonId)
+            case 252...386:
+                if pokemonId == 252 {
+                    //print("Second gen list: \(generationList)")
+                    allPokemonList.append(generationList)
+                    print("Current AllPokemonList: \(allPokemonList)")
+                    generationList = []
+                }
+                generationList.append(pokemonId)
+            case 387...492:
+                if pokemonId == 387 {
+                    //print("Third gen list: \(generationList)")
+                    allPokemonList.append(generationList)
+                    print("Current AllPokemonList: \(allPokemonList)")
+                    generationList = []
+                }
+                generationList.append(pokemonId)
+            case 493...649:
+                if pokemonId == 493 {
+                    allPokemonList.append(generationList)
+                    generationList = []
+                }
+                generationList.append(pokemonId)
+            case 650...721:
+                if pokemonId == 650 {
+                    allPokemonList.append(generationList)
+                    generationList = []
+                }
+                generationList.append(pokemonId)
+            case 722...pokemonNames.count:
+                if pokemonId == 722 {
+                    allPokemonList.append(generationList)
+                    generationList = []
+                }
+                generationList.append(pokemonId)
+            
+                if pokemonId == pokemonNames.count {
+                    self.allPokemonList = allPokemonList
+                }
+            default:
+                print("didn't work")
+            }
+                
+            //print("pokemonId: \(pokemonId)")
+        }
+
         self.list = []
         
+        print("Pokemon list: \(self.allPokemonList)")
+
     }
     
     private func fetchAllPokemon() {

@@ -100,12 +100,40 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
     
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 7
+    }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print("header to be added")
+
+        
         switch kind {
         case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ChecklistHeaderView", for: indexPath) as! ChecklistHeaderView
-            headerView.label.text = "Generation 1: Red, Blue, Yellow"
+
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ChecklistHeaderView", for: indexPath) as! ChecklistHeaderView    
+            
+            switch indexPath.row {
+            case 0:
+                headerView.label.text = "Generation 1: Red, Blue, Yellow"
+                
+            case 10:
+                headerView.label.text = "Generation 2: Gold, Silver, Crystal"
+            
+            case 20:
+                headerView.label.text = "Generation 3: Ruby, Sapphire, Emerald"
+            case 30:
+                headerView.label.text = "Generation 4: Diamond, Pearl, Platinum"
+            case 40:
+                headerView.label.text = "Generation 5: Black, White"
+            case 50:
+                headerView.label.text = "Generation 6: X, Y"
+            case 60:
+                headerView.label.text = "Generation 7: Sun, Moon"
+                
+            default:
+                assert(false, "Something went wrong when creating header view")
+            }
+            
             return headerView
         default:
             assert(false, "Unexpected element kind")
@@ -119,8 +147,8 @@ extension ChecklistViewController {
     func initializeData(){
         for (index, pokemonName) in pokemonNames.enumerated() {
             let dexNumber = index + 1
-            print(dexNumber)
-            print(pokemonName)
+            //print(dexNumber)
+            //print(pokemonName)
             savePokemon(dexNumber, name: pokemonName)
         }
         fetchAllPokemon()
@@ -132,7 +160,7 @@ extension ChecklistViewController {
         
         entity.setValue(dexNumber, forKey: "dexNumber")
         entity.setValue(name, forKey: "name")
-        print("\(name) has been saved.")
+        //print("\(name) has been saved.")
     }
     
     func fetchAllPokemon() -> (){
@@ -143,10 +171,10 @@ extension ChecklistViewController {
         do {
             let requestedPokemon = try moc.fetch(pokemonFetch) as! [Pokemon]
             checklist.list = requestedPokemon
-            print("allPokemon array has been filled with data")
-            print()
+            //print("allPokemon array has been filled with data")
+            //print()
         } catch {
-            print("bad things happened \(error)")
+            //print("bad things happened \(error)")
         }
     }
     

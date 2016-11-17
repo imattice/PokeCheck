@@ -114,11 +114,12 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
                 headerView.label.text = "Generation 1: Red, Blue, Yellow"
                 
                 gradientLayer.frame = headerView.bounds
-                let redColor = UIColor(red: 221.0, green: 87.0, blue: 65.0, alpha: alpha)
-                let blueColor = UIColor(red: 56.0, green: 130.0, blue: 176.0, alpha: alpha)
-                let yelloColor = UIColor(red: 241.0, green: 209.0, blue: 86.0, alpha: alpha)
                 
-                gradientLayer.colors = [redColor, blueColor, yelloColor]
+                let redColor = UIColor(red: 221/255, green: 87/255, blue: 65/255, alpha: alpha)
+                let blueColor = UIColor(red: 56/255, green: 130/255, blue: 176/255, alpha: alpha)
+                let yellowColor = UIColor(red: 241/255, green: 209/255, blue: 86/255, alpha: alpha)
+                
+                gradientLayer.colors = [redColor, blueColor, yellowColor]
                 gradientLayer.locations = [0.0, 0.5, 1.0]
                 
                 headerView.layer.addSublayer(gradientLayer)

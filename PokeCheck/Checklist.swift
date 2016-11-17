@@ -16,12 +16,12 @@ enum FilterType {
 }
 
 struct Checklist {
-    var allPokemonList: [[Pokemon]]
-    var list: [Pokemon]
+    var list: [[Pokemon]]
+    //var list: [Pokemon]
     
     init() {
-        var allPokemonList: [[Int]] = []
-        var generationList: [Int] = []
+        var allPokemonList: [[Pokemon]] = []
+        var generationList: [Pokemon] = []
 
         //loop through all pokemon
         //create first generation dict
@@ -33,64 +33,72 @@ struct Checklist {
             
             switch pokemonId {
             case 0...151: 
-                generationList.append(pokemonId)
+                let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+                generationList.append(pokemon)
             case 152...251:
                 if pokemonId == 152 {
                     //print("First gen list: \(generationList)")
                     allPokemonList.append(generationList)
-                    print("Current AllPokemonList: \(allPokemonList)")
+                    //print("Current AllPokemonList: \(allPokemonList)")
                     generationList = []
                 }
-                generationList.append(pokemonId)
+                let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+                generationList.append(pokemon)
             case 252...386:
                 if pokemonId == 252 {
                     //print("Second gen list: \(generationList)")
                     allPokemonList.append(generationList)
-                    print("Current AllPokemonList: \(allPokemonList)")
+                    //print("Current AllPokemonList: \(allPokemonList)")
                     generationList = []
                 }
-                generationList.append(pokemonId)
+                let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+                generationList.append(pokemon)
             case 387...492:
                 if pokemonId == 387 {
                     //print("Third gen list: \(generationList)")
                     allPokemonList.append(generationList)
-                    print("Current AllPokemonList: \(allPokemonList)")
+                    //print("Current AllPokemonList: \(allPokemonList)")
                     generationList = []
                 }
-                generationList.append(pokemonId)
+                let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+                generationList.append(pokemon)
             case 493...649:
                 if pokemonId == 493 {
                     allPokemonList.append(generationList)
                     generationList = []
                 }
-                generationList.append(pokemonId)
-            case 650...721:
-                if pokemonId == 650 {
-                    allPokemonList.append(generationList)
-                    generationList = []
-                }
-                generationList.append(pokemonId)
-            case 722...pokemonNames.count:
-                if pokemonId == 722 {
-                    allPokemonList.append(generationList)
-                    generationList = []
-                }
-                generationList.append(pokemonId)
-            
-                if pokemonId == pokemonNames.count {
-                    self.allPokemonList = allPokemonList
-                }
+                let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+                generationList.append(pokemon)
+//            case 650...pokemonNames.count: //721:
+//                if pokemonId == 650 {
+//                    allPokemonList.append(generationList)
+//                    generationList = []
+//                } else if pokemonId == pokemonNames.count {
+//                    let pokemon = Pokemon(dexNumber: pokemonId, name: pokemonNames[pokemonId])
+//                    generationList.append(pokemon)
+//                } else {
+//                    let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+//                    generationList.append(pokemon)
+//                }
+                    //case 722...pokemonNames.count:
+//                if pokemonId == 722 {
+//                    allPokemonList.append(generationList)
+//                    generationList = []
+//                }
+//                let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+//                generationList.append(pokemon)
+//            
+//                if pokemonId == pokemonNames.count {
+//                }
             default:
                 print("didn't work")
             }
                 
             //print("pokemonId: \(pokemonId)")
-        }
-
-        self.list = []
+        } 
         
-        print("Pokemon list: \(self.allPokemonList)")
-
+        self.list = allPokemonList
+        //print("Pokemon list: \(self.list)")
     }
     
     private func fetchAllPokemon() {
@@ -103,59 +111,59 @@ struct Checklist {
         
     }
     
-    func filterBy(_ generation: Generation) -> [Pokemon] {
-        var filteredList = [Pokemon]()
-
-        switch generation {
-            case .RedBlueYellow:
-                for pokemonId in 1...151 {
-                    filteredList.append(list[pokemonId])
-                }
-                print(filteredList)
-                
-                return filteredList
-            case .GoldSilverCrystal:
-                for pokemonId in 152...251 {
-                    filteredList.append(list[pokemonId])
-                }
-                print(filteredList)
-                
-                return filteredList
-            case .RubySaphireEmerald, .FireRedLeafGreen:
-                for pokemonId in 252...386 {
-                    filteredList.append(list[pokemonId])
-                }
-                print(filteredList)
-                
-                return filteredList
-            case .DiamondPearlPlatinum, .HeartGoldSoulSilver:
-                for pokemonId in 387...493 {
-                    filteredList.append(list[pokemonId])
-                }
-                print(filteredList)
-                
-                return filteredList
-            case .BlackWhite:
-                for pokemonId in 494...649 {
-                    filteredList.append(list[pokemonId])
-                }
-                print(filteredList)
-                
-                return filteredList
-            case .XY, .OmegaRubyAlphaSaphire:
-                for pokemonId in 650...721 {
-                    filteredList.append(list[pokemonId])
-                }
-                print(filteredList)
-                
-                return filteredList
-//            case .SunMoon
-//                for pokemonId in 722...000 {
+//    func filterBy(_ generation: Generation) -> [Pokemon] {
+//        var filteredList = [Pokemon]()
+//
+//        switch generation {
+//            case .RedBlueYellow:
+//                for pokemonId in 1...151 {
 //                    filteredList.append(list[pokemonId])
 //                }
 //                print(filteredList)
 //                
 //                return filteredList
-        }
-    }
+//            case .GoldSilverCrystal:
+//                for pokemonId in 152...251 {
+//                    filteredList.append(list[pokemonId])
+//                }
+//                print(filteredList)
+//                
+//                return filteredList
+//            case .RubySaphireEmerald, .FireRedLeafGreen:
+//                for pokemonId in 252...386 {
+//                    filteredList.append(list[pokemonId])
+//                }
+//                print(filteredList)
+//                
+//                return filteredList
+//            case .DiamondPearlPlatinum, .HeartGoldSoulSilver:
+//                for pokemonId in 387...493 {
+//                    filteredList.append(list[pokemonId])
+//                }
+//                print(filteredList)
+//                
+//                return filteredList
+//            case .BlackWhite:
+//                for pokemonId in 494...649 {
+//                    filteredList.append(list[pokemonId])
+//                }
+//                print(filteredList)
+//                
+//                return filteredList
+//            case .XY, .OmegaRubyAlphaSaphire:
+//                for pokemonId in 650...721 {
+//                    filteredList.append(list[pokemonId])
+//                }
+//                print(filteredList)
+//                
+//                return filteredList
+////            case .SunMoon
+////                for pokemonId in 722...000 {
+////                    filteredList.append(list[pokemonId])
+////                }
+////                print(filteredList)
+////                
+////                return filteredList
+//        }
+//    }
 }

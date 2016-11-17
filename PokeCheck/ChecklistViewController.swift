@@ -24,7 +24,7 @@ extension ChecklistViewController {
         //fectchAllPokemon()
         //if allPokemon.isEmpty {
         if checklist.list.isEmpty {
-            initializeData()
+            //initializeData()
         } else {
             collectionView?.reloadData()
         }
@@ -57,21 +57,14 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         if checklist.list.isEmpty {
             return 1
         }
-        
-//        if searchBarIsActive {
-//            return dataSourceForSearchResult.count
-//        }
-        
-        return (checklist.list.count)
+        print("section: \(section), checklist.list: \(checklist.list.count)")
+        return (checklist.list[section].count)
     }
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
-        let cellPokemon = checklist.list[indexPath.row]
-        
-//        if searchBarIsActive {
-////            celPokemon = dataSourceForSearchResult[indexPath.row]
-//        }
+        let cellPokemon = checklist.list[0][indexPath.row]
+    
         
         cell.pokemon = cellPokemon
         
@@ -102,8 +95,9 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 7
+        return 4
     }
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 
         
@@ -144,39 +138,39 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 
 //CORE DATA
 extension ChecklistViewController {
-    func initializeData(){
-        for (index, pokemonName) in pokemonNames.enumerated() {
-            let dexNumber = index + 1
-            //print(dexNumber)
-            //print(pokemonName)
-            savePokemon(dexNumber, name: pokemonName)
-        }
-        fetchAllPokemon()
-        collectionView?.reloadData()
-    }
-
-    func savePokemon(_ dexNumber: Int, name: String) {
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "Pokemon", into: moc) as! Pokemon
-        
-        entity.setValue(dexNumber, forKey: "dexNumber")
-        entity.setValue(name, forKey: "name")
-        //print("\(name) has been saved.")
-    }
-    
-    func fetchAllPokemon() -> (){
-        let pokemonFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Pokemon")
-        let fetchSort = NSSortDescriptor(key: "dexNumber", ascending: true)
-        pokemonFetch.sortDescriptors = [fetchSort]
-
-        do {
-            let requestedPokemon = try moc.fetch(pokemonFetch) as! [Pokemon]
-            checklist.list = requestedPokemon
-            //print("allPokemon array has been filled with data")
-            //print()
-        } catch {
-            //print("bad things happened \(error)")
-        }
-    }
+//    func initializeData(){
+//        for (index, pokemonName) in pokemonNames.enumerated() {
+//            let dexNumber = index + 1
+//            //print(dexNumber)
+//            //print(pokemonName)
+//            savePokemon(dexNumber, name: pokemonName)
+//        }
+//        fetchAllPokemon()
+//        collectionView?.reloadData()
+//    }
+//
+//    func savePokemon(_ dexNumber: Int, name: String) {
+//        let entity = NSEntityDescription.insertNewObject(forEntityName: "Pokemon", into: moc) as! Pokemon
+//        
+//        entity.setValue(dexNumber, forKey: "dexNumber")
+//        entity.setValue(name, forKey: "name")
+//        //print("\(name) has been saved.")
+//    }
+//    
+//    func fetchAllPokemon() -> (){
+//        let pokemonFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Pokemon")
+//        let fetchSort = NSSortDescriptor(key: "dexNumber", ascending: true)
+//        pokemonFetch.sortDescriptors = [fetchSort]
+//
+//        do {
+//            let requestedPokemon = try moc.fetch(pokemonFetch) as! [Pokemon]
+//            checklist.list = requestedPokemon
+//            //print("allPokemon array has been filled with data")
+//            //print()
+//        } catch {
+//            //print("bad things happened \(error)")
+//        }
+//    }
     
 ///    PMNPagedObject.results -> [PKMNamedAPIResource.url] -> JSON Object -> "sprites" : {"front_default" : endurl}
 //    func getAllPokemonFromAPI() {

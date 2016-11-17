@@ -7,10 +7,16 @@
 //
 
 import Foundation
-import CoreData
 
 
-class Pokemon: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
-   }
+class Pokemon {
+    let dexNumber: Int?
+    let name: String?
+    var isCaught: Bool
+    
+    init(dexNumber: Int, name: String) {
+        self.dexNumber = dexNumber
+        self.name = name
+        self.isCaught = false
+    }
+}

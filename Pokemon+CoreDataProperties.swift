@@ -9,13 +9,13 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-import Foundation
-import CoreData
-
-extension Pokemon {
-
-    @NSManaged var dexNumber: NSNumber?
-    @NSManaged var isCaught: NSNumber?
-    @NSManaged var name: String?
-
-}
+//import Foundation
+//import CoreData
+//
+//extension Pokemon {
+//
+//    @NSManaged var dexNumber: NSNumber?
+//    @NSManaged var isCaught: NSNumber?
+//    @NSManaged var name: String?
+//
+//}

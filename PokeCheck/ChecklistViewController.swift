@@ -57,8 +57,8 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         if checklist.list.isEmpty {
             return 1
         }
-        print("section: \(section), checklist.list: \(checklist.list.count)")
-        return (checklist.list[section].count)
+        //return (checklist.list[section].count)
+        return 4
     }
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -123,19 +123,47 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
                 gradientLayer.locations = [0.0, 0.5, 1.0]
                 
                 headerView.layer.addSublayer(gradientLayer)
+                
             case 1:
                 headerView.label.text = "Generation 2: Gold, Silver, Crystal"
+                
+                let goldColor = UIColor(red: 156/255, green: 134/255, blue: 92/255, alpha: alpha)
+                let silverColor = UIColor(red: 92/255, green: 98/255, blue: 106/255, alpha: alpha)
+                let crystalColor = UIColor(red: 106/255, green: 114/255, blue: 171/255, alpha: alpha)
+                
             
             case 2:
                 headerView.label.text = "Generation 3: Ruby, Sapphire, Emerald"
+                
+                let rubyColor = UIColor(red: 214/255, green: 91/255, blue: 60/255, alpha: alpha)
+                let sapphireColor = UIColor(red: 50/255, green: 120/255, blue: 185/255, alpha: alpha)
+                let emeraldColor = UIColor(red: 74/255, green: 163/255, blue: 88/255, alpha: alpha)
+                
             case 3:
                 headerView.label.text = "Generation 4: Diamond, Pearl, Platinum"
+                
+                let diamondColor = UIColor(red: 174/255, green: 217/255, blue: 225/255, alpha: alpha)
+                let pearlColor = UIColor(red: 228/255, green: 221/255, blue: 224/255, alpha: alpha)
+                let platinumColor = UIColor(red: 180/255, green: 180/255, blue: 182/255, alpha: alpha)
+                
             case 4:
                 headerView.label.text = "Generation 5: Black, White"
+                
+                let blackColor = UIColor(red: 4/255, green: 4/255, blue: 4/255, alpha: alpha)
+                let whiteColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: alpha)
+                
             case 5:
                 headerView.label.text = "Generation 6: X, Y"
+                
+                let xColor = UIColor(red: 100/255, green: 117/255, blue: 177/255, alpha: alpha)
+                let yColor = UIColor(red: 213/255, green: 69/255, blue: 48/255, alpha: alpha)
+                
             case 6:
                 headerView.label.text = "Generation 7: Sun, Moon"
+                
+                let sunColor = UIColor(red: 229/255, green: 162/255, blue: 64/255, alpha: alpha)
+                let moonColor = UIColor(red: 75/255, green: 54/255, blue: 135/255, alpha: alpha)
+                
                 
             default:
                 assert(false, "Something went wrong when creating header view")

@@ -36,37 +36,6 @@ func requestAllDataFromAPI() {
 
 
 let pokemonNames = [
-//    [   "id": 1,
-//        "name": "Bulbasaur",
-//        "forms":
-//            [   Forms.Male: "",
-//                Forms.Female: "",
-//                Forms.Male: "",
-//                Forms.FemaleShiny: "",
-//                Forms.Mega: "",
-//                Forms.Other: [
-//                    "","","",
-//                ]   ],
-//        "location":[
-//            Generation.RedBlueYellow: [
-//                "locationDetail": "",
-//                "mapImage": "",
-//            ],
-//            Generation.GoldSilverCrystal: [],
-//            Generation.RubySaphireEmerald: [],
-//            Generation.FireRedLeafGreen: [],
-//            Generation.DiamondPearlPlatinum: [],
-//            Generation.HeartGoldSoulSilver: [],
-//            Generation.BlackWhite: [],
-//            Generation.XY: [],
-//            Generation.OmegaRubyAlphaSaphire: [],
-//            Generation.SunMoon: [],
-//
-//        ],  ],
-    
-    
-    
-    
     "Bulbasaur",
     "Ivysaur",
     "Venusaur",

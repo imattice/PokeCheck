@@ -63,7 +63,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PokemonCell", for: indexPath) as! PokemonCell
-        let cellPokemon = checklist.list[0][indexPath.row]
+        let cellPokemon = checklist.list[indexPath.section][indexPath.row]
     
         
         cell.pokemon = cellPokemon
@@ -95,7 +95,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 6
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -105,23 +105,35 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         case UICollectionElementKindSectionHeader:
 
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ChecklistHeaderView", for: indexPath) as! ChecklistHeaderView    
+            let gradientLayer = CAGradientLayer()
+            headerView.backgroundColor = .white
+            let alpha = CGFloat(0.7)
             
-            switch indexPath.row {
+            switch indexPath.section {
             case 0:
                 headerView.label.text = "Generation 1: Red, Blue, Yellow"
                 
-            case 10:
+                gradientLayer.frame = headerView.bounds
+                let redColor = UIColor(red: 221.0, green: 87.0, blue: 65.0, alpha: alpha)
+                let blueColor = UIColor(red: 56.0, green: 130.0, blue: 176.0, alpha: alpha)
+                let yelloColor = UIColor(red: 241.0, green: 209.0, blue: 86.0, alpha: alpha)
+                
+                gradientLayer.colors = [redColor, blueColor, yelloColor]
+                gradientLayer.locations = [0.0, 0.5, 1.0]
+                
+                headerView.layer.addSublayer(gradientLayer)
+            case 1:
                 headerView.label.text = "Generation 2: Gold, Silver, Crystal"
             
-            case 20:
+            case 2:
                 headerView.label.text = "Generation 3: Ruby, Sapphire, Emerald"
-            case 30:
+            case 3:
                 headerView.label.text = "Generation 4: Diamond, Pearl, Platinum"
-            case 40:
+            case 4:
                 headerView.label.text = "Generation 5: Black, White"
-            case 50:
+            case 5:
                 headerView.label.text = "Generation 6: X, Y"
-            case 60:
+            case 6:
                 headerView.label.text = "Generation 7: Sun, Moon"
                 
             default:

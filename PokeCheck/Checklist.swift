@@ -69,17 +69,17 @@ struct Checklist {
                 }
                 let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
                 generationList.append(pokemon)
-//            case 650...pokemonNames.count: //721:
-//                if pokemonId == 650 {
-//                    allPokemonList.append(generationList)
-//                    generationList = []
+            case 650...pokemonNames.count - 1: //721:
+                if pokemonId == 650 {
+                    allPokemonList.append(generationList)
+                    generationList = []
 //                } else if pokemonId == pokemonNames.count {
 //                    let pokemon = Pokemon(dexNumber: pokemonId, name: pokemonNames[pokemonId])
 //                    generationList.append(pokemon)
-//                } else {
-//                    let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
-//                    generationList.append(pokemon)
-//                }
+                } else {
+                    let pokemon = Pokemon(dexNumber: pokemonId + 1, name: pokemonNames[pokemonId])
+                    generationList.append(pokemon)
+                }
                     //case 722...pokemonNames.count:
 //                if pokemonId == 722 {
 //                    allPokemonList.append(generationList)

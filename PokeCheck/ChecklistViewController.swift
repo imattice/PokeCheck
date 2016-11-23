@@ -198,8 +198,9 @@ extension ChecklistViewController {
     }
     func createFilterView() -> UIView {
         let frostedPane = frostedModalPane()
-                
-        let filterMenu = UIView(frame: CGRect(x: 0, y: 0, width: 250.0, height: navigationController!.view.bounds.height))
+               
+        let width = CGFloat(250.0)
+        let filterMenu = UIView(frame: CGRect(x: (navigationController!.view.bounds.width - width), y: 0, width: width, height: navigationController!.view.bounds.height))
             filterMenu.backgroundColor = .red
             filterMenu.isUserInteractionEnabled = true
         
@@ -215,7 +216,7 @@ extension ChecklistViewController {
             frostedPane.backgroundColor = UIColor(colorLiteralRed: 130/255, green: 130/255, blue: 130/255, alpha: 0.7)
             frostedPane.tag = 100
         
-        let tap = UITapGestureRecognizer(target: self, action: Selector(("closeFilterView:")))
+        let tap = UITapGestureRecognizer(target: self, action: Selector("closeFilterView:"))
             
             frostedPane.addGestureRecognizer(tap)
         

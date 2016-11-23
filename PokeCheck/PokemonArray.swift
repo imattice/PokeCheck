@@ -35,7 +35,7 @@ func requestAllDataFromAPI() {
 
 
 
-let pokemonNames = [
+let pokemonNames : [String] = [
     "Bulbasaur",
     "Ivysaur",
     "Venusaur",

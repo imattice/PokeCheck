@@ -13,7 +13,7 @@
         <scene sceneID="Slq-MY-Bca">
             <objects>
                 <collectionViewController id="Zpb-Nb-Oes" customClass="ChecklistViewController" customModule="PokeCheck" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="2RQ-Hh-ObU">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="2RQ-Hh-ObU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NL0-jF-aDh">
@@ -26,22 +26,7 @@
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChecklistHeaderView" id="Lqg-K4-amn" customClass="ChecklistHeaderView" customModule="PokeCheck" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generation Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BB8-nd-mU8">
-                                    <rect key="frame" x="115" y="7" width="145" height="21"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="BB8-nd-mU8" firstAttribute="centerY" secondItem="Lqg-K4-amn" secondAttribute="centerY" id="1SC-3D-1is"/>
-                                <constraint firstItem="BB8-nd-mU8" firstAttribute="centerX" secondItem="Lqg-K4-amn" secondAttribute="centerX" id="X0H-We-YjT"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="label" destination="BB8-nd-mU8" id="QHt-bC-xDM"/>
-                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Zpb-Nb-Oes" id="Kes-U6-bsR"/>

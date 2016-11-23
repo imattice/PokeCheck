@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
-class Search: UISearchController {
-    
+class FilterView: UIView {
+    class func create(inView view: UIView, animated: Bool) -> FilterView {
+        let filterView = FilterView(frame: view.bounds)
+            filterView.isOpaque = false
+        
+        return filterView
+    }
 }

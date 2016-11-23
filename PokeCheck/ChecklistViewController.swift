@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class ChecklistViewController: UICollectionViewController, UISearchBarDelegate {
-    let moc = DataController().managedObjectContext
+    //let moc = DataController().managedObjectContext
     
     //var allPokemon: [Pokemon] = []
     var checklist = Checklist()
@@ -44,9 +44,7 @@ extension ChecklistViewController {
     }
     
     @IBAction func filter() {
-//        print("pressed")
-//        checklist.list = checklist.filterBy(.BlackWhite)
-//        collectionView?.reloadData()
+        presentFilterView(animated: true)
     }
 }
 
@@ -105,65 +103,73 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         case UICollectionElementKindSectionHeader:
 
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ChecklistHeaderView", for: indexPath) as! ChecklistHeaderView    
-            let gradientLayer = CAGradientLayer()
             headerView.backgroundColor = .white
-            let alpha = CGFloat(0.7)
+
+            let alpha = CGFloat(0.4)
             
             switch indexPath.section {
             case 0:
-                headerView.label.text = "Generation 1: Red, Blue, Yellow"
                 
-                gradientLayer.frame = headerView.bounds
+                let label = "Kanto Pokemon"
+
+                let redColor = UIColor(red: 221/255, green: 87/255, blue: 65/255, alpha: alpha).cgColor
+                let blueColor = UIColor(red: 56/255, green: 130/255, blue: 176/255, alpha: alpha).cgColor
+                let yellowColor = UIColor(red: 241/255, green: 209/255, blue: 86/255, alpha: alpha).cgColor
                 
-                let redColor = UIColor(red: 221/255, green: 87/255, blue: 65/255, alpha: alpha)
-                let blueColor = UIColor(red: 56/255, green: 130/255, blue: 176/255, alpha: alpha)
-                let yellowColor = UIColor(red: 241/255, green: 209/255, blue: 86/255, alpha: alpha)
                 
-                gradientLayer.colors = [redColor, blueColor, yellowColor]
-                gradientLayer.locations = [0.0, 0.5, 1.0]
-                
-                headerView.layer.addSublayer(gradientLayer)
-                
+                headerView.add(withLabel: label, andColors: [redColor, blueColor, yellowColor])
+
             case 1:
-                headerView.label.text = "Generation 2: Gold, Silver, Crystal"
+                let label = "Johto Pokemon"
                 
-                let goldColor = UIColor(red: 156/255, green: 134/255, blue: 92/255, alpha: alpha)
-                let silverColor = UIColor(red: 92/255, green: 98/255, blue: 106/255, alpha: alpha)
-                let crystalColor = UIColor(red: 106/255, green: 114/255, blue: 171/255, alpha: alpha)
+                let goldColor = UIColor(red: 156/255, green: 134/255, blue: 92/255, alpha: alpha).cgColor
+                let silverColor = UIColor(red: 92/255, green: 98/255, blue: 106/255, alpha: alpha).cgColor
+                let crystalColor = UIColor(red: 106/255, green: 114/255, blue: 171/255, alpha: alpha).cgColor
                 
-            
+                headerView.add(withLabel: label, andColors: [goldColor, silverColor, crystalColor])
+                
             case 2:
-                headerView.label.text = "Generation 3: Ruby, Sapphire, Emerald"
+                let label = "Hoenn Pokemon"
                 
-                let rubyColor = UIColor(red: 214/255, green: 91/255, blue: 60/255, alpha: alpha)
-                let sapphireColor = UIColor(red: 50/255, green: 120/255, blue: 185/255, alpha: alpha)
-                let emeraldColor = UIColor(red: 74/255, green: 163/255, blue: 88/255, alpha: alpha)
+                let rubyColor = UIColor(red: 214/255, green: 91/255, blue: 60/255, alpha: alpha).cgColor
+                let sapphireColor = UIColor(red: 50/255, green: 120/255, blue: 185/255, alpha: alpha).cgColor
+                let emeraldColor = UIColor(red: 74/255, green: 163/255, blue: 88/255, alpha: alpha).cgColor
+            
+                headerView.add(withLabel: label, andColors: [rubyColor, sapphireColor, emeraldColor])
                 
             case 3:
-                headerView.label.text = "Generation 4: Diamond, Pearl, Platinum"
+                let label = "Sinnoh Pokemon"
                 
-                let diamondColor = UIColor(red: 174/255, green: 217/255, blue: 225/255, alpha: alpha)
-                let pearlColor = UIColor(red: 228/255, green: 221/255, blue: 224/255, alpha: alpha)
-                let platinumColor = UIColor(red: 180/255, green: 180/255, blue: 182/255, alpha: alpha)
+                let diamondColor = UIColor(red: 174/255, green: 217/255, blue: 225/255, alpha: alpha).cgColor
+                let pearlColor = UIColor(red: 228/255, green: 221/255, blue: 224/255, alpha: alpha).cgColor
+                let platinumColor = UIColor(red: 180/255, green: 180/255, blue: 182/255, alpha: alpha).cgColor
+                
+                headerView.add(withLabel: label, andColors: [diamondColor, pearlColor, platinumColor])
                 
             case 4:
-                headerView.label.text = "Generation 5: Black, White"
+                let label = "Unova Pokemon"
                 
-                let blackColor = UIColor(red: 4/255, green: 4/255, blue: 4/255, alpha: alpha)
-                let whiteColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: alpha)
+                let blackColor = UIColor(red: 4/255, green: 4/255, blue: 4/255, alpha: alpha).cgColor
+                let whiteColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: alpha).cgColor
                 
+                headerView.add(withLabel: label, andColors: [blackColor, whiteColor])
+
             case 5:
-                headerView.label.text = "Generation 6: X, Y"
+                let label = "Kalos Pokemon"
                 
-                let xColor = UIColor(red: 100/255, green: 117/255, blue: 177/255, alpha: alpha)
-                let yColor = UIColor(red: 213/255, green: 69/255, blue: 48/255, alpha: alpha)
+                let xColor = UIColor(red: 100/255, green: 117/255, blue: 177/255, alpha: alpha).cgColor
+                let yColor = UIColor(red: 213/255, green: 69/255, blue: 48/255, alpha: alpha).cgColor
                 
+                headerView.add(withLabel: label, andColors: [xColor, yColor])
+
             case 6:
-                headerView.label.text = "Generation 7: Sun, Moon"
+                let label = "Aloha Pokemon"
                 
-                let sunColor = UIColor(red: 229/255, green: 162/255, blue: 64/255, alpha: alpha)
-                let moonColor = UIColor(red: 75/255, green: 54/255, blue: 135/255, alpha: alpha)
+                let sunColor = UIColor(red: 229/255, green: 162/255, blue: 64/255, alpha: alpha).cgColor
+                let moonColor = UIColor(red: 75/255, green: 54/255, blue: 135/255, alpha: alpha).cgColor
                 
+                headerView.add(withLabel: label, andColors: [sunColor, moonColor])
+
                 
             default:
                 assert(false, "Something went wrong when creating header view")
@@ -176,6 +182,50 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
     }
 }
 
+//FILTER MANAGEMENT
+extension ChecklistViewController {
+    func presentFilterView(animated: Bool) {
+        let filterView = createFilterView()
+
+        navigationController!.view.addSubview(filterView)
+
+    }
+    func closeFilterView() {
+        print("closeFilterView starts")
+        navigationController!.view.isUserInteractionEnabled = true 
+        navigationController!.view.viewWithTag(100)?.removeFromSuperview()
+        print("filterView should be closed")
+    }
+    func createFilterView() -> UIView {
+        let frostedPane = frostedModalPane()
+                
+        let filterMenu = UIView(frame: CGRect(x: 0, y: 0, width: 250.0, height: navigationController!.view.bounds.height))
+            filterMenu.backgroundColor = .red
+            filterMenu.isUserInteractionEnabled = true
+        
+        let menuTableView = UITableView(frame: CGRect(x: 0, y: 40.0, width: filterMenu.frame.width, height: filterMenu.frame.height - 40.0))
+        filterMenu.addSubview(menuTableView)
+        
+        frostedPane.addSubview(filterMenu)
+        
+        return frostedPane
+    }
+    func frostedModalPane() -> UIView {
+        let frostedPane = UIView(frame: navigationController!.view.bounds)
+            frostedPane.backgroundColor = UIColor(colorLiteralRed: 130/255, green: 130/255, blue: 130/255, alpha: 0.7)
+            frostedPane.tag = 100
+        
+        let tap = UITapGestureRecognizer(target: self, action: Selector(("closeFilterView:")))
+            
+            frostedPane.addGestureRecognizer(tap)
+        
+            navigationController!.view.isUserInteractionEnabled = false 
+        return frostedPane
+    }
+    func createFilterMenu() {
+        
+    }
+}
 
 //CORE DATA
 extension ChecklistViewController {

@@ -4,5 +4,5 @@ target 'PokeCheck' do
 
   use_frameworks!
 
-#    pod 'Gifu'
+    pod 'SwiftyGif', '~> 3.0'
 end

@@ -9,11 +9,9 @@
 import UIKit
 import CoreData
 
-class ChecklistViewController: UICollectionViewController, UISearchBarDelegate {
-    //let moc = DataController().managedObjectContext
-    
-    //var allPokemon: [Pokemon] = []
+class ChecklistViewController: UICollectionViewController, UISearchBarDelegate {    
     var checklist = Checklist()
+    var animated: Bool = true
 }
 
 //INITIALIZING

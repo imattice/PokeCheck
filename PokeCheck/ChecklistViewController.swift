@@ -65,7 +65,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         cell.pokemon = cellPokemon
         
 //        print(cell.pokemon)
-        cell.configureCell(fromPokemon: cellPokemon)
+        cell.configureCell(fromPokemon: cellPokemon, animated: true)
         
         return cell
     }

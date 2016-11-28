@@ -16,8 +16,21 @@ class PokemonCell: UICollectionViewCell {
     @IBOutlet weak var cellCheckLabel: UILabel!
     
     var pokemon: Pokemon?
-    let animated = false
+    let animated = true
+    private let gifManager = SwiftyGifManager(memoryLimit: 20)
     
+    private func setGifName(byDexNumber dexNumber: Int) -> String {
+        switch Int(dexNumber) {
+        case 1...9:
+            return "00\(dexNumber)"
+        case 10...99:
+            return "0\(dexNumber)"
+        case 100...999:
+            return "\(dexNumber)"
+        default:
+            return "?"
+        }
+    }
     
     func configureCell(fromPokemon pokemon: Pokemon, animated: Bool) {
 //      add the dexNumber to the bottom of the cell
@@ -27,18 +40,8 @@ class PokemonCell: UICollectionViewCell {
             let missingImage = UIImage(named: "?")
 
             if animated {
-                let gifName: String
               //append the appropriate amount of 0's to the image name
-                switch Int(dexNumber) {
-                case 1...9:
-                    gifName = "00\(dexNumber)"
-                case 10...99:
-                    gifName = "0\(dexNumber)"
-                case 100...999:
-                    gifName = "\(dexNumber)"
-                default:
-                    cellImageView.image = UIImage(named: "1")
-                }
+                let gifName = setGifName(byDexNumber: dexNumber)
                 
               //set the label and the image of the cell to the appropriate number and gif
                 let gif = UIImage(gifName: gifName)
@@ -52,9 +55,9 @@ class PokemonCell: UICollectionViewCell {
                 
               //if the gif is larger that the cell, scale the gif down.  Otherwise, display it on the bottom of the cell
                 if gifHeight > cellHeight || gifWidth > cellWidth {
-                    cellImageView.contentMode = .ScaleAspectFit
+                    cellImageView.contentMode = .scaleAspectFit
                 } else {
-                    cellImageView.contentMode = .Bottom
+                    cellImageView.contentMode = .bottom
                 }
             
             

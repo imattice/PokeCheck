@@ -324,7 +324,7 @@
 			};
 			name = Release;
 		};
-		A1351E991D2FA83C244E3EAE72FC0140 /* Debug */ = {
+		5B09C56C6A4BAB06497CE8D575B8B3A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A3E8A1571925AC4FEE57BC5A625BC36 /* SwiftyGif.xcconfig */;
 			buildSettings = {
@@ -348,13 +348,14 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		A3C68B9AA595E52CDA3EAEF132D10245 /* Release */ = {
+		67256DB51C3F9F827B07F2ACC85955EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F41458CF7DC5F7C70EB4F0FDEF821545 /* Pods-PokeCheck.release.xcconfig */;
 			buildSettings = {
@@ -381,11 +382,47 @@
 				PRODUCT_NAME = Pods_PokeCheck;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
+		};
+		8BA3EA0EA837AFED461D4D2010875852 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A9FE29CE89E9E4A6D949ADA486ADE2B /* Pods-PokeCheck.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-PokeCheck/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-PokeCheck/Pods-PokeCheck.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_PokeCheck;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		AE9439C22469D35336242DD983DB5C5F /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -429,41 +466,7 @@
 			};
 			name = Debug;
 		};
-		D7143373EF67A11AACADAF84C02042D3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A9FE29CE89E9E4A6D949ADA486ADE2B /* Pods-PokeCheck.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-PokeCheck/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-PokeCheck/Pods-PokeCheck.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_PokeCheck;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		EE77B473EEE1BE1CEC6E6198CEE6DAB8 /* Release */ = {
+		BC4FCE5576B73FC8255A0211B5B99D85 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0A3E8A1571925AC4FEE57BC5A625BC36 /* SwiftyGif.xcconfig */;
 			buildSettings = {
@@ -486,6 +489,7 @@
 				PRODUCT_NAME = SwiftyGif;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -498,8 +502,8 @@
 		056E06E744A7FED872FDC3869C9B8E5F /* Build configuration list for PBXNativeTarget "Pods-PokeCheck" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7143373EF67A11AACADAF84C02042D3 /* Debug */,
-				A3C68B9AA595E52CDA3EAEF132D10245 /* Release */,
+				8BA3EA0EA837AFED461D4D2010875852 /* Debug */,
+				67256DB51C3F9F827B07F2ACC85955EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -516,8 +520,8 @@
 		64143538EAD3475FE52DCD8D6CAB0F49 /* Build configuration list for PBXNativeTarget "SwiftyGif" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1351E991D2FA83C244E3EAE72FC0140 /* Debug */,
-				EE77B473EEE1BE1CEC6E6198CEE6DAB8 /* Release */,
+				5B09C56C6A4BAB06497CE8D575B8B3A5 /* Debug */,
+				BC4FCE5576B73FC8255A0211B5B99D85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

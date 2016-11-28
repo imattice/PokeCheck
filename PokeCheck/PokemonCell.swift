@@ -16,7 +16,7 @@ class PokemonCell: UICollectionViewCell {
     @IBOutlet weak var cellCheckLabel: UILabel!
     
     var pokemon: Pokemon?
-    let animated = true
+    let animated = false
     private let gifManager = SwiftyGifManager(memoryLimit: 20)
     
     private func setGifName(byDexNumber dexNumber: Int) -> String {
@@ -33,60 +33,36 @@ class PokemonCell: UICollectionViewCell {
     }
     
     func configureCell(fromPokemon pokemon: Pokemon, animated: Bool) {
-//      add the dexNumber to the bottom of the cell
+      // add the dexNumber to the bottom of the cell
         if let dexNumber = pokemon.dexNumber {
             cellLabel.text = String(describing: dexNumber)
-            
-            let missingImage = UIImage(named: "?")
 
-            if animated {
-              //append the appropriate amount of 0's to the image name
-                let gifName = setGifName(byDexNumber: dexNumber)
-                
-              //set the label and the image of the cell to the appropriate number and gif
-                let gif = UIImage(gifName: gifName)
-                    cellImageView.setGifImage(gif, manager: gifManager)
-                
-              //get the height and width of the cell and the gif
-                let gifHeight = cellImageView.currentImage.size.height
-                let gifWidth = cellImageView.currentImage.size.width
-                let cellHeight = frame.size.height
-                let cellWidth = frame.size.width
-                
-              //if the gif is larger that the cell, scale the gif down.  Otherwise, display it on the bottom of the cell
-                if gifHeight > cellHeight || gifWidth > cellWidth {
-                    cellImageView.contentMode = .scaleAspectFit
-                } else {
-                    cellImageView.contentMode = .bottom
-                }
-            
-            
-            //set png if not animated
-            } else {
-                if let pngImage = UIImage(named: String(describing: dexNumber)) {
-                    cellImageView.image = pngImage
-                } else {
-                    cellImageView.image = missingImage
-                }
-                
-        //      get the height and width of the cell and the gif
-                let gifHeight = cellImageView.image!.size.height
-                let gifWidth = cellImageView.image!.size.width
-                let cellHeight = frame.size.height
-                let cellWidth = frame.size.width
+      // append the appropriate amount of 0's to the image name
+        let gifName = setGifName(byDexNumber: dexNumber)
         
-        //      if the gif is larger that the cell, scale the gif down.  Otherwise, display it on the bottom of the cell
-                if gifHeight > cellHeight || gifWidth > cellWidth {
-                    cellImageView.contentMode = .scaleAspectFit
-                } else {
-                    cellImageView.contentMode = .bottom
-                }
-            }
+      // set the label and the image of the cell to the appropriate number and gif
+        let gif = UIImage(gifName: gifName)
+            cellImageView.setGifImage(gif, manager: gifManager)
         }
         
-//      if pokemon has already been caught, apply indicator
+      // get the height and width of the cell and the gif
+        let gifHeight = cellImageView.currentImage.size.height
+        let gifWidth = cellImageView.currentImage.size.width
+        let cellHeight = frame.size.height
+        let cellWidth = frame.size.width
         
+      // if the gif is larger that the cell, scale the gif down.  Otherwise, display it on the bottom of the cell
+        if gifHeight > cellHeight || gifWidth > cellWidth {
+            cellImageView.contentMode = .scaleAspectFit
+        } else {
+            cellImageView.contentMode = .bottom
+        }
+            
+//            if animated == false {
+//                cellImageView.stopAnimating()
+//            }
         
+        // if pokemon has already been caught, apply indicator
         if pokemon.isCaught == true {
             self.caughtPokemon(withAnimation: false)
         } else {
@@ -96,19 +72,20 @@ class PokemonCell: UICollectionViewCell {
     }
     func caughtPokemon(withAnimation animated: Bool) {
         addSubviews(withAnimation: animated)
-        //cellImageView.stopAnimatingGif()
+        cellImageView.stopAnimatingGif()
         pokemon?.isCaught = true
     }
     func releasePokemon(withAnimation animated: Bool) {
         removeSubviews(withAnimations: animated)
         pokemon?.isCaught = false
-        //cellImageView.startAnimatingGif()
+        cellImageView.startAnimatingGif()
     }
     
     func blur(thisImageView imageView: UIImageView, animated: Bool) {
         let blurEffect = UIBlurEffect(style: .extraLight)
         let blurredEffectView = UIVisualEffectView(effect: blurEffect)
             blurredEffectView.frame = imageView.bounds
+            blurredEffectView.layer.cornerRadius = 10.0
             blurredEffectView.alpha = 0.5
             blurredEffectView.tag = 100
                 

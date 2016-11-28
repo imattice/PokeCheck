@@ -3571,17 +3571,9 @@
 		5912D6841D6426D4003D8986 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5912D6851D6426E2003D8986 /* View */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
-		5912D6851D6426E2003D8986 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				5912D6731D642388003D8986 /* ChecklistViewController.swift */,
 			);
-			name = View;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		594878EB1DCED5B60049F6BF /* png */ = {

@@ -28,7 +28,7 @@ class PokemonCell: UICollectionViewCell {
         case 100...999:
             return "\(dexNumber)"
         default:
-            return "?"
+            return "substitute"
         }
     }
     

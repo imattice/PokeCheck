@@ -7,39 +7,85 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		260B390F54D4314667696ABA578D18CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		E761B6EBD92B2B7DEF07743EE9705545 /* Pods-PokeCheck-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B92C543A6A4EB38F52A8F826899F086 /* Pods-PokeCheck-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FDB492BF8D6F860343353ADC72B46003 /* Pods-PokeCheck-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 664424DE1C33CE2F553D137E37DD3B4E /* Pods-PokeCheck-dummy.m */; };
+		034E0B6CF592AEA0EB74DFE04A2B5AEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		157B305C0B26DE860FF15337DBCDE03B /* Pods-PokeCheck-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 664424DE1C33CE2F553D137E37DD3B4E /* Pods-PokeCheck-dummy.m */; };
+		18A63E6017173F83140C7F5528C325B9 /* UIImageView+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46D8F5BD9933982D89665952F1FC3E1 /* UIImageView+SwiftyGif.swift */; };
+		315CD0056AB077E5D4CFC484A5C09F24 /* SwiftyGifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B47F28F42D77663044717FF82E3AE8 /* SwiftyGifManager.swift */; };
+		3C791FAE9F513B6BE35EB57E0149CF40 /* SwiftyGif-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4AD6DDC198A130ACFB27A7F8DC0F8F0B /* SwiftyGif-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3D3EF7739B642539D6D3F6AD9097128D /* SwiftyGif-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9AEB6A69E13B4A5E97A03122C9F045D /* SwiftyGif-dummy.m */; };
+		6A33854015FB596CA40F1C8B109DF12A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		98B5C1385043018131058620F10F44AD /* UIImage+SwiftyGif.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8EF6CEA2B1480432B416CFAD33A4AA /* UIImage+SwiftyGif.swift */; };
+		C60FF66E745E34A7C5F30952E269C44E /* Pods-PokeCheck-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B92C543A6A4EB38F52A8F826899F086 /* Pods-PokeCheck-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		85FE51D76950EF94BC5B795A7631FAF1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F688C763DDA89437A45DB5865302E8CC;
+			remoteInfo = SwiftyGif;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		0A3E8A1571925AC4FEE57BC5A625BC36 /* SwiftyGif.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyGif.xcconfig; sourceTree = "<group>"; };
+		0C3BA2F518E54251D819DAE7884910EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26B47F28F42D77663044717FF82E3AE8 /* SwiftyGifManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyGifManager.swift; path = SwiftyGif/SwiftyGifManager.swift; sourceTree = "<group>"; };
 		2A9FE29CE89E9E4A6D949ADA486ADE2B /* Pods-PokeCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokeCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		3525C3E14E0B2FF673A018A3592BC5FA /* Pods-PokeCheck-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PokeCheck-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4AD6DDC198A130ACFB27A7F8DC0F8F0B /* SwiftyGif-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-umbrella.h"; sourceTree = "<group>"; };
 		664424DE1C33CE2F553D137E37DD3B4E /* Pods-PokeCheck-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PokeCheck-dummy.m"; sourceTree = "<group>"; };
-		7C971E087FC7F9C26019021462D7E643 /* Pods_PokeCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E8657591C514919C8E75383FF236057 /* Pods_PokeCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PokeCheck.framework; path = "Pods-PokeCheck.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B92C543A6A4EB38F52A8F826899F086 /* Pods-PokeCheck-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PokeCheck-umbrella.h"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		96B960D5DFF1B4F0AC113353B8E50099 /* SwiftyGif.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyGif.modulemap; sourceTree = "<group>"; };
 		9D99C1F6ADF427AB64F7531DBB0F81C8 /* Pods-PokeCheck-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokeCheck-frameworks.sh"; sourceTree = "<group>"; };
 		A21F085EA2F0567BDE494BE3916F02C5 /* Pods-PokeCheck-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokeCheck-resources.sh"; sourceTree = "<group>"; };
-		CC1BFC57940AAE9DDED81915435AC55D /* Pods-PokeCheck.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PokeCheck.modulemap"; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		A2323B832418B641059F58913FCEA276 /* SwiftyGif-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyGif-prefix.pch"; sourceTree = "<group>"; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		CC1BFC57940AAE9DDED81915435AC55D /* Pods-PokeCheck.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PokeCheck.modulemap"; sourceTree = "<group>"; };
+		D23911531C62A77C74E0C4AEE363B23E /* SwiftyGif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyGif.framework; path = SwiftyGif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF8EF6CEA2B1480432B416CFAD33A4AA /* UIImage+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+SwiftyGif.swift"; path = "SwiftyGif/UIImage+SwiftyGif.swift"; sourceTree = "<group>"; };
 		E05198F0B6765147A4B1AEAD76B11AEC /* Pods-PokeCheck-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PokeCheck-acknowledgements.plist"; sourceTree = "<group>"; };
+		E46D8F5BD9933982D89665952F1FC3E1 /* UIImageView+SwiftyGif.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImageView+SwiftyGif.swift"; path = "SwiftyGif/UIImageView+SwiftyGif.swift"; sourceTree = "<group>"; };
+		E9AEB6A69E13B4A5E97A03122C9F045D /* SwiftyGif-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyGif-dummy.m"; sourceTree = "<group>"; };
 		ED612EBD039ABC92D294DF16B2F2E5BD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41458CF7DC5F7C70EB4F0FDEF821545 /* Pods-PokeCheck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PokeCheck.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2259066B0B8E7432F26D3D71FDCF7765 /* Frameworks */ = {
+		3AA7E07414938FE3021B3CD1A3B707D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				260B390F54D4314667696ABA578D18CE /* Foundation.framework in Frameworks */,
+				034E0B6CF592AEA0EB74DFE04A2B5AEF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1FD239F3065DC206BC18EBA0F42AC4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6A33854015FB596CA40F1C8B109DF12A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000E255EBFCED1B864F4E7D7BAC3FB03 /* SwiftyGif */ = {
+			isa = PBXGroup;
+			children = (
+				26B47F28F42D77663044717FF82E3AE8 /* SwiftyGifManager.swift */,
+				DF8EF6CEA2B1480432B416CFAD33A4AA /* UIImage+SwiftyGif.swift */,
+				E46D8F5BD9933982D89665952F1FC3E1 /* UIImageView+SwiftyGif.swift */,
+				1BF180D5E7D6C90311F89D2293E6F119 /* Support Files */,
+			);
+			name = SwiftyGif;
+			path = SwiftyGif;
+			sourceTree = "<group>";
+		};
 		03D330BC64BA634ED9F5F0D43F9EB18C /* Pods-PokeCheck */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,10 +104,24 @@
 			path = "Target Support Files/Pods-PokeCheck";
 			sourceTree = "<group>";
 		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
+		1BF180D5E7D6C90311F89D2293E6F119 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
+				0C3BA2F518E54251D819DAE7884910EF /* Info.plist */,
+				96B960D5DFF1B4F0AC113353B8E50099 /* SwiftyGif.modulemap */,
+				0A3E8A1571925AC4FEE57BC5A625BC36 /* SwiftyGif.xcconfig */,
+				E9AEB6A69E13B4A5E97A03122C9F045D /* SwiftyGif-dummy.m */,
+				A2323B832418B641059F58913FCEA276 /* SwiftyGif-prefix.pch */,
+				4AD6DDC198A130ACFB27A7F8DC0F8F0B /* SwiftyGif-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyGif";
+			sourceTree = "<group>";
+		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
 			);
 			name = iOS;
 			sourceTree = "<group>";
@@ -71,23 +131,24 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				85DDE99DA63FC642C41463971284F819 /* Products */,
+				A11FCC4BFA431181711411D6F5265B6B /* Pods */,
+				EE812A249F79A78258F733F17D7443CE /* Products */,
 				D687464CC121478AF3EC397EC7AD2234 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		85DDE99DA63FC642C41463971284F819 /* Products */ = {
+		A11FCC4BFA431181711411D6F5265B6B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7C971E087FC7F9C26019021462D7E643 /* Pods_PokeCheck.framework */,
+				000E255EBFCED1B864F4E7D7BAC3FB03 /* SwiftyGif */,
 			);
-			name = Products;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,35 +161,70 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		EE812A249F79A78258F733F17D7443CE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6E8657591C514919C8E75383FF236057 /* Pods_PokeCheck.framework */,
+				D23911531C62A77C74E0C4AEE363B23E /* SwiftyGif.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1C081DE1029D9A56ECB20D87B40978D8 /* Headers */ = {
+		2B8F2DB568709351830E846B37DA0FF2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E761B6EBD92B2B7DEF07743EE9705545 /* Pods-PokeCheck-umbrella.h in Headers */,
+				C60FF66E745E34A7C5F30952E269C44E /* Pods-PokeCheck-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B29E44CF3592CB3ECF8CA7085849777 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C791FAE9F513B6BE35EB57E0149CF40 /* SwiftyGif-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		3878E6B0DDC163C008F1FCBFC99E663B /* Pods-PokeCheck */ = {
+		0D629CB32E020115EEDAE28D3F3B07DD /* Pods-PokeCheck */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B29DB31B416222966E43E934D510D356 /* Build configuration list for PBXNativeTarget "Pods-PokeCheck" */;
+			buildConfigurationList = 056E06E744A7FED872FDC3869C9B8E5F /* Build configuration list for PBXNativeTarget "Pods-PokeCheck" */;
 			buildPhases = (
-				4F3A059D3B3E10166619072FAECF1F74 /* Sources */,
-				2259066B0B8E7432F26D3D71FDCF7765 /* Frameworks */,
-				1C081DE1029D9A56ECB20D87B40978D8 /* Headers */,
+				42CD9FBBE0D60D0C04D5D528C2FE98E6 /* Sources */,
+				A1FD239F3065DC206BC18EBA0F42AC4A /* Frameworks */,
+				2B8F2DB568709351830E846B37DA0FF2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				768371E2376A073B5D524A4317FE8896 /* PBXTargetDependency */,
+			);
+			name = "Pods-PokeCheck";
+			productName = "Pods-PokeCheck";
+			productReference = 6E8657591C514919C8E75383FF236057 /* Pods_PokeCheck.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F688C763DDA89437A45DB5865302E8CC /* SwiftyGif */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64143538EAD3475FE52DCD8D6CAB0F49 /* Build configuration list for PBXNativeTarget "SwiftyGif" */;
+			buildPhases = (
+				09633D9400B206D024D8A5109E76F5AD /* Sources */,
+				3AA7E07414938FE3021B3CD1A3B707D1 /* Frameworks */,
+				4B29E44CF3592CB3ECF8CA7085849777 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-PokeCheck";
-			productName = "Pods-PokeCheck";
-			productReference = 7C971E087FC7F9C26019021462D7E643 /* Pods_PokeCheck.framework */;
+			name = SwiftyGif;
+			productName = SwiftyGif;
+			productReference = D23911531C62A77C74E0C4AEE363B23E /* SwiftyGif.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -148,25 +244,46 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 85DDE99DA63FC642C41463971284F819 /* Products */;
+			productRefGroup = EE812A249F79A78258F733F17D7443CE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3878E6B0DDC163C008F1FCBFC99E663B /* Pods-PokeCheck */,
+				0D629CB32E020115EEDAE28D3F3B07DD /* Pods-PokeCheck */,
+				F688C763DDA89437A45DB5865302E8CC /* SwiftyGif */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4F3A059D3B3E10166619072FAECF1F74 /* Sources */ = {
+		09633D9400B206D024D8A5109E76F5AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FDB492BF8D6F860343353ADC72B46003 /* Pods-PokeCheck-dummy.m in Sources */,
+				3D3EF7739B642539D6D3F6AD9097128D /* SwiftyGif-dummy.m in Sources */,
+				315CD0056AB077E5D4CFC484A5C09F24 /* SwiftyGifManager.swift in Sources */,
+				98B5C1385043018131058620F10F44AD /* UIImage+SwiftyGif.swift in Sources */,
+				18A63E6017173F83140C7F5528C325B9 /* UIImageView+SwiftyGif.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42CD9FBBE0D60D0C04D5D528C2FE98E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				157B305C0B26DE860FF15337DBCDE03B /* Pods-PokeCheck-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		768371E2376A073B5D524A4317FE8896 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftyGif;
+			target = F688C763DDA89437A45DB5865302E8CC /* SwiftyGif */;
+			targetProxy = 85FE51D76950EF94BC5B795A7631FAF1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		42287DDF97330524BA3EF220F0276DA6 /* Release */ = {
@@ -207,7 +324,38 @@
 			};
 			name = Release;
 		};
-		5992C26483C44DEDC78DE4B67162F15C /* Release */ = {
+		5B09C56C6A4BAB06497CE8D575B8B3A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A3E8A1571925AC4FEE57BC5A625BC36 /* SwiftyGif.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyGif/SwiftyGif-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyGif/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyGif/SwiftyGif.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyGif;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		67256DB51C3F9F827B07F2ACC85955EA /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F41458CF7DC5F7C70EB4F0FDEF821545 /* Pods-PokeCheck.release.xcconfig */;
 			buildSettings = {
@@ -234,13 +382,14 @@
 				PRODUCT_NAME = Pods_PokeCheck;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		ABF64E6C25F45C0D25425F4FD7EAEBBD /* Debug */ = {
+		8BA3EA0EA837AFED461D4D2010875852 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A9FE29CE89E9E4A6D949ADA486ADE2B /* Pods-PokeCheck.debug.xcconfig */;
 			buildSettings = {
@@ -267,6 +416,8 @@
 				PRODUCT_NAME = Pods_PokeCheck;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -315,9 +466,48 @@
 			};
 			name = Debug;
 		};
+		BC4FCE5576B73FC8255A0211B5B99D85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A3E8A1571925AC4FEE57BC5A625BC36 /* SwiftyGif.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyGif/SwiftyGif-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyGif/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SwiftyGif/SwiftyGif.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyGif;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		056E06E744A7FED872FDC3869C9B8E5F /* Build configuration list for PBXNativeTarget "Pods-PokeCheck" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BA3EA0EA837AFED461D4D2010875852 /* Debug */,
+				67256DB51C3F9F827B07F2ACC85955EA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -327,11 +517,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B29DB31B416222966E43E934D510D356 /* Build configuration list for PBXNativeTarget "Pods-PokeCheck" */ = {
+		64143538EAD3475FE52DCD8D6CAB0F49 /* Build configuration list for PBXNativeTarget "SwiftyGif" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ABF64E6C25F45C0D25425F4FD7EAEBBD /* Debug */,
-				5992C26483C44DEDC78DE4B67162F15C /* Release */,
+				5B09C56C6A4BAB06497CE8D575B8B3A5 /* Debug */,
+				BC4FCE5576B73FC8255A0211B5B99D85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

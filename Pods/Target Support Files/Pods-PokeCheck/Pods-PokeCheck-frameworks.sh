@@ -82,3 +82,10 @@ strip_invalid_archs() {
   fi
 }
 
+
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftyGif/SwiftyGif.framework"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftyGif/SwiftyGif.framework"
+fi

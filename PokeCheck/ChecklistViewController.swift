@@ -9,11 +9,9 @@
 import UIKit
 import CoreData
 
-class ChecklistViewController: UICollectionViewController, UISearchBarDelegate {
-    //let moc = DataController().managedObjectContext
-    
-    //var allPokemon: [Pokemon] = []
+class ChecklistViewController: UICollectionViewController, UISearchBarDelegate {    
     var checklist = Checklist()
+    var animated: Bool = true
 }
 
 //INITIALIZING
@@ -55,8 +53,8 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         if checklist.list.isEmpty {
             return 1
         }
-        //return (checklist.list[section].count)
-        return 4
+        return (checklist.list[section].count)
+//        return 4
     }
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -67,7 +65,7 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
         cell.pokemon = cellPokemon
         
 //        print(cell.pokemon)
-        cell.configureCell(fromPokemon: cellPokemon)
+        cell.configureCell(fromPokemon: cellPokemon, animated: true)
         
         return cell
     }
@@ -185,44 +183,12 @@ extension ChecklistViewController:UICollectionViewDelegateFlowLayout {
 //FILTER MANAGEMENT
 extension ChecklistViewController {
     func presentFilterView(animated: Bool) {
-        let filterView = createFilterView()
+        
+        let filterMenu = ModalViewController.createFilterMenu()
+        
+        present(filterMenu, animated: true, completion: nil)
+    }
 
-        navigationController!.view.addSubview(filterView)
-
-    }
-    func closeFilterView() {
-        print("closeFilterView starts")
-        navigationController!.view.isUserInteractionEnabled = true 
-        navigationController!.view.viewWithTag(100)?.removeFromSuperview()
-        print("filterView should be closed")
-    }
-    func createFilterView() -> UIView {
-        let frostedPane = frostedModalPane()
-               
-        let width = CGFloat(250.0)
-        let filterMenu = UIView(frame: CGRect(x: (navigationController!.view.bounds.width - width), y: 0, width: width, height: navigationController!.view.bounds.height))
-            filterMenu.backgroundColor = .red
-            filterMenu.isUserInteractionEnabled = true
-        
-        let menuTableView = UITableView(frame: CGRect(x: 0, y: 40.0, width: filterMenu.frame.width, height: filterMenu.frame.height - 40.0))
-        filterMenu.addSubview(menuTableView)
-        
-        frostedPane.addSubview(filterMenu)
-        
-        return frostedPane
-    }
-    func frostedModalPane() -> UIView {
-        let frostedPane = UIView(frame: navigationController!.view.bounds)
-            frostedPane.backgroundColor = UIColor(colorLiteralRed: 130/255, green: 130/255, blue: 130/255, alpha: 0.7)
-            frostedPane.tag = 100
-        
-        let tap = UITapGestureRecognizer(target: self, action: Selector("closeFilterView:"))
-            
-            frostedPane.addGestureRecognizer(tap)
-        
-            navigationController!.view.isUserInteractionEnabled = false 
-        return frostedPane
-    }
     func createFilterMenu() {
         
     }

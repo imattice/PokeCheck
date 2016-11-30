@@ -853,6 +853,14 @@
 		7F2E074F1DECEBF600F0AE47 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E074E1DECEBF600F0AE47 /* Filter.swift */; };
 		7F2E07531DECF1B700F0AE47 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E07521DECF1B700F0AE47 /* ModalViewController.swift */; };
 		7F2E07551DEDF97C00F0AE47 /* Filter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2E07541DEDF97C00F0AE47 /* Filter.xib */; };
+		7F2E075D1DEE525900F0AE47 /* GenerationSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E075B1DEE525900F0AE47 /* GenerationSearchCell.swift */; };
+		7F2E075E1DEE525900F0AE47 /* GenerationSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2E075C1DEE525900F0AE47 /* GenerationSearchCell.xib */; };
+		7F2E07611DEE526C00F0AE47 /* NameSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E075F1DEE526C00F0AE47 /* NameSearchCell.swift */; };
+		7F2E07621DEE526C00F0AE47 /* NameSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2E07601DEE526C00F0AE47 /* NameSearchCell.xib */; };
+		7F2E07651DEE528000F0AE47 /* CaughtSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E07631DEE528000F0AE47 /* CaughtSearchCell.swift */; };
+		7F2E07661DEE528000F0AE47 /* CaughtSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2E07641DEE528000F0AE47 /* CaughtSearchCell.xib */; };
+		7F2E07691DEE529700F0AE47 /* LocationSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2E07671DEE529700F0AE47 /* LocationSearchCell.swift */; };
+		7F2E076A1DEE529700F0AE47 /* LocationSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F2E07681DEE529700F0AE47 /* LocationSearchCell.xib */; };
 		7F6269F51DDCE2F0003550A4 /* ChecklistHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6269F41DDCE2F0003550A4 /* ChecklistHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -1705,6 +1713,14 @@
 		7F2E074E1DECEBF600F0AE47 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		7F2E07521DECF1B700F0AE47 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		7F2E07541DEDF97C00F0AE47 /* Filter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Filter.xib; sourceTree = "<group>"; };
+		7F2E075B1DEE525900F0AE47 /* GenerationSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerationSearchCell.swift; sourceTree = "<group>"; };
+		7F2E075C1DEE525900F0AE47 /* GenerationSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenerationSearchCell.xib; sourceTree = "<group>"; };
+		7F2E075F1DEE526C00F0AE47 /* NameSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSearchCell.swift; sourceTree = "<group>"; };
+		7F2E07601DEE526C00F0AE47 /* NameSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NameSearchCell.xib; sourceTree = "<group>"; };
+		7F2E07631DEE528000F0AE47 /* CaughtSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaughtSearchCell.swift; sourceTree = "<group>"; };
+		7F2E07641DEE528000F0AE47 /* CaughtSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaughtSearchCell.xib; sourceTree = "<group>"; };
+		7F2E07671DEE529700F0AE47 /* LocationSearchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchCell.swift; sourceTree = "<group>"; };
+		7F2E07681DEE529700F0AE47 /* LocationSearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSearchCell.xib; sourceTree = "<group>"; };
 		7F6269F41DDCE2F0003550A4 /* ChecklistHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistHeaderView.swift; sourceTree = "<group>"; };
 		CF67B2531832DCB2C31FB28B /* Pods_PokeCheck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeCheck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E87A5E5914D2110E28D16186 /* Pods-PokeCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeCheck.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeCheck/Pods-PokeCheck.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1768,6 +1784,7 @@
 		5912D6831D6426CA003D8986 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				7F2E07581DEE512100F0AE47 /* FilterTableCells */,
 				7F2E07541DEDF97C00F0AE47 /* Filter.xib */,
 				7F2E074E1DECEBF600F0AE47 /* Filter.swift */,
 				5912D6861D64A56D003D8986 /* PokemonCell.xib */,
@@ -2659,6 +2676,21 @@
 			name = Data;
 			sourceTree = "<group>";
 		};
+		7F2E07581DEE512100F0AE47 /* FilterTableCells */ = {
+			isa = PBXGroup;
+			children = (
+				7F2E075B1DEE525900F0AE47 /* GenerationSearchCell.swift */,
+				7F2E075C1DEE525900F0AE47 /* GenerationSearchCell.xib */,
+				7F2E075F1DEE526C00F0AE47 /* NameSearchCell.swift */,
+				7F2E07601DEE526C00F0AE47 /* NameSearchCell.xib */,
+				7F2E07631DEE528000F0AE47 /* CaughtSearchCell.swift */,
+				7F2E07641DEE528000F0AE47 /* CaughtSearchCell.xib */,
+				7F2E07671DEE529700F0AE47 /* LocationSearchCell.swift */,
+				7F2E07681DEE529700F0AE47 /* LocationSearchCell.xib */,
+			);
+			name = FilterTableCells;
+			sourceTree = "<group>";
+		};
 		CA1B6E253A3399393C31C26A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -2916,6 +2948,7 @@
 				5948840E1DCED63F0049F6BF /* 209.gif in Resources */,
 				594883951DCED63F0049F6BF /* 095.gif in Resources */,
 				5948840F1DCED63F0049F6BF /* 210.gif in Resources */,
+				7F2E07621DEE526C00F0AE47 /* NameSearchCell.xib in Resources */,
 				594885821DCED63F0049F6BF /* 529.gif in Resources */,
 				5948844F1DCED63F0049F6BF /* 269.gif in Resources */,
 				594883471DCED63F0049F6BF /* 019.gif in Resources */,
@@ -3215,6 +3248,7 @@
 				594884391DCED63F0049F6BF /* 248.gif in Resources */,
 				5948839A1DCED63F0049F6BF /* 100.gif in Resources */,
 				594885E61DCED63F0049F6BF /* 627.gif in Resources */,
+				7F2E076A1DEE529700F0AE47 /* LocationSearchCell.xib in Resources */,
 				5948858E1DCED63F0049F6BF /* 541.gif in Resources */,
 				594885631DCED63F0049F6BF /* 498.gif in Resources */,
 				594885881DCED63F0049F6BF /* 535.gif in Resources */,
@@ -3339,6 +3373,7 @@
 				594884131DCED63F0049F6BF /* 213.gif in Resources */,
 				594886271DCED63F0049F6BF /* 666-sun.gif in Resources */,
 				594885601DCED63F0049F6BF /* 495.gif in Resources */,
+				7F2E07661DEE528000F0AE47 /* CaughtSearchCell.xib in Resources */,
 				594885DF1DCED63F0049F6BF /* 620.gif in Resources */,
 				594883771DCED63F0049F6BF /* 066.gif in Resources */,
 				594883981DCED63F0049F6BF /* 098.gif in Resources */,
@@ -3479,6 +3514,7 @@
 				594883D51DCED63F0049F6BF /* 153.gif in Resources */,
 				594883361DCED63F0049F6BF /* 005.gif in Resources */,
 				594885C81DCED63F0049F6BF /* 597.gif in Resources */,
+				7F2E075E1DEE525900F0AE47 /* GenerationSearchCell.xib in Resources */,
 				7F2E074B1DECC5E100F0AE47 /* 678.gif in Resources */,
 				594884231DCED63F0049F6BF /* 228.gif in Resources */,
 				594885C51DCED63F0049F6BF /* 594.gif in Resources */,
@@ -3630,6 +3666,10 @@
 				7F1F06F81D7795BA0053EA9E /* Pokemon.swift in Sources */,
 				5912D6741D642388003D8986 /* ChecklistViewController.swift in Sources */,
 				7F0A4C2D1D77757500E49E18 /* DataModel.xcdatamodeld in Sources */,
+				7F2E07691DEE529700F0AE47 /* LocationSearchCell.swift in Sources */,
+				7F2E07611DEE526C00F0AE47 /* NameSearchCell.swift in Sources */,
+				7F2E075D1DEE525900F0AE47 /* GenerationSearchCell.swift in Sources */,
+				7F2E07651DEE528000F0AE47 /* CaughtSearchCell.swift in Sources */,
 				5912D6721D642388003D8986 /* AppDelegate.swift in Sources */,
 				7F1F21E61D7A33E90053EA9E /* PokemonArray.swift in Sources */,
 				7F6269F51DDCE2F0003550A4 /* ChecklistHeaderView.swift in Sources */,

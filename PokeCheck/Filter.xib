@@ -32,13 +32,20 @@
                                     </barButtonItem>
                                 </navigationItem>
                             </items>
+                            <connections>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="LxY-V4-WW4"/>
+                            </connections>
                         </navigationBar>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ydh-Vx-IYt">
-                            <rect key="frame" x="0.0" y="44" width="250" height="623"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" sectionIndexMinimumDisplayRowCount="4" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ydh-Vx-IYt">
+                            <rect key="frame" x="0.0" y="55" width="250" height="612"/>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="BpH-GE-6ut"/>
                             </constraints>
+                            <connections>
+                                <outlet property="dataSource" destination="iN0-l3-epB" id="3hw-6B-SFR"/>
+                                <outlet property="delegate" destination="iN0-l3-epB" id="ENi-Ux-pqQ"/>
+                            </connections>
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,8 +67,8 @@
                 <constraint firstAttribute="trailing" secondItem="77I-NM-vPe" secondAttribute="trailing" id="M2c-Ii-ush"/>
             </constraints>
             <connections>
-                <outlet property="navBar" destination="wjz-Lu-TkS" id="htS-K6-W2F"/>
-                <outlet property="tableView" destination="Ydh-Vx-IYt" id="EOD-Fw-uZr"/>
+                <outlet property="navBar" destination="wjz-Lu-TkS" id="UNS-Sc-u7f"/>
+                <outlet property="tableView" destination="Ydh-Vx-IYt" id="Nqc-b9-FH6"/>
             </connections>
             <point key="canvasLocation" x="22.5" y="50.5"/>
         </view>

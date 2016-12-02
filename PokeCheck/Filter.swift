@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 class Filter: UIView {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tableView: UITableView!
@@ -28,15 +29,12 @@ class Filter: UIView {
 
 extension Filter: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("numberOfRowsInSection was called")
-        return 2
+        return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        print("titleForHeaderInSection was called")
-
         switch section {
         case 0: return "first section"
         case 1: return "second section"
@@ -44,11 +42,16 @@ extension Filter: UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("cellForRowAt indexPath was called")
-                
         switch indexPath.section {
         case 0: 
-            return UINib(nibName: "GenerationSearchCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! GenerationSearchCell
+            return UINib(nibName: TableCellNames.CaughtSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CaughtSearchCell
+            
+        case 1:
+            return UINib(nibName: TableCellNames.NameSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NameSearchCell
+        case 2:
+            return UINib(nibName: TableCellNames.GenerationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! GenerationSearchCell
+        case 3:
+            return UINib(nibName: TableCellNames.LocationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! LocationSearchCell
         default:
             return UITableViewCell()
         }

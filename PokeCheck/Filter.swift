@@ -32,25 +32,25 @@ extension Filter: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 2
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0: return "first section"
-        case 1: return "second section"
-        default: return "default section"
+        case 0: return "Filter by Generation"
+        case 1: return "Filter by Location"
+        default: assert(false, "String for Header in Filter TableView could not be set")
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-        case 0: 
-            return UINib(nibName: TableCellNames.CaughtSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CaughtSearchCell
-            
-        case 1:
-            return UINib(nibName: TableCellNames.NameSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NameSearchCell
-        case 2:
+//        case 0: 
+//            return UINib(nibName: TableCellNames.CaughtSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CaughtSearchCell
+//            
+//        case 1:
+//            return UINib(nibName: TableCellNames.NameSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NameSearchCell
+        case 0:
             return UINib(nibName: TableCellNames.GenerationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! GenerationSearchCell
-        case 3:
+        case 1:
             return UINib(nibName: TableCellNames.LocationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! LocationSearchCell
         default:
             return UITableViewCell()

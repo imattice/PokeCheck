@@ -23,6 +23,7 @@ class Filter: UIView {
     
     @IBAction func close() {
         print("closed")
+        print(navBar.barPosition)
         //self.dismiss(animated: true, completion: nil)
     }
 }
@@ -43,15 +44,20 @@ extension Filter: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
-//        case 0: 
-//            return UINib(nibName: TableCellNames.CaughtSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CaughtSearchCell
-//            
-//        case 1:
-//            return UINib(nibName: TableCellNames.NameSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NameSearchCell
         case 0:
-            return UINib(nibName: TableCellNames.GenerationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! GenerationSearchCell
+            let cell = UINib(nibName: TableCellNames.GenerationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! GenerationSearchCell
+//            cell.translatesAutoresizingMaskIntoConstraints = false
+//            
+//            cell.leadingAnchor.constraint(equalTo: (self.superview?.leadingAnchor)!).isActive = true
+//            cell.trailingAnchor.constraint(equalTo: (self.superview?.trailingAnchor)!).isActive = true
+            return cell 
         case 1:
-            return UINib(nibName: TableCellNames.LocationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! LocationSearchCell
+            let cell = UINib(nibName: TableCellNames.LocationSearchCell.rawValue, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! LocationSearchCell
+//            cell.translatesAutoresizingMaskIntoConstraints = false
+//            
+//            cell.leadingAnchor.constraint(equalTo: (tableView.leadingAnchor)).isActive = true
+//            cell.trailingAnchor.constraint(equalTo: (tableView.trailingAnchor)).isActive = true                
+            return cell 
         default:
             return UITableViewCell()
         }
@@ -62,6 +68,6 @@ extension Filter: UINavigationBarDelegate {
     func position(for: UIBarPositioning) -> UIBarPosition {
         print("navBar position was called")
 
-        return .top
+        return .topAttached
     }
 }
